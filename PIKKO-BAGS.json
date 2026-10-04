@@ -1,0 +1,6116 @@
+{
+ "version": "0.3",
+ "date": "2026-10-04",
+ "notes": [
+  "24 country bags x 20 foods (10 healthy grade A/B + 10 'sometimes' grade D/E) = 480 foods. v0.3 adds Indonesia, Russia, Ukraine, Philippines (one per added language). Starter Bag in PIKKO-GAME-DESIGN.md section 8.",
+  "Traditional sweets, fried street food and party dishes are 'sometimes foods', never 'bad' foods: present them with respect.",
+  "kcal values are APPROXIMATE per typical portion and must be verified (USDA FoodData Central / CREA / IZZ / national tables) and reviewed by a paediatric nutritionist.",
+  "Grades are the internal Pikko Score, not the official Nutri-Score.",
+  "Polish names need native-speaker review. Local dish names are kept where they are the common name.",
+  "Logos use colour palettes inspired by each country, not flags or national emblems (some countries restrict commercial use of flags).",
+  "mint is null until the developer supplies the Pump.fun CA and it passes Token-2022 / extension / route verification."
+ ],
+ "foodColumns": [
+  "id",
+  "en",
+  "it",
+  "pl",
+  "kcal",
+  "portionQty",
+  "portionUnit",
+  "grade",
+  "category"
+ ],
+ "categories": {
+  "healthy": [
+   "veg",
+   "fruit",
+   "protein",
+   "grain",
+   "legume",
+   "nuts",
+   "dairy",
+   "water"
+  ],
+  "junk": [
+   "sugar",
+   "fried",
+   "fizzy",
+   "salty",
+   "fatty",
+   "ultra"
+  ]
+ },
+ "accessRule": {
+  "type": "anyActiveLock",
+  "minOriginalSeconds": 0,
+  "minRemainingSeconds": 0,
+  "aggregation": "sum",
+  "minimumTokens": "TBD"
+ },
+ "bags": [
+  {
+   "id": "italy",
+   "order": 1,
+   "country": "IT",
+   "mint": null,
+   "name": {
+    "en": "Italy",
+    "it": "Italia",
+    "pl": "Włochy"
+   },
+   "accessory": {
+    "en": "Chef's hat",
+    "it": "Cappello da chef",
+    "pl": "Czapka kucharska"
+   },
+   "accessoryKind": "chef",
+   "fact": {
+    "en": "Italy: the Mediterranean diet — vegetables, beans, olive oil and pasta — is UNESCO heritage.",
+    "it": "Italia: la dieta mediterranea — verdure, legumi, olio d'oliva e pasta — è patrimonio UNESCO.",
+    "pl": "Włochy: dieta śródziemnomorska — warzywa, strączki, oliwa i makaron — jest dziedzictwem UNESCO."
+   },
+   "palette": [
+    "#009246",
+    "#ffffff",
+    "#ce2b37"
+   ],
+   "stripes": "v",
+   "bg": "#fbe3d6",
+   "logo": "logos/italy.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_IT_italy_1024.png",
+   "foods": [
+    [
+     "it_minestrone",
+     "Minestrone",
+     "Minestrone",
+     "Zupa minestrone",
+     100,
+     300,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "it_pasta_fagioli",
+     "Pasta and beans",
+     "Pasta e fagioli",
+     "Makaron z fasolą",
+     300,
+     300,
+     "g",
+     "B",
+     "legume"
+    ],
+    [
+     "it_caprese",
+     "Caprese salad",
+     "Insalata caprese",
+     "Sałatka caprese",
+     230,
+     150,
+     "g",
+     "B",
+     "dairy"
+    ],
+    [
+     "it_ribollita",
+     "Ribollita (Tuscan bread soup)",
+     "Ribollita",
+     "Ribollita (toskańska zupa)",
+     200,
+     300,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "it_sardines",
+     "Grilled sardines",
+     "Sarde alla griglia",
+     "Grillowane sardynki",
+     210,
+     100,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "it_fennel_orange",
+     "Fennel and orange salad",
+     "Insalata di finocchi e arance",
+     "Sałatka z kopru włoskiego i pomarańczy",
+     90,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "it_bruschetta",
+     "Tomato bruschetta",
+     "Bruschetta al pomodoro",
+     "Bruschetta z pomidorami",
+     120,
+     60,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "it_farro_salad",
+     "Farro salad",
+     "Insalata di farro",
+     "Sałatka z orkiszu",
+     260,
+     200,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "it_figs",
+     "Fresh figs",
+     "Fichi freschi",
+     "Świeże figi",
+     74,
+     100,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "it_grilled_veg",
+     "Grilled vegetables",
+     "Verdure grigliate",
+     "Grillowane warzywa",
+     90,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "it_panzerotto",
+     "Fried panzerotto",
+     "Panzerotto fritto",
+     "Smażony panzerotto",
+     450,
+     180,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "it_arancino",
+     "Arancino",
+     "Arancino",
+     "Arancino (smażona kula ryżowa)",
+     400,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "it_cannolo",
+     "Cannolo",
+     "Cannolo siciliano",
+     "Cannolo sycylijskie",
+     350,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "it_tiramisu",
+     "Tiramisu",
+     "Tiramisù",
+     "Tiramisu",
+     420,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "it_fritto_misto",
+     "Mixed fried seafood",
+     "Fritto misto",
+     "Smażone owoce morza",
+     500,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "it_pizza_fritta",
+     "Fried pizza",
+     "Pizza fritta",
+     "Smażona pizza",
+     550,
+     250,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "it_merendina",
+     "Packaged snack cake",
+     "Merendina confezionata",
+     "Ciastko z paczki",
+     150,
+     35,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "it_zeppola",
+     "Cream zeppola",
+     "Zeppola alla crema",
+     "Zeppola z kremem",
+     300,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "it_mortadella",
+     "Mortadella sandwich",
+     "Panino alla mortadella",
+     "Kanapka z mortadelą",
+     450,
+     180,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "it_bombolone",
+     "Cream-filled bombolone",
+     "Bombolone alla crema",
+     "Bombolone z kremem",
+     330,
+     90,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "poland",
+   "order": 2,
+   "country": "PL",
+   "mint": null,
+   "name": {
+    "en": "Poland",
+    "it": "Polonia",
+    "pl": "Polska"
+   },
+   "accessory": {
+    "en": "Łowicz folk scarf",
+    "it": "Foulard folk di Łowicz",
+    "pl": "Chusta łowicka"
+   },
+   "accessoryKind": "scarf",
+   "fact": {
+    "en": "Poland: pickles and sauerkraut are fermented winter classics, full of friendly bacteria.",
+    "it": "Polonia: cetrioli e crauti fermentati sono classici dell'inverno, pieni di batteri buoni.",
+    "pl": "Polska: kiszone ogórki i kapusta to zimowa klasyka pełna dobrych bakterii."
+   },
+   "palette": [
+    "#ffffff",
+    "#dc143c"
+   ],
+   "stripes": "h",
+   "bg": "#fde4e8",
+   "logo": "logos/poland.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_PL_poland_1024.png",
+   "foods": [
+    [
+     "pl_kasza",
+     "Buckwheat groats",
+     "Grano saraceno",
+     "Kasza gryczana",
+     140,
+     150,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "pl_ogorki",
+     "Fermented pickles",
+     "Cetrioli fermentati",
+     "Ogórki kiszone",
+     12,
+     100,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "pl_barszcz",
+     "Clear beetroot soup",
+     "Zuppa di barbabietola",
+     "Barszcz czerwony",
+     50,
+     250,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "pl_twarozek",
+     "Cottage cheese with radish",
+     "Fiocchi di latte con ravanelli",
+     "Twarożek z rzodkiewką",
+     160,
+     150,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "pl_kapusta",
+     "Sauerkraut",
+     "Crauti",
+     "Kapusta kiszona",
+     20,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "pl_kefir",
+     "Kefir",
+     "Kefir",
+     "Kefir",
+     130,
+     250,
+     "ml",
+     "A",
+     "dairy"
+    ],
+    [
+     "pl_sledz",
+     "Marinated herring",
+     "Aringa marinata",
+     "Śledź marynowany",
+     190,
+     100,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "pl_mizeria",
+     "Cucumber yogurt salad",
+     "Insalata di cetrioli e yogurt",
+     "Mizeria",
+     60,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "pl_chleb_zytni",
+     "Rye sourdough bread",
+     "Pane di segale a lievito madre",
+     "Chleb żytni na zakwasie",
+     100,
+     40,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "pl_buraczki",
+     "Beet salad",
+     "Insalata di barbabietole",
+     "Buraczki",
+     70,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "pl_paczek",
+     "Rose-jam pączek",
+     "Pączek alla rosa (bombolone polacco)",
+     "Pączek z różą",
+     300,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "pl_zapiekanka",
+     "Zapiekanka",
+     "Zapiekanka (baguette gratinata)",
+     "Zapiekanka",
+     500,
+     250,
+     "g",
+     "E",
+     "ultra"
+    ],
+    [
+     "pl_kielbasa",
+     "Grilled sausage",
+     "Salsiccia alla griglia",
+     "Kiełbasa z grilla",
+     450,
+     150,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "pl_schabowy",
+     "Breaded pork cutlet",
+     "Cotoletta di maiale impanata",
+     "Kotlet schabowy",
+     500,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "pl_pierogi_smazone",
+     "Fried pierogi with cracklings",
+     "Pierogi fritti con ciccioli",
+     "Smażone pierogi ze skwarkami",
+     550,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "pl_oranzada",
+     "Orangeade soda",
+     "Aranciata gassata",
+     "Oranżada",
+     140,
+     330,
+     "ml",
+     "E",
+     "fizzy"
+    ],
+    [
+     "pl_ptasie_mleczko",
+     "Chocolate marshmallow bites",
+     "Marshmallow al cioccolato",
+     "Ptasie mleczko",
+     120,
+     30,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "pl_kremowka",
+     "Cream slice",
+     "Millefoglie alla crema",
+     "Kremówka",
+     350,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "pl_placki",
+     "Fried potato pancakes",
+     "Frittelle di patate",
+     "Placki ziemniaczane",
+     400,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "pl_gofr",
+     "Waffle with whipped cream",
+     "Waffle con panna",
+     "Gofr z bitą śmietaną",
+     450,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "japan",
+   "order": 3,
+   "country": "JP",
+   "mint": null,
+   "name": {
+    "en": "Japan",
+    "it": "Giappone",
+    "pl": "Japonia"
+   },
+   "accessory": {
+    "en": "Hachimaki headband",
+    "it": "Fascia hachimaki",
+    "pl": "Opaska hachimaki"
+   },
+   "accessoryKind": "band",
+   "fact": {
+    "en": "Japan: washoku — rice, miso soup, fish and vegetables — is UNESCO heritage (2013).",
+    "it": "Giappone: il washoku — riso, zuppa di miso, pesce e verdure — è patrimonio UNESCO (2013).",
+    "pl": "Japonia: washoku — ryż, zupa miso, ryby i warzywa — jest dziedzictwem UNESCO (2013)."
+   },
+   "palette": [
+    "#ffffff",
+    "#bc002d"
+   ],
+   "stripes": "disc",
+   "bg": "#fde8ea",
+   "logo": "logos/japan.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_JP_japan_1024.png",
+   "foods": [
+    [
+     "jp_edamame",
+     "Edamame",
+     "Edamame",
+     "Edamame",
+     120,
+     100,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "jp_miso_soup",
+     "Miso soup",
+     "Zuppa di miso",
+     "Zupa miso",
+     40,
+     250,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "jp_salmon_nigiri",
+     "Salmon nigiri",
+     "Nigiri al salmone",
+     "Nigiri z łososiem",
+     120,
+     70,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "jp_sashimi",
+     "Sashimi",
+     "Sashimi",
+     "Sashimi",
+     130,
+     100,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "jp_seaweed_salad",
+     "Seaweed salad",
+     "Insalata di alghe",
+     "Sałatka z wodorostów",
+     70,
+     100,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "jp_onigiri",
+     "Onigiri",
+     "Onigiri",
+     "Onigiri",
+     180,
+     110,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "jp_hiyayakko",
+     "Chilled tofu",
+     "Tofu freddo (hiyayakko)",
+     "Tofu na zimno",
+     110,
+     150,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "jp_cold_soba",
+     "Cold soba noodles",
+     "Soba fredda",
+     "Zimny makaron soba",
+     280,
+     250,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "jp_matcha_tea",
+     "Unsweetened matcha",
+     "Tè matcha senza zucchero",
+     "Matcha bez cukru",
+     5,
+     250,
+     "ml",
+     "A",
+     "water"
+    ],
+    [
+     "jp_cucumber_maki",
+     "Cucumber maki",
+     "Maki al cetriolo",
+     "Maki z ogórkiem",
+     140,
+     120,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "jp_tempura",
+     "Tempura",
+     "Tempura",
+     "Tempura",
+     450,
+     180,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "jp_tonkatsu",
+     "Tonkatsu",
+     "Tonkatsu (cotoletta fritta)",
+     "Tonkatsu",
+     500,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "jp_instant_ramen",
+     "Instant ramen",
+     "Ramen istantaneo",
+     "Zupka błyskawiczna ramen",
+     450,
+     85,
+     "g",
+     "E",
+     "ultra"
+    ],
+    [
+     "jp_karaage",
+     "Karaage fried chicken",
+     "Pollo fritto karaage",
+     "Kurczak karaage",
+     400,
+     150,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "jp_mochi_icecream",
+     "Mochi ice cream",
+     "Mochi gelato",
+     "Lody mochi",
+     200,
+     90,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "jp_dorayaki",
+     "Dorayaki",
+     "Dorayaki",
+     "Dorayaki",
+     280,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "jp_takoyaki",
+     "Takoyaki",
+     "Takoyaki",
+     "Takoyaki",
+     400,
+     180,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "jp_melon_pan",
+     "Melon pan",
+     "Melon pan",
+     "Melon pan",
+     380,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "jp_matcha_frappe",
+     "Sweet matcha frappé",
+     "Frappè al matcha zuccherato",
+     "Słodkie frappé matcha",
+     400,
+     400,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "jp_mayo_roll",
+     "Tempura mayo roll",
+     "Uramaki tempura e maionese",
+     "Rolka z tempurą i majonezem",
+     550,
+     250,
+     "g",
+     "D",
+     "fried"
+    ]
+   ]
+  },
+  {
+   "id": "mexico",
+   "order": 4,
+   "country": "MX",
+   "mint": null,
+   "name": {
+    "en": "Mexico",
+    "it": "Messico",
+    "pl": "Meksyk"
+   },
+   "accessory": {
+    "en": "Papel picado bib",
+    "it": "Bavaglino papel picado",
+    "pl": "Śliniaczek papel picado"
+   },
+   "accessoryKind": "none",
+   "fact": {
+    "en": "Mexico: traditional Mexican cuisine is UNESCO heritage (2010) — corn, beans and chili at its heart.",
+    "it": "Messico: la cucina tradizionale messicana è patrimonio UNESCO (2010) — mais, fagioli e peperoncino al centro.",
+    "pl": "Meksyk: tradycyjna kuchnia meksykańska jest dziedzictwem UNESCO (2010) — kukurydza, fasola i chili."
+   },
+   "palette": [
+    "#006847",
+    "#ffffff",
+    "#ce1126"
+   ],
+   "stripes": "v",
+   "bg": "#e2f2ea",
+   "logo": "logos/mexico.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_MX_mexico_1024.png",
+   "foods": [
+    [
+     "mx_guacamole",
+     "Guacamole",
+     "Guacamole",
+     "Guacamole",
+     160,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "mx_pico_de_gallo",
+     "Pico de gallo",
+     "Pico de gallo",
+     "Pico de gallo",
+     25,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "mx_frijoles",
+     "Pot beans (frijoles de olla)",
+     "Fagioli in pentola (frijoles de olla)",
+     "Fasola z garnka (frijoles de olla)",
+     230,
+     200,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "mx_fish_taco",
+     "Grilled fish taco",
+     "Taco di pesce alla griglia",
+     "Taco z grillowaną rybą",
+     180,
+     120,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "mx_mango_chile",
+     "Mango with chili and lime",
+     "Mango con peperoncino e lime",
+     "Mango z chili i limonką",
+     90,
+     150,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "mx_nopales",
+     "Cactus salad",
+     "Insalata di nopales",
+     "Sałatka z kaktusa",
+     40,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "mx_sopa_tortilla",
+     "Tortilla soup",
+     "Zuppa di tortilla",
+     "Zupa tortilla",
+     200,
+     300,
+     "ml",
+     "B",
+     "veg"
+    ],
+    [
+     "mx_jicama",
+     "Jicama sticks",
+     "Bastoncini di jicama",
+     "Paluszki z jicamy",
+     38,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "mx_ceviche_mx",
+     "Mexican fish ceviche",
+     "Ceviche messicano",
+     "Meksykańskie ceviche",
+     140,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "mx_calabacitas",
+     "Calabacitas (squash and corn)",
+     "Calabacitas (zucchine e mais)",
+     "Calabacitas (cukinia z kukurydzą)",
+     110,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "mx_churros",
+     "Churros with chocolate",
+     "Churros con cioccolata",
+     "Churros z czekoladą",
+     450,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "mx_chimichanga",
+     "Chimichanga",
+     "Chimichanga",
+     "Chimichanga",
+     650,
+     300,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "mx_quesadilla",
+     "Extra-cheese fried quesadilla",
+     "Quesadilla fritta extra formaggio",
+     "Smażona quesadilla z dużą ilością sera",
+     550,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "mx_concha",
+     "Concha sweet bread",
+     "Concha (pan dulce)",
+     "Concha (słodka bułka)",
+     380,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "mx_tres_leches",
+     "Tres leches cake",
+     "Torta tres leches",
+     "Ciasto tres leches",
+     400,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "mx_torta_chorizo",
+     "Chorizo torta sandwich",
+     "Torta al chorizo",
+     "Kanapka torta z chorizo",
+     650,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "mx_flautas",
+     "Fried flautas",
+     "Flautas fritte",
+     "Smażone flautas",
+     450,
+     180,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "mx_horchata",
+     "Sweet horchata",
+     "Horchata zuccherata",
+     "Słodka horchata",
+     250,
+     350,
+     "ml",
+     "D",
+     "sugar"
+    ],
+    [
+     "mx_bunuelos",
+     "Buñuelos with syrup",
+     "Buñuelos con sciroppo",
+     "Buñuelos z syropem",
+     350,
+     120,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "mx_elote_mayo",
+     "Corn with mayo and cheese",
+     "Elote con maionese e formaggio",
+     "Kukurydza z majonezem i serem",
+     250,
+     180,
+     "g",
+     "D",
+     "fatty"
+    ]
+   ]
+  },
+  {
+   "id": "usa",
+   "order": 5,
+   "country": "US",
+   "mint": null,
+   "name": {
+    "en": "United States",
+    "it": "Stati Uniti",
+    "pl": "Stany Zjednoczone"
+   },
+   "accessory": {
+    "en": "Diner paper cap",
+    "it": "Cappellino di carta da diner",
+    "pl": "Papierowa czapka z dinera"
+   },
+   "accessoryKind": "cap",
+   "fact": {
+    "en": "USA: corn, beans and squash — the 'Three Sisters' — were grown together by Native American farmers.",
+    "it": "Stati Uniti: mais, fagioli e zucca — le 'Tre Sorelle' — erano coltivati insieme dai popoli nativi.",
+    "pl": "USA: kukurydza, fasola i dynia — „Trzy Siostry” — uprawiano razem u rdzennych Amerykanów."
+   },
+   "palette": [
+    "#b22234",
+    "#ffffff",
+    "#3c3b6e"
+   ],
+   "stripes": "us",
+   "bg": "#e3e6f3",
+   "logo": "logos/usa.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_US_usa_1024.png",
+   "foods": [
+    [
+     "us_turkey_wrap",
+     "Turkey wrap",
+     "Wrap al tacchino",
+     "Wrap z indykiem",
+     300,
+     220,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "us_cobb_light",
+     "Light Cobb salad",
+     "Cobb salad leggera",
+     "Lekka sałatka Cobb",
+     350,
+     300,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "us_baked_potato",
+     "Baked potato with yogurt",
+     "Patata al forno con yogurt",
+     "Pieczony ziemniak z jogurtem",
+     220,
+     250,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "us_omelette",
+     "Egg-white veggie omelette",
+     "Omelette di albumi e verdure",
+     "Omlet z białek z warzywami",
+     150,
+     200,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "us_bean_chili",
+     "Lean bean chili",
+     "Chili di fagioli magro",
+     "Chili z fasolą",
+     280,
+     250,
+     "g",
+     "B",
+     "legume"
+    ],
+    [
+     "us_coleslaw",
+     "Yogurt coleslaw",
+     "Coleslaw allo yogurt",
+     "Surówka coleslaw z jogurtem",
+     80,
+     120,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "us_waldorf",
+     "Light Waldorf salad",
+     "Insalata Waldorf leggera",
+     "Lekka sałatka Waldorf",
+     180,
+     180,
+     "g",
+     "B",
+     "fruit"
+    ],
+    [
+     "us_chicken_sandwich",
+     "Wholewheat grilled chicken sandwich",
+     "Panino integrale con pollo",
+     "Pełnoziarnista kanapka z kurczakiem",
+     380,
+     220,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "us_succotash",
+     "Corn and bean succotash",
+     "Succotash di mais e fagioli",
+     "Succotash z kukurydzy i fasoli",
+     160,
+     150,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "us_corn_cob",
+     "Corn on the cob",
+     "Pannocchia lessa",
+     "Gotowana kolba kukurydzy",
+     90,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "us_mac_cheese",
+     "Mac and cheese",
+     "Mac and cheese",
+     "Makaron z serem",
+     500,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "us_chicken_waffles",
+     "Fried chicken and waffles",
+     "Pollo fritto e waffle",
+     "Kurczak w panierce z goframi",
+     800,
+     350,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "us_apple_pie",
+     "Apple pie à la mode",
+     "Torta di mele con gelato",
+     "Szarlotka z lodami",
+     500,
+     200,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "us_fried_steak",
+     "Chicken-fried steak with gravy",
+     "Bistecca impanata con salsa gravy",
+     "Panierowany stek z sosem",
+     700,
+     300,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "us_root_beer_float",
+     "Root beer float",
+     "Root beer float",
+     "Root beer z lodami",
+     300,
+     400,
+     "ml",
+     "E",
+     "fizzy"
+    ],
+    [
+     "us_biscuits_gravy",
+     "Biscuits and gravy",
+     "Biscuits con gravy",
+     "Bułeczki z sosem gravy",
+     600,
+     300,
+     "g",
+     "E",
+     "fatty"
+    ],
+    [
+     "us_cheesesteak",
+     "Philly cheesesteak",
+     "Panino Philly cheesesteak",
+     "Kanapka Philly cheesesteak",
+     700,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "us_jalapeno_poppers",
+     "Jalapeño poppers",
+     "Jalapeño poppers fritti",
+     "Smażone jalapeño poppers",
+     400,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "us_bbq_ribs",
+     "Sticky BBQ ribs",
+     "Costine BBQ glassate",
+     "Żeberka w słodkim sosie BBQ",
+     750,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "us_brownie",
+     "Chocolate brownie",
+     "Brownie al cioccolato",
+     "Brownie czekoladowe",
+     250,
+     60,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "india",
+   "order": 6,
+   "country": "IN",
+   "mint": null,
+   "name": {
+    "en": "India",
+    "it": "India",
+    "pl": "Indie"
+   },
+   "accessory": {
+    "en": "Marigold garland",
+    "it": "Ghirlanda di calendule",
+    "pl": "Girlanda z aksamitek"
+   },
+   "accessoryKind": "lei",
+   "fact": {
+    "en": "India: many dishes are built on lentils (dal) and spices like turmeric and cumin.",
+    "it": "India: tanti piatti nascono da lenticchie (dal) e spezie come curcuma e cumino.",
+    "pl": "Indie: wiele potraw opiera się na soczewicy (dal) i przyprawach jak kurkuma i kumin."
+   },
+   "palette": [
+    "#ff9933",
+    "#ffffff",
+    "#138808"
+   ],
+   "stripes": "h",
+   "bg": "#fff0de",
+   "logo": "logos/india.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_IN_india_1024.png",
+   "foods": [
+    [
+     "in_dal",
+     "Lentil dal",
+     "Dal di lenticchie",
+     "Dal z soczewicy",
+     250,
+     250,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "in_chana_masala",
+     "Chana masala",
+     "Chana masala",
+     "Chana masala",
+     280,
+     250,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "in_tandoori",
+     "Tandoori chicken",
+     "Pollo tandoori",
+     "Kurczak tandoori",
+     250,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "in_raita",
+     "Raita",
+     "Raita",
+     "Raita",
+     60,
+     100,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "in_veg_curry",
+     "Light vegetable curry",
+     "Curry di verdure leggero",
+     "Lekkie curry warzywne",
+     200,
+     250,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "in_roti",
+     "Wholewheat roti",
+     "Roti integrale",
+     "Pełnoziarniste roti",
+     110,
+     40,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "in_brown_basmati",
+     "Brown basmati rice",
+     "Riso basmati integrale",
+     "Brązowy ryż basmati",
+     170,
+     150,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "in_palak_paneer",
+     "Palak paneer",
+     "Palak paneer",
+     "Palak paneer",
+     300,
+     250,
+     "g",
+     "B",
+     "dairy"
+    ],
+    [
+     "in_moong_salad",
+     "Sprouted moong salad",
+     "Insalata di germogli di moong",
+     "Sałatka z kiełków mung",
+     120,
+     150,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "in_baingan",
+     "Baingan bharta (smoky eggplant)",
+     "Baingan bharta (melanzane affumicate)",
+     "Baingan bharta (wędzony bakłażan)",
+     140,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "in_samosa",
+     "Samosa",
+     "Samosa",
+     "Samosy",
+     500,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "in_pakora",
+     "Pakora",
+     "Pakora",
+     "Pakory",
+     400,
+     150,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "in_gulab_jamun",
+     "Gulab jamun",
+     "Gulab jamun",
+     "Gulab jamun",
+     300,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "in_jalebi",
+     "Jalebi",
+     "Jalebi",
+     "Jalebi",
+     450,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "in_butter_chicken",
+     "Creamy butter chicken",
+     "Butter chicken cremoso",
+     "Kremowy kurczak maślany",
+     600,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "in_butter_naan",
+     "Garlic butter naan",
+     "Naan al burro e aglio",
+     "Naan z masłem czosnkowym",
+     350,
+     110,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "in_mango_lassi",
+     "Sweet mango lassi",
+     "Lassi dolce al mango",
+     "Słodkie lassi mango",
+     300,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "in_bhatura",
+     "Fried bhatura",
+     "Bhatura fritto",
+     "Smażone bhatura",
+     450,
+     150,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "in_barfi",
+     "Barfi",
+     "Barfi",
+     "Barfi",
+     250,
+     60,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "in_kulfi",
+     "Kulfi",
+     "Kulfi",
+     "Kulfi",
+     200,
+     90,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "france",
+   "order": 7,
+   "country": "FR",
+   "mint": null,
+   "name": {
+    "en": "France",
+    "it": "Francia",
+    "pl": "Francja"
+   },
+   "accessory": {
+    "en": "Beret",
+    "it": "Basco",
+    "pl": "Beret"
+   },
+   "accessoryKind": "beret",
+   "fact": {
+    "en": "France: the French gastronomic meal is UNESCO heritage (2010) — starter, main, cheese, dessert.",
+    "it": "Francia: il pasto gastronomico francese è patrimonio UNESCO (2010) — antipasto, piatto, formaggio, dolce.",
+    "pl": "Francja: francuski posiłek gastronomiczny jest dziedzictwem UNESCO (2010) — przystawka, danie, ser, deser."
+   },
+   "palette": [
+    "#0055a4",
+    "#ffffff",
+    "#ef4135"
+   ],
+   "stripes": "v",
+   "bg": "#e2eaf6",
+   "logo": "logos/france.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_FR_france_1024.png",
+   "foods": [
+    [
+     "fr_ratatouille",
+     "Ratatouille",
+     "Ratatouille",
+     "Ratatouille",
+     150,
+     250,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "fr_nicoise",
+     "Salade niçoise",
+     "Insalata nizzarda",
+     "Sałatka nicejska",
+     300,
+     300,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "fr_lentilles",
+     "Puy lentil salad",
+     "Insalata di lenticchie du Puy",
+     "Sałatka z soczewicy z Puy",
+     200,
+     200,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "fr_moules",
+     "Moules marinières",
+     "Cozze alla marinara",
+     "Małże po marynarsku",
+     200,
+     250,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "fr_haricots",
+     "Green beans",
+     "Fagiolini (haricots verts)",
+     "Fasolka szparagowa",
+     45,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "fr_papillote",
+     "Fish en papillote",
+     "Pesce al cartoccio",
+     "Ryba pieczona w papilocie",
+     180,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "fr_fromage_blanc",
+     "Fromage blanc",
+     "Fromage blanc (formaggio fresco)",
+     "Fromage blanc (twarożek)",
+     110,
+     150,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "fr_potage",
+     "Vegetable potage",
+     "Vellutata di verdure",
+     "Zupa krem z warzyw",
+     120,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "fr_pot_au_feu",
+     "Pot-au-feu",
+     "Pot-au-feu (bollito con verdure)",
+     "Pot-au-feu (gotowana wołowina z warzywami)",
+     350,
+     350,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "fr_endives",
+     "Endive and walnut salad",
+     "Insalata di indivia e noci",
+     "Sałatka z cykorii i orzechów",
+     150,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "fr_croissant",
+     "Butter croissant",
+     "Croissant al burro",
+     "Croissant maślany",
+     230,
+     60,
+     "g",
+     "D",
+     "sugar"
+    ],
+    [
+     "fr_pain_chocolat",
+     "Pain au chocolat",
+     "Pain au chocolat",
+     "Pain au chocolat",
+     270,
+     70,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "fr_croque",
+     "Croque-monsieur",
+     "Croque-monsieur",
+     "Croque-monsieur",
+     450,
+     180,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "fr_crepe_choco",
+     "Chocolate spread crêpe",
+     "Crêpe alla crema spalmabile",
+     "Naleśnik z kremem czekoladowym",
+     450,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "fr_macarons",
+     "Macarons",
+     "Macarons",
+     "Makaroniki",
+     280,
+     60,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "fr_eclair",
+     "Chocolate éclair",
+     "Éclair al cioccolato",
+     "Ekler czekoladowy",
+     260,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "fr_quiche",
+     "Quiche lorraine",
+     "Quiche lorraine",
+     "Quiche lotaryńska",
+     450,
+     150,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "fr_tartiflette",
+     "Tartiflette",
+     "Tartiflette",
+     "Tartiflette",
+     600,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "fr_millefeuille",
+     "Mille-feuille",
+     "Millefoglie francese",
+     "Mille-feuille",
+     400,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "fr_grenadine",
+     "Grenadine syrup drink",
+     "Bibita allo sciroppo di granatina",
+     "Napój z syropem grenadyna",
+     150,
+     250,
+     "ml",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "spain",
+   "order": 8,
+   "country": "ES",
+   "mint": null,
+   "name": {
+    "en": "Spain",
+    "it": "Spagna",
+    "pl": "Hiszpania"
+   },
+   "accessory": {
+    "en": "Red and yellow scarf",
+    "it": "Sciarpa rossa e gialla",
+    "pl": "Czerwono-żółty szalik"
+   },
+   "accessoryKind": "scarf",
+   "fact": {
+    "en": "Spain: the world's biggest producer of olive oil — the base of Mediterranean cooking.",
+    "it": "Spagna: è il primo produttore mondiale di olio d'oliva, base della cucina mediterranea.",
+    "pl": "Hiszpania: największy producent oliwy na świecie — podstawy kuchni śródziemnomorskiej."
+   },
+   "palette": [
+    "#aa151b",
+    "#f1bf00",
+    "#aa151b"
+   ],
+   "stripes": "h3",
+   "bg": "#fdf1cf",
+   "logo": "logos/spain.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_ES_spain_1024.png",
+   "foods": [
+    [
+     "es_gazpacho",
+     "Gazpacho",
+     "Gazpacho",
+     "Gazpacho",
+     100,
+     250,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "es_salmorejo",
+     "Salmorejo",
+     "Salmorejo",
+     "Salmorejo",
+     180,
+     200,
+     "ml",
+     "B",
+     "veg"
+    ],
+    [
+     "es_pisto",
+     "Pisto (vegetable stew)",
+     "Pisto (verdure stufate)",
+     "Pisto (duszone warzywa)",
+     150,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "es_pulpo",
+     "Galician octopus",
+     "Polpo alla galiziana",
+     "Ośmiornica po galicyjsku",
+     250,
+     200,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "es_boquerones",
+     "Marinated anchovies",
+     "Alici marinate (boquerones)",
+     "Marynowane sardele (boquerones)",
+     100,
+     80,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "es_pan_tomate",
+     "Bread with tomato",
+     "Pane con pomodoro (pan con tomate)",
+     "Chleb z pomidorem",
+     150,
+     80,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "es_ensalada_mixta",
+     "Mixed salad",
+     "Insalata mista",
+     "Sałatka mieszana",
+     120,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "es_esparragos",
+     "White asparagus",
+     "Asparagi bianchi",
+     "Białe szparagi",
+     30,
+     120,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "es_naranja",
+     "Valencia orange",
+     "Arancia di Valencia",
+     "Pomarańcza z Walencji",
+     62,
+     130,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "es_garbanzos",
+     "Chickpeas with spinach",
+     "Ceci con spinaci",
+     "Ciecierzyca ze szpinakiem",
+     250,
+     250,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "es_churros_es",
+     "Churros with hot chocolate",
+     "Churros con cioccolata calda",
+     "Churros z gorącą czekoladą",
+     500,
+     200,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "es_bravas",
+     "Patatas bravas",
+     "Patatas bravas",
+     "Patatas bravas",
+     400,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "es_bocadillo_calamares",
+     "Fried squid sandwich",
+     "Panino con calamari fritti",
+     "Kanapka z kalmarami",
+     550,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "es_croquetas",
+     "Croquettes",
+     "Crocchette (croquetas)",
+     "Krokiety (croquetas)",
+     300,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "es_magdalenas",
+     "Packaged muffins",
+     "Magdalenas confezionate",
+     "Babeczki z paczki",
+     200,
+     60,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "es_ensaimada",
+     "Ensaimada",
+     "Ensaimada",
+     "Ensaimada",
+     400,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "es_torrijas",
+     "Torrijas",
+     "Torrijas (pane fritto dolce)",
+     "Torrijas (słodkie smażone pieczywo)",
+     350,
+     120,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "es_bocadillo_chorizo",
+     "Chorizo sandwich",
+     "Panino al chorizo",
+     "Kanapka z chorizo",
+     500,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "es_horchata_chufa",
+     "Tiger-nut horchata",
+     "Horchata de chufa",
+     "Horchata z cibory",
+     250,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "es_crema_catalana",
+     "Crema catalana",
+     "Crema catalana",
+     "Krem kataloński",
+     300,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "greece",
+   "order": 9,
+   "country": "GR",
+   "mint": null,
+   "name": {
+    "en": "Greece",
+    "it": "Grecia",
+    "pl": "Grecja"
+   },
+   "accessory": {
+    "en": "Olive wreath",
+    "it": "Corona d'ulivo",
+    "pl": "Wieniec oliwny"
+   },
+   "accessoryKind": "wreath",
+   "fact": {
+    "en": "Greece: a real Greek salad has no lettuce — tomato, cucumber, onion, olives and feta.",
+    "it": "Grecia: la vera insalata greca non ha lattuga — pomodoro, cetriolo, cipolla, olive e feta.",
+    "pl": "Grecja: prawdziwa sałatka grecka nie ma sałaty — pomidor, ogórek, cebula, oliwki i feta."
+   },
+   "palette": [
+    "#0d5eaf",
+    "#ffffff"
+   ],
+   "stripes": "h5",
+   "bg": "#e0ecf9",
+   "logo": "logos/greece.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_GR_greece_1024.png",
+   "foods": [
+    [
+     "gr_horiatiki",
+     "Greek salad",
+     "Insalata greca",
+     "Sałatka grecka",
+     250,
+     250,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "gr_tzatziki",
+     "Tzatziki with cucumber",
+     "Tzatziki con cetriolo",
+     "Tzatziki z ogórkiem",
+     120,
+     180,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "gr_fasolada",
+     "Fasolada bean soup",
+     "Fasolada (zuppa di fagioli)",
+     "Fasolada (zupa fasolowa)",
+     250,
+     300,
+     "ml",
+     "A",
+     "legume"
+    ],
+    [
+     "gr_gemista",
+     "Stuffed tomatoes and peppers",
+     "Gemista (pomodori e peperoni ripieni)",
+     "Gemista (faszerowane pomidory i papryki)",
+     250,
+     300,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "gr_horta",
+     "Wild greens with lemon",
+     "Horta (verdure selvatiche al limone)",
+     "Horta (dzikie warzywa z cytryną)",
+     60,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "gr_fava",
+     "Yellow split pea purée",
+     "Fava (crema di piselli gialli)",
+     "Fava (pasta z żółtego groszku)",
+     180,
+     150,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "gr_tsipoura",
+     "Grilled sea bream",
+     "Orata alla griglia",
+     "Grillowana dorada",
+     200,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "gr_kalamata",
+     "Kalamata olives",
+     "Olive Kalamata",
+     "Oliwki Kalamata",
+     45,
+     30,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "gr_yogurt_honey",
+     "Greek yogurt with honey and walnuts",
+     "Yogurt greco con miele e noci",
+     "Jogurt grecki z miodem i orzechami",
+     200,
+     170,
+     "g",
+     "B",
+     "dairy"
+    ],
+    [
+     "gr_dolmades",
+     "Dolmades (stuffed vine leaves)",
+     "Dolmades (foglie di vite ripiene)",
+     "Dolmades (gołąbki w liściach winorośli)",
+     180,
+     120,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "gr_gyros",
+     "Gyros pita with fries",
+     "Pita gyros con patatine",
+     "Pita gyros z frytkami",
+     600,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "gr_baklava",
+     "Baklava",
+     "Baklava",
+     "Baklawa",
+     330,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "gr_loukoumades",
+     "Loukoumades (honey doughnuts)",
+     "Loukoumades (frittelle al miele)",
+     "Loukoumades (pączki w miodzie)",
+     350,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "gr_spanakopita",
+     "Spanakopita",
+     "Spanakopita (sfoglia agli spinaci)",
+     "Spanakopita (ciasto ze szpinakiem)",
+     300,
+     120,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "gr_moussaka",
+     "Moussaka",
+     "Moussaka",
+     "Musaka",
+     500,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "gr_bougatsa",
+     "Bougatsa",
+     "Bougatsa (sfoglia alla crema)",
+     "Bougatsa (ciasto z kremem)",
+     350,
+     130,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "gr_galaktoboureko",
+     "Galaktoboureko",
+     "Galaktoboureko",
+     "Galaktoboureko",
+     350,
+     130,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "gr_saganaki",
+     "Fried cheese saganaki",
+     "Saganaki (formaggio fritto)",
+     "Saganaki (smażony ser)",
+     350,
+     100,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "gr_pastitsio",
+     "Pastitsio",
+     "Pastitsio (pasticcio al forno)",
+     "Pastitsio (zapiekanka makaronowa)",
+     550,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "gr_kourabiedes",
+     "Kourabiedes butter cookies",
+     "Kourabiedes (biscotti al burro)",
+     "Kurabiedes (maślane ciasteczka)",
+     250,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "turkey",
+   "order": 10,
+   "country": "TR",
+   "mint": null,
+   "name": {
+    "en": "Türkiye",
+    "it": "Turchia",
+    "pl": "Turcja"
+   },
+   "accessory": {
+    "en": "Red-and-white apron",
+    "it": "Grembiule bianco e rosso",
+    "pl": "Biało-czerwony fartuch"
+   },
+   "accessoryKind": "none",
+   "fact": {
+    "en": "Türkiye: red lentil soup (mercimek çorbası) is a warm everyday classic.",
+    "it": "Turchia: la zuppa di lenticchie rosse (mercimek çorbası) è un classico di tutti i giorni.",
+    "pl": "Turcja: zupa z czerwonej soczewicy (mercimek çorbası) to codzienna klasyka."
+   },
+   "palette": [
+    "#e30a17",
+    "#ffffff"
+   ],
+   "stripes": "h",
+   "bg": "#fde2e3",
+   "logo": "logos/turkey.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_TR_turkey_1024.png",
+   "foods": [
+    [
+     "tr_mercimek",
+     "Red lentil soup",
+     "Zuppa di lenticchie rosse",
+     "Zupa z czerwonej soczewicy",
+     180,
+     300,
+     "ml",
+     "A",
+     "legume"
+    ],
+    [
+     "tr_coban",
+     "Shepherd's salad",
+     "Insalata del pastore (çoban)",
+     "Sałatka pasterska (çoban)",
+     90,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "tr_cacik",
+     "Cacık (yogurt and cucumber)",
+     "Cacık (yogurt e cetriolo)",
+     "Cacık (jogurt z ogórkiem)",
+     80,
+     200,
+     "ml",
+     "A",
+     "dairy"
+    ],
+    [
+     "tr_imam_bayildi",
+     "Imam bayıldı (stuffed eggplant)",
+     "Imam bayıldı (melanzane ripiene)",
+     "Imam bayıldı (faszerowany bakłażan)",
+     250,
+     250,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "tr_ezme",
+     "Ezme (spicy tomato dip)",
+     "Ezme (salsa di pomodoro piccante)",
+     "Ezme (pikantna pasta pomidorowa)",
+     60,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "tr_kuru_fasulye",
+     "White bean stew",
+     "Stufato di fagioli bianchi",
+     "Gulasz z białej fasoli",
+     300,
+     300,
+     "g",
+     "B",
+     "legume"
+    ],
+    [
+     "tr_bulgur",
+     "Bulgur pilaf",
+     "Pilaf di bulgur",
+     "Pilaw z bulguru",
+     220,
+     200,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "tr_levrek",
+     "Grilled sea bass",
+     "Branzino alla griglia",
+     "Grillowany labraks",
+     200,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "tr_ayran",
+     "Ayran (yogurt drink)",
+     "Ayran (bevanda di yogurt)",
+     "Ajran (napój jogurtowy)",
+     80,
+     250,
+     "ml",
+     "A",
+     "dairy"
+    ],
+    [
+     "tr_apricots_dried",
+     "Dried apricots",
+     "Albicocche secche di Malatya",
+     "Suszone morele z Malatyi",
+     70,
+     30,
+     "g",
+     "B",
+     "fruit"
+    ],
+    [
+     "tr_doner",
+     "Döner wrap",
+     "Kebab döner arrotolato",
+     "Döner w tortilli",
+     600,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "tr_kunefe",
+     "Künefe",
+     "Künefe",
+     "Künefe",
+     450,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "tr_lokum",
+     "Turkish delight",
+     "Lokum (delizia turca)",
+     "Rachatłukum",
+     160,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "tr_pide",
+     "Cheese pide",
+     "Pide al formaggio",
+     "Pide z serem",
+     550,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "tr_kokorec",
+     "Kokoreç sandwich",
+     "Panino kokoreç",
+     "Kanapka kokoreç",
+     500,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "tr_sucuk",
+     "Sucuk sausage sandwich",
+     "Panino con salsiccia sucuk",
+     "Kanapka z kiełbasą sucuk",
+     450,
+     180,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "tr_tulumba",
+     "Tulumba (fried syrup dough)",
+     "Tulumba (frittelle allo sciroppo)",
+     "Tulumba (smażone ciasto w syropie)",
+     350,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "tr_kazandibi",
+     "Kazandibi milk pudding",
+     "Kazandibi (budino caramellato)",
+     "Kazandibi (karmelizowany budyń)",
+     300,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "tr_islak_burger",
+     "Wet burger (ıslak)",
+     "Hamburger bagnato (ıslak)",
+     "Mokry burger (ıslak)",
+     350,
+     130,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "tr_revani",
+     "Revani semolina cake",
+     "Revani (torta di semolino)",
+     "Revani (ciasto z kaszy manny)",
+     350,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "china",
+   "order": 11,
+   "country": "CN",
+   "mint": null,
+   "name": {
+    "en": "China",
+    "it": "Cina",
+    "pl": "Chiny"
+   },
+   "accessory": {
+    "en": "Red and gold headband",
+    "it": "Fascia rossa e oro",
+    "pl": "Czerwono-złota opaska"
+   },
+   "accessoryKind": "band",
+   "fact": {
+    "en": "China: steaming is one of the oldest cooking methods — it keeps flavour with very little oil.",
+    "it": "Cina: la cottura al vapore è tra le più antiche — conserva il gusto con pochissimo olio.",
+    "pl": "Chiny: gotowanie na parze to jedna z najstarszych metod — zachowuje smak przy minimum oleju."
+   },
+   "palette": [
+    "#de2910",
+    "#ffde00"
+   ],
+   "stripes": "h2",
+   "bg": "#fde4dc",
+   "logo": "logos/china.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_CN_china_1024.png",
+   "foods": [
+    [
+     "cn_steamed_fish",
+     "Steamed fish with ginger",
+     "Pesce al vapore con zenzero",
+     "Ryba na parze z imbirem",
+     180,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "cn_bok_choy",
+     "Garlic bok choy",
+     "Bok choy all'aglio",
+     "Bok choy z czosnkiem",
+     60,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "cn_congee",
+     "Congee (rice porridge)",
+     "Congee (porridge di riso)",
+     "Congee (kleik ryżowy)",
+     120,
+     300,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "cn_tofu_stirfry",
+     "Tofu and vegetable stir-fry",
+     "Tofu saltato con verdure",
+     "Tofu smażone z warzywami",
+     200,
+     250,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "cn_jiaozi",
+     "Steamed vegetable dumplings",
+     "Ravioli al vapore di verdure",
+     "Pierożki na parze z warzywami",
+     220,
+     150,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "cn_hot_sour",
+     "Hot and sour soup",
+     "Zuppa agropiccante",
+     "Zupa kwaśno-ostra",
+     120,
+     300,
+     "ml",
+     "B",
+     "veg"
+    ],
+    [
+     "cn_cucumber_salad",
+     "Smashed cucumber salad",
+     "Insalata di cetrioli schiacciati",
+     "Sałatka z tłuczonych ogórków",
+     60,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "cn_lotus_root",
+     "Lotus root salad",
+     "Insalata di radice di loto",
+     "Sałatka z korzenia lotosu",
+     80,
+     120,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "cn_tea_egg",
+     "Tea egg",
+     "Uovo al tè",
+     "Jajko w herbacie",
+     78,
+     50,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "cn_oolong",
+     "Oolong tea",
+     "Tè oolong",
+     "Herbata oolong",
+     2,
+     250,
+     "ml",
+     "A",
+     "water"
+    ],
+    [
+     "cn_sweet_sour_pork",
+     "Sweet and sour pork",
+     "Maiale in agrodolce",
+     "Wieprzowina słodko-kwaśna",
+     500,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "cn_spring_rolls",
+     "Fried spring rolls",
+     "Involtini primavera fritti",
+     "Smażone sajgonki",
+     300,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "cn_fried_rice",
+     "Fried rice with sausage",
+     "Riso fritto con salsiccia",
+     "Smażony ryż z kiełbasą",
+     450,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "cn_egg_tart",
+     "Egg tarts",
+     "Tortine all'uovo",
+     "Babeczki z budyniem",
+     220,
+     70,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "cn_mooncake",
+     "Mooncake",
+     "Torta della luna",
+     "Ciastko księżycowe",
+     400,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "cn_youtiao",
+     "Youtiao (fried dough sticks)",
+     "Youtiao (bastoni di pasta fritta)",
+     "Youtiao (smażone paluchy)",
+     300,
+     80,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "cn_sesame_balls",
+     "Sesame balls",
+     "Palline di sesamo fritte",
+     "Kulki sezamowe",
+     300,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "cn_char_siu_bao",
+     "Char siu bao (BBQ pork bun)",
+     "Char siu bao (panino al maiale)",
+     "Char siu bao (bułka z wieprzowiną)",
+     250,
+     100,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "cn_chow_mein",
+     "Fried chow mein noodles",
+     "Noodle fritti chow mein",
+     "Smażony makaron chow mein",
+     450,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "cn_crispy_duck",
+     "Crispy duck with pancakes",
+     "Anatra croccante con crêpes",
+     "Chrupiąca kaczka z naleśnikami",
+     450,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ]
+   ]
+  },
+  {
+   "id": "korea",
+   "order": 12,
+   "country": "KR",
+   "mint": null,
+   "name": {
+    "en": "South Korea",
+    "it": "Corea del Sud",
+    "pl": "Korea Południowa"
+   },
+   "accessory": {
+    "en": "K-pop headset",
+    "it": "Cuffie K-pop",
+    "pl": "Słuchawki K-pop"
+   },
+   "accessoryKind": "headset",
+   "fact": {
+    "en": "Korea: kimjang — making kimchi together for winter — is UNESCO heritage (2013).",
+    "it": "Corea: il kimjang — preparare insieme il kimchi per l'inverno — è patrimonio UNESCO (2013).",
+    "pl": "Korea: kimjang — wspólne robienie kimchi na zimę — jest dziedzictwem UNESCO (2013)."
+   },
+   "palette": [
+    "#cd2e3a",
+    "#ffffff",
+    "#0047a0"
+   ],
+   "stripes": "h",
+   "bg": "#e6ecf7",
+   "logo": "logos/korea.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_KR_korea_1024.png",
+   "foods": [
+    [
+     "kr_bibimbap",
+     "Bibimbap",
+     "Bibimbap",
+     "Bibimbap",
+     550,
+     400,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "kr_kimchi",
+     "Kimchi",
+     "Kimchi",
+     "Kimchi",
+     23,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "kr_doenjang",
+     "Soybean paste stew",
+     "Stufato di pasta di soia (doenjang)",
+     "Gulasz z pasty sojowej (doenjang)",
+     150,
+     300,
+     "ml",
+     "A",
+     "legume"
+    ],
+    [
+     "kr_namul",
+     "Seasoned vegetables (namul)",
+     "Verdure condite (namul)",
+     "Przyprawione warzywa (namul)",
+     60,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "kr_mackerel_kr",
+     "Grilled mackerel",
+     "Sgombro alla griglia",
+     "Grillowana makrela",
+     300,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "kr_sundubu",
+     "Soft tofu stew",
+     "Stufato di tofu morbido",
+     "Gulasz z miękkiego tofu",
+     200,
+     350,
+     "ml",
+     "A",
+     "legume"
+    ],
+    [
+     "kr_kimbap",
+     "Vegetable kimbap",
+     "Kimbap di verdure",
+     "Kimbap warzywny",
+     300,
+     200,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "kr_miyeok",
+     "Seaweed soup",
+     "Zuppa di alghe (miyeok-guk)",
+     "Zupa z wodorostów (miyeok-guk)",
+     60,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "kr_boricha",
+     "Roasted barley tea",
+     "Tè d'orzo tostato",
+     "Herbata z prażonego jęczmienia",
+     0,
+     250,
+     "ml",
+     "A",
+     "water"
+    ],
+    [
+     "kr_korean_pear",
+     "Korean pear",
+     "Pera coreana",
+     "Gruszka koreańska",
+     100,
+     200,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "kr_fried_chicken_kr",
+     "Korean fried chicken",
+     "Pollo fritto coreano",
+     "Koreański smażony kurczak",
+     600,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "kr_tteokbokki",
+     "Tteokbokki",
+     "Tteokbokki (gnocchi di riso piccanti)",
+     "Tteokbokki (ostre kluski ryżowe)",
+     400,
+     250,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "kr_ramyeon",
+     "Spicy instant ramyeon",
+     "Ramyeon istantaneo piccante",
+     "Ostre zupki ramyeon",
+     500,
+     120,
+     "g",
+     "E",
+     "ultra"
+    ],
+    [
+     "kr_hotteok",
+     "Hotteok (sweet pancake)",
+     "Hotteok (frittella dolce)",
+     "Hotteok (słodki placek)",
+     230,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "kr_bingsu",
+     "Bingsu with condensed milk",
+     "Bingsu con latte condensato",
+     "Bingsu z mlekiem skondensowanym",
+     450,
+     300,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "kr_corn_dog_kr",
+     "Korean sugar corn dog",
+     "Corn dog coreano allo zucchero",
+     "Koreański corn dog w cukrze",
+     400,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "kr_budae",
+     "Army stew with sausages",
+     "Stufato budae con salsicce",
+     "Gulasz budae z parówkami",
+     550,
+     400,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "kr_banana_milk",
+     "Banana milk",
+     "Latte alla banana",
+     "Mleko bananowe",
+     200,
+     240,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "kr_honey_butter_chips",
+     "Honey-butter chips",
+     "Patatine miele e burro",
+     "Chipsy miodowo-maślane",
+     280,
+     50,
+     "g",
+     "E",
+     "salty"
+    ],
+    [
+     "kr_gyeran_ppang",
+     "Egg bread",
+     "Pane all'uovo (gyeran-ppang)",
+     "Chlebek z jajkiem (gyeran-ppang)",
+     250,
+     90,
+     "g",
+     "D",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "thailand",
+   "order": 13,
+   "country": "TH",
+   "mint": null,
+   "name": {
+    "en": "Thailand",
+    "it": "Thailandia",
+    "pl": "Tajlandia"
+   },
+   "accessory": {
+    "en": "Jasmine garland",
+    "it": "Ghirlanda di gelsomino",
+    "pl": "Girlanda z jaśminu"
+   },
+   "accessoryKind": "lei",
+   "fact": {
+    "en": "Thailand: Thai cooking balances four tastes — sour, sweet, salty and spicy.",
+    "it": "Thailandia: la cucina thai bilancia quattro sapori — aspro, dolce, salato e piccante.",
+    "pl": "Tajlandia: kuchnia tajska łączy cztery smaki — kwaśny, słodki, słony i ostry."
+   },
+   "palette": [
+    "#a51931",
+    "#f4f5f8",
+    "#2d2a4a"
+   ],
+   "stripes": "th",
+   "bg": "#e9e7f3",
+   "logo": "logos/thailand.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_TH_thailand_1024.png",
+   "foods": [
+    [
+     "th_tom_yum",
+     "Tom yum soup",
+     "Zuppa tom yum",
+     "Zupa tom yum",
+     100,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "th_som_tam",
+     "Green papaya salad",
+     "Insalata di papaya verde",
+     "Sałatka z zielonej papai",
+     120,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "th_larb",
+     "Larb chicken salad",
+     "Insalata di pollo larb",
+     "Sałatka larb z kurczakiem",
+     220,
+     200,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "th_tom_kha",
+     "Tom kha coconut soup",
+     "Zuppa al cocco tom kha",
+     "Zupa kokosowa tom kha",
+     250,
+     300,
+     "ml",
+     "B",
+     "veg"
+    ],
+    [
+     "th_pla_pao",
+     "Herb-grilled fish",
+     "Pesce alla griglia alle erbe",
+     "Ryba grillowana z ziołami",
+     200,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "th_pomelo_salad",
+     "Pomelo salad",
+     "Insalata di pomelo",
+     "Sałatka z pomelo",
+     120,
+     200,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "th_jasmine_rice",
+     "Steamed jasmine rice",
+     "Riso jasmine al vapore",
+     "Ryż jaśminowy na parze",
+     200,
+     150,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "th_morning_glory",
+     "Stir-fried morning glory",
+     "Spinacio d'acqua saltato",
+     "Smażony szpinak wodny",
+     80,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "th_mango_fresh",
+     "Fresh mango",
+     "Mango fresco",
+     "Świeże mango",
+     90,
+     150,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "th_coconut_water",
+     "Fresh coconut water",
+     "Acqua di cocco fresca",
+     "Świeża woda kokosowa",
+     60,
+     330,
+     "ml",
+     "B",
+     "water"
+    ],
+    [
+     "th_pad_thai",
+     "Pad thai",
+     "Pad thai",
+     "Pad thai",
+     600,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "th_mango_sticky",
+     "Mango sticky rice",
+     "Riso glutinoso al mango",
+     "Kleisty ryż z mango",
+     450,
+     250,
+     "g",
+     "D",
+     "sugar"
+    ],
+    [
+     "th_cha_yen",
+     "Thai milk tea",
+     "Tè thai al latte",
+     "Tajska herbata z mlekiem",
+     250,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "th_por_pia",
+     "Fried spring rolls (por pia)",
+     "Involtini fritti (por pia)",
+     "Smażone sajgonki (por pia)",
+     300,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "th_moo_ping",
+     "Sweet grilled pork skewers",
+     "Spiedini di maiale dolci",
+     "Słodkie szaszłyki wieprzowe",
+     300,
+     120,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "th_roti_condensed",
+     "Roti with condensed milk",
+     "Roti con latte condensato",
+     "Roti z mlekiem skondensowanym",
+     450,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "th_kluay_tod",
+     "Fried bananas",
+     "Banane fritte",
+     "Smażone banany",
+     300,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "th_gai_tod",
+     "Thai fried chicken",
+     "Pollo fritto thai",
+     "Tajski smażony kurczak",
+     450,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "th_coconut_icecream",
+     "Coconut ice cream with toppings",
+     "Gelato al cocco con guarnizioni",
+     "Lody kokosowe z dodatkami",
+     300,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "th_khanom_chan",
+     "Layered sweet (khanom chan)",
+     "Dolce a strati (khanom chan)",
+     "Warstwowy deser (khanom chan)",
+     200,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "vietnam",
+   "order": 14,
+   "country": "VN",
+   "mint": null,
+   "name": {
+    "en": "Vietnam",
+    "it": "Vietnam",
+    "pl": "Wietnam"
+   },
+   "accessory": {
+    "en": "Nón lá conical hat",
+    "it": "Cappello conico nón lá",
+    "pl": "Stożkowy kapelusz nón lá"
+   },
+   "accessoryKind": "cone_hat",
+   "fact": {
+    "en": "Vietnam: meals come with a plate of fresh herbs — mint, basil, coriander — to add yourself.",
+    "it": "Vietnam: i pasti arrivano con un piatto di erbe fresche — menta, basilico, coriandolo — da aggiungere.",
+    "pl": "Wietnam: do posiłku podaje się talerz świeżych ziół — mięty, bazylii, kolendry."
+   },
+   "palette": [
+    "#da251d",
+    "#ffff00"
+   ],
+   "stripes": "star",
+   "bg": "#fde6dc",
+   "logo": "logos/vietnam.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_VN_vietnam_1024.png",
+   "foods": [
+    [
+     "vn_pho",
+     "Beef pho",
+     "Phở di manzo",
+     "Zupa phở z wołowiną",
+     450,
+     500,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "vn_goi_cuon",
+     "Fresh spring rolls",
+     "Involtini freschi (gỏi cuốn)",
+     "Świeże sajgonki (gỏi cuốn)",
+     160,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "vn_canh_chua",
+     "Sour fish soup",
+     "Zuppa agra di pesce (canh chua)",
+     "Kwaśna zupa rybna (canh chua)",
+     150,
+     350,
+     "ml",
+     "A",
+     "protein"
+    ],
+    [
+     "vn_ca_kho",
+     "Caramelised clay-pot fish",
+     "Pesce caramellato in coccio",
+     "Ryba karmelizowana w glinianym garnku",
+     250,
+     150,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "vn_banh_cuon",
+     "Steamed rice rolls",
+     "Involtini di riso al vapore",
+     "Rolki ryżowe na parze",
+     250,
+     200,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "vn_herb_plate",
+     "Fresh herb plate",
+     "Piatto di erbe fresche",
+     "Talerz świeżych ziół",
+     20,
+     80,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "vn_tofu_tomato",
+     "Tofu in tomato sauce",
+     "Tofu al pomodoro",
+     "Tofu w sosie pomidorowym",
+     200,
+     200,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "vn_dragon_fruit",
+     "Dragon fruit",
+     "Frutto del drago",
+     "Pitaja",
+     90,
+     150,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "vn_tra_da",
+     "Iced green tea",
+     "Tè verde freddo (trà đá)",
+     "Mrożona zielona herbata (trà đá)",
+     2,
+     250,
+     "ml",
+     "A",
+     "water"
+    ],
+    [
+     "vn_chao_ga",
+     "Chicken rice porridge",
+     "Porridge di riso al pollo (cháo gà)",
+     "Kleik ryżowy z kurczakiem (cháo gà)",
+     200,
+     300,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "vn_banh_mi",
+     "Bánh mì with pâté and mayo",
+     "Bánh mì con paté e maionese",
+     "Bánh mì z pasztetem i majonezem",
+     500,
+     250,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "vn_cha_gio",
+     "Fried spring rolls (chả giò)",
+     "Involtini fritti (chả giò)",
+     "Smażone sajgonki (chả giò)",
+     350,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "vn_che_ba_mau",
+     "Three-colour sweet dessert",
+     "Dolce dei tre colori (chè ba màu)",
+     "Deser trzech kolorów (chè ba màu)",
+     300,
+     250,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "vn_banh_xeo",
+     "Crispy fried pancake",
+     "Crêpe croccante fritta (bánh xèo)",
+     "Chrupiący smażony naleśnik (bánh xèo)",
+     450,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "vn_xoi_man",
+     "Sticky rice with sausage",
+     "Riso glutinoso con salsiccia",
+     "Kleisty ryż z kiełbasą",
+     450,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "vn_banh_tieu",
+     "Hollow fried doughnut",
+     "Ciambella fritta vuota (bánh tiêu)",
+     "Pusty smażony pączek (bánh tiêu)",
+     250,
+     70,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "vn_nem_chua_ran",
+     "Fried fermented pork rolls",
+     "Involtini di maiale fritti",
+     "Smażone roladki wieprzowe",
+     350,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "vn_sugarcane",
+     "Sugarcane juice",
+     "Succo di canna da zucchero",
+     "Sok z trzciny cukrowej",
+     180,
+     300,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "vn_flan_vn",
+     "Flan with condensed milk",
+     "Flan con latte condensato",
+     "Flan z mlekiem skondensowanym",
+     250,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "vn_banh_phong_tom",
+     "Prawn crackers",
+     "Nuvolette di gamberi",
+     "Chipsy krewetkowe",
+     270,
+     50,
+     "g",
+     "E",
+     "fried"
+    ]
+   ]
+  },
+  {
+   "id": "brazil",
+   "order": 15,
+   "country": "BR",
+   "mint": null,
+   "name": {
+    "en": "Brazil",
+    "it": "Brasile",
+    "pl": "Brazylia"
+   },
+   "accessory": {
+    "en": "Green and yellow headband",
+    "it": "Fascia verde e oro",
+    "pl": "Zielono-żółta opaska"
+   },
+   "accessoryKind": "band",
+   "fact": {
+    "en": "Brazil: rice and beans (arroz com feijão) are eaten almost every day — a perfect protein team.",
+    "it": "Brasile: riso e fagioli (arroz com feijão) si mangiano quasi ogni giorno — una squadra perfetta di proteine.",
+    "pl": "Brazylia: ryż z fasolą (arroz com feijão) je się prawie codziennie — idealna para białek."
+   },
+   "palette": [
+    "#009c3b",
+    "#ffdf00",
+    "#002776"
+   ],
+   "stripes": "br",
+   "bg": "#e0f4e6",
+   "logo": "logos/brazil.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_BR_brazil_1024.png",
+   "foods": [
+    [
+     "br_arroz_feijao",
+     "Rice and beans",
+     "Riso e fagioli (arroz com feijão)",
+     "Ryż z fasolą (arroz com feijão)",
+     350,
+     300,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "br_moqueca",
+     "Fish moqueca",
+     "Moqueca di pesce",
+     "Moqueca rybna",
+     350,
+     300,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "br_acai_puro",
+     "Pure açaí (no sugar)",
+     "Açaí puro (senza zucchero)",
+     "Czyste açaí (bez cukru)",
+     120,
+     200,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "br_palmito",
+     "Heart of palm salad",
+     "Insalata di cuori di palma",
+     "Sałatka z serc palmy",
+     60,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "br_couve",
+     "Sautéed collard greens",
+     "Cavolo nero saltato (couve)",
+     "Smażony jarmuż (couve)",
+     80,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "br_mandioca",
+     "Boiled cassava",
+     "Manioca bollita",
+     "Gotowany maniok",
+     200,
+     150,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "br_mamao",
+     "Papaya",
+     "Papaya",
+     "Papaja",
+     60,
+     150,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "br_caju",
+     "Cashew fruit",
+     "Frutto dell'anacardio (caju)",
+     "Owoc nerkowca (caju)",
+     50,
+     100,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "br_frango_grelhado",
+     "Grilled chicken",
+     "Pollo alla griglia",
+     "Grillowany kurczak",
+     250,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "br_agua_coco",
+     "Coconut water",
+     "Acqua di cocco",
+     "Woda kokosowa",
+     60,
+     330,
+     "ml",
+     "B",
+     "water"
+    ],
+    [
+     "br_coxinha",
+     "Coxinha",
+     "Coxinha (crocchetta di pollo)",
+     "Coxinha (krokiet z kurczakiem)",
+     300,
+     100,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "br_pastel",
+     "Pastel de feira",
+     "Pastel fritto",
+     "Smażony pastel",
+     400,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "br_brigadeiro",
+     "Brigadeiros",
+     "Brigadeiros",
+     "Brigadeiros",
+     240,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "br_pao_queijo",
+     "Cheese bread",
+     "Pão de queijo",
+     "Pão de queijo (serowe bułeczki)",
+     300,
+     100,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "br_feijoada",
+     "Feijoada with pork",
+     "Feijoada con maiale",
+     "Feijoada z wieprzowiną",
+     700,
+     400,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "br_picanha",
+     "Picanha with farofa",
+     "Picanha con farofa",
+     "Picanha z farofą",
+     700,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "br_guarana",
+     "Guaraná soda",
+     "Bibita al guaraná",
+     "Napój guarana",
+     140,
+     350,
+     "ml",
+     "E",
+     "fizzy"
+    ],
+    [
+     "br_acai_tigela",
+     "Açaí bowl with condensed milk",
+     "Açaí bowl con latte condensato",
+     "Açaí bowl z mlekiem skondensowanym",
+     600,
+     400,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "br_beijinho",
+     "Beijinho coconut sweets",
+     "Beijinho (dolcetti al cocco)",
+     "Beijinho (kokosowe słodycze)",
+     240,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "br_pudim",
+     "Pudim (milk flan)",
+     "Pudim (budino al latte)",
+     "Pudim (mleczny flan)",
+     300,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "peru",
+   "order": 16,
+   "country": "PE",
+   "mint": null,
+   "name": {
+    "en": "Peru",
+    "it": "Perù",
+    "pl": "Peru"
+   },
+   "accessory": {
+    "en": "Chullo knit hat",
+    "it": "Cappello chullo",
+    "pl": "Czapka chullo"
+   },
+   "accessoryKind": "beanie",
+   "fact": {
+    "en": "Peru: thousands of potato varieties grow in the Andes — the potato comes from here.",
+    "it": "Perù: sulle Ande crescono migliaia di varietà di patate — la patata viene da qui.",
+    "pl": "Peru: w Andach rosną tysiące odmian ziemniaków — to stąd pochodzą ziemniaki."
+   },
+   "palette": [
+    "#d91023",
+    "#ffffff",
+    "#d91023"
+   ],
+   "stripes": "v",
+   "bg": "#fde3e5",
+   "logo": "logos/peru.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_PE_peru_1024.png",
+   "foods": [
+    [
+     "pe_ceviche_pe",
+     "Peruvian ceviche",
+     "Ceviche peruviano",
+     "Peruwiańskie ceviche",
+     140,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "pe_quinoa_salad",
+     "Quinoa salad",
+     "Insalata di quinoa",
+     "Sałatka z komosą ryżową",
+     240,
+     200,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "pe_choclo_queso",
+     "Andean corn with cheese",
+     "Mais andino con formaggio",
+     "Andyjska kukurydza z serem",
+     250,
+     200,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "pe_solterito",
+     "Solterito (bean and cheese salad)",
+     "Solterito (insalata di fave e formaggio)",
+     "Solterito (sałatka z bobu i sera)",
+     200,
+     200,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "pe_sopa_quinoa",
+     "Quinoa soup",
+     "Zuppa di quinoa",
+     "Zupa z komosy ryżowej",
+     180,
+     300,
+     "ml",
+     "A",
+     "grain"
+    ],
+    [
+     "pe_aguaymanto",
+     "Golden berries",
+     "Alchechengi (aguaymanto)",
+     "Miechunka (aguaymanto)",
+     50,
+     100,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "pe_lucuma",
+     "Lúcuma fruit",
+     "Frutto di lúcuma",
+     "Owoc lukuma",
+     100,
+     100,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "pe_tiradito",
+     "Tiradito",
+     "Tiradito (pesce crudo marinato)",
+     "Tiradito (marynowana surowa ryba)",
+     150,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "pe_anticuchos",
+     "Anticuchos skewers",
+     "Spiedini anticuchos",
+     "Szaszłyki anticuchos",
+     250,
+     150,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "pe_palta_rellena",
+     "Stuffed avocado",
+     "Avocado ripieno",
+     "Faszerowane awokado",
+     250,
+     200,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "pe_lomo_saltado",
+     "Lomo saltado with fries",
+     "Lomo saltado con patatine",
+     "Lomo saltado z frytkami",
+     650,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "pe_salchipapa",
+     "Salchipapa",
+     "Salchipapa (wurstel e patatine)",
+     "Salchipapa (parówki z frytkami)",
+     600,
+     300,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "pe_picarones",
+     "Picarones with syrup",
+     "Picarones con sciroppo",
+     "Picarones z syropem",
+     450,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "pe_chicha_dulce",
+     "Sweet chicha morada",
+     "Chicha morada zuccherata",
+     "Słodka chicha morada",
+     160,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "pe_gaseosa",
+     "Golden soda",
+     "Bibita dorata gassata",
+     "Złoty napój gazowany",
+     150,
+     350,
+     "ml",
+     "E",
+     "fizzy"
+    ],
+    [
+     "pe_alfajores",
+     "Alfajores",
+     "Alfajores",
+     "Alfajores",
+     200,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "pe_pollo_brasa",
+     "Rotisserie chicken with fries",
+     "Pollo allo spiedo con patatine",
+     "Kurczak z rożna z frytkami",
+     800,
+     400,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "pe_turron_pepa",
+     "Turrón de Doña Pepa",
+     "Turrón de Doña Pepa",
+     "Turrón de Doña Pepa",
+     350,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "pe_papa_rellena",
+     "Fried stuffed potato",
+     "Patata ripiena fritta",
+     "Smażony faszerowany ziemniak",
+     350,
+     180,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "pe_suspiro",
+     "Suspiro limeño",
+     "Suspiro limeño",
+     "Suspiro limeño",
+     400,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "morocco",
+   "order": 17,
+   "country": "MA",
+   "mint": null,
+   "name": {
+    "en": "Morocco",
+    "it": "Marocco",
+    "pl": "Maroko"
+   },
+   "accessory": {
+    "en": "Red and green scarf",
+    "it": "Sciarpa rossa e verde",
+    "pl": "Czerwono-zielony szalik"
+   },
+   "accessoryKind": "scarf",
+   "fact": {
+    "en": "Morocco: couscous is UNESCO heritage (2020), shared by Morocco, Algeria, Tunisia and Mauritania.",
+    "it": "Marocco: il couscous è patrimonio UNESCO (2020), condiviso da Marocco, Algeria, Tunisia e Mauritania.",
+    "pl": "Maroko: kuskus jest dziedzictwem UNESCO (2020), wspólnym dla Maroka, Algierii, Tunezji i Mauretanii."
+   },
+   "palette": [
+    "#c1272d",
+    "#006233"
+   ],
+   "stripes": "star",
+   "bg": "#fbe3e0",
+   "logo": "logos/morocco.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_MA_morocco_1024.png",
+   "foods": [
+    [
+     "ma_harira",
+     "Harira soup",
+     "Zuppa harira",
+     "Zupa harira",
+     250,
+     350,
+     "ml",
+     "A",
+     "legume"
+    ],
+    [
+     "ma_tagine_veg",
+     "Vegetable tagine",
+     "Tajine di verdure",
+     "Tadżin warzywny",
+     250,
+     300,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ma_zaalouk",
+     "Zaalouk (eggplant salad)",
+     "Zaalouk (insalata di melanzane)",
+     "Zaalouk (sałatka z bakłażana)",
+     120,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ma_couscous",
+     "Seven-vegetable couscous",
+     "Couscous alle sette verdure",
+     "Kuskus z siedmioma warzywami",
+     450,
+     350,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "ma_taktouka",
+     "Taktouka (pepper and tomato)",
+     "Taktouka (peperoni e pomodoro)",
+     "Taktouka (papryka z pomidorami)",
+     100,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ma_loubia",
+     "White bean stew",
+     "Loubia (stufato di fagioli)",
+     "Loubia (gulasz z fasoli)",
+     280,
+     250,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "ma_sardines_chermoula",
+     "Sardines with chermoula",
+     "Sarde alla chermoula",
+     "Sardynki z chermoulą",
+     220,
+     120,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "ma_mint_tea",
+     "Mint tea without sugar",
+     "Tè alla menta senza zucchero",
+     "Herbata miętowa bez cukru",
+     2,
+     250,
+     "ml",
+     "A",
+     "water"
+    ],
+    [
+     "ma_medjool",
+     "Medjool dates",
+     "Datteri Medjool",
+     "Daktyle Medjool",
+     200,
+     72,
+     "g",
+     "B",
+     "fruit"
+    ],
+    [
+     "ma_orange_cinnamon",
+     "Orange salad with cinnamon",
+     "Arance alla cannella",
+     "Pomarańcze z cynamonem",
+     90,
+     180,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "ma_sweet_mint_tea",
+     "Very sweet mint tea",
+     "Tè alla menta molto zuccherato",
+     "Bardzo słodka herbata miętowa",
+     120,
+     250,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "ma_chebakia",
+     "Chebakia (honey sesame cookies)",
+     "Chebakia (biscotti al miele)",
+     "Chebakia (ciastka sezamowe w miodzie)",
+     400,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ma_pastilla",
+     "Sweet chicken pastilla",
+     "Pastilla dolce di pollo",
+     "Słodka pastilla z kurczakiem",
+     500,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ma_msemen",
+     "Msemen with honey",
+     "Msemen al miele",
+     "Msemen z miodem",
+     400,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ma_sfenj",
+     "Sfenj (doughnut)",
+     "Sfenj (ciambella fritta)",
+     "Sfenj (pączek)",
+     300,
+     80,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ma_briouats",
+     "Fried honey briouats",
+     "Briouats fritti al miele",
+     "Smażone briouaty w miodzie",
+     350,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ma_merguez",
+     "Merguez sandwich with fries",
+     "Panino merguez con patatine",
+     "Kanapka z merguez i frytkami",
+     650,
+     300,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ma_kaab_ghazal",
+     "Gazelle horns",
+     "Corna di gazzella",
+     "Rogi gazeli",
+     250,
+     60,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ma_ghriba",
+     "Ghriba cookies",
+     "Biscotti ghriba",
+     "Ciasteczka ghriba",
+     200,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ma_harcha",
+     "Harcha with butter and jam",
+     "Harcha con burro e marmellata",
+     "Harcha z masłem i dżemem",
+     400,
+     120,
+     "g",
+     "D",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "uk",
+   "order": 18,
+   "country": "GB",
+   "mint": null,
+   "name": {
+    "en": "United Kingdom",
+    "it": "Regno Unito",
+    "pl": "Wielka Brytania"
+   },
+   "accessory": {
+    "en": "Yellow rain hat",
+    "it": "Cappello da pioggia giallo",
+    "pl": "Żółty kapelusz przeciwdeszczowy"
+   },
+   "accessoryKind": "fisher_hat",
+   "fact": {
+    "en": "United Kingdom: tea is the favourite drink — try it with milk and no sugar.",
+    "it": "Regno Unito: il tè è la bevanda preferita — provalo con latte e senza zucchero.",
+    "pl": "Wielka Brytania: herbata to ulubiony napój — spróbuj z mlekiem, bez cukru."
+   },
+   "palette": [
+    "#012169",
+    "#ffffff",
+    "#c8102e"
+   ],
+   "stripes": "cross",
+   "bg": "#e2e6f2",
+   "logo": "logos/uk.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_GB_uk_1024.png",
+   "foods": [
+    [
+     "gb_porridge_berries",
+     "Porridge with berries",
+     "Porridge con frutti di bosco",
+     "Owsianka z owocami",
+     250,
+     250,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "gb_jacket_potato",
+     "Jacket potato with beans",
+     "Patata al cartoccio con fagioli",
+     "Pieczony ziemniak z fasolką",
+     350,
+     350,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "gb_mushy_peas",
+     "Mushy peas",
+     "Purè di piselli (mushy peas)",
+     "Puree z groszku (mushy peas)",
+     120,
+     150,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "gb_roast_chicken",
+     "Roast chicken and vegetables",
+     "Pollo arrosto con verdure",
+     "Pieczony kurczak z warzywami",
+     400,
+     350,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "gb_mackerel_salad",
+     "Smoked mackerel salad",
+     "Insalata di sgombro affumicato",
+     "Sałatka z wędzonej makreli",
+     300,
+     200,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "gb_leek_soup",
+     "Leek and potato soup",
+     "Zuppa di porri e patate",
+     "Zupa porowo-ziemniaczana",
+     180,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "gb_cucumber_sandwich",
+     "Wholemeal cucumber sandwich",
+     "Tramezzino integrale al cetriolo",
+     "Pełnoziarnista kanapka z ogórkiem",
+     150,
+     80,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "gb_kent_strawberries",
+     "Kent strawberries",
+     "Fragole del Kent",
+     "Truskawki z Kentu",
+     48,
+     150,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "gb_watercress",
+     "Watercress salad",
+     "Insalata di crescione",
+     "Sałatka z rukwi wodnej",
+     30,
+     80,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "gb_tea_milk",
+     "Tea with milk, no sugar",
+     "Tè con latte senza zucchero",
+     "Herbata z mlekiem bez cukru",
+     30,
+     250,
+     "ml",
+     "A",
+     "water"
+    ],
+    [
+     "gb_fish_chips",
+     "Fish and chips",
+     "Fish and chips",
+     "Ryba z frytkami",
+     800,
+     400,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "gb_full_english",
+     "Full English breakfast",
+     "Colazione inglese completa",
+     "Pełne angielskie śniadanie",
+     900,
+     450,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "gb_sausage_roll",
+     "Sausage roll",
+     "Sfogliatina alla salsiccia",
+     "Rogalik z kiełbasą",
+     350,
+     100,
+     "g",
+     "E",
+     "ultra"
+    ],
+    [
+     "gb_scotch_egg",
+     "Scotch egg",
+     "Scotch egg (uovo impanato fritto)",
+     "Jajko po szkocku",
+     300,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "gb_chip_butty",
+     "Chip butty",
+     "Panino con patatine (chip butty)",
+     "Kanapka z frytkami (chip butty)",
+     550,
+     200,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "gb_fried_choc_bar",
+     "Deep-fried chocolate bar",
+     "Barretta di cioccolato fritta",
+     "Smażony baton czekoladowy",
+     450,
+     80,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "gb_sticky_toffee",
+     "Sticky toffee pudding",
+     "Sticky toffee pudding",
+     "Sticky toffee pudding",
+     500,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "gb_scones",
+     "Scones with jam and cream",
+     "Scones con marmellata e panna",
+     "Scones z dżemem i śmietaną",
+     450,
+     150,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "gb_mince_pies",
+     "Mince pies",
+     "Mince pies (tortine natalizie)",
+     "Mince pies (świąteczne babeczki)",
+     250,
+     60,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "gb_steak_pie",
+     "Steak and ale pie",
+     "Pasticcio di manzo",
+     "Pasztecik z wołowiną",
+     600,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ]
+   ]
+  },
+  {
+   "id": "germany",
+   "order": 19,
+   "country": "DE",
+   "mint": null,
+   "name": {
+    "en": "Germany",
+    "it": "Germania",
+    "pl": "Niemcy"
+   },
+   "accessory": {
+    "en": "Black-red-gold scarf",
+    "it": "Sciarpa nero-rosso-oro",
+    "pl": "Czarno-czerwono-złoty szalik"
+   },
+   "accessoryKind": "scarf",
+   "fact": {
+    "en": "Germany: hundreds of kinds of bread — wholegrain rye is a fibre champion.",
+    "it": "Germania: centinaia di tipi di pane — la segale integrale è campionessa di fibre.",
+    "pl": "Niemcy: setki rodzajów chleba — razowy żytni to mistrz błonnika."
+   },
+   "palette": [
+    "#000000",
+    "#dd0000",
+    "#ffce00"
+   ],
+   "stripes": "h3",
+   "bg": "#fdf0cf",
+   "logo": "logos/germany.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_DE_germany_1024.png",
+   "foods": [
+    [
+     "de_linsen",
+     "Lentil stew",
+     "Stufato di lenticchie (Linseneintopf)",
+     "Gulasz z soczewicy (Linseneintopf)",
+     300,
+     300,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "de_vollkornbrot",
+     "Wholegrain rye bread",
+     "Pane integrale di segale",
+     "Razowy chleb żytni",
+     110,
+     50,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "de_quark",
+     "Herb quark",
+     "Quark alle erbe",
+     "Twarożek z ziołami (Kräuterquark)",
+     120,
+     150,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "de_spargel",
+     "White asparagus with potatoes",
+     "Asparagi bianchi con patate",
+     "Białe szparagi z ziemniakami",
+     200,
+     300,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "de_forelle",
+     "Baked trout",
+     "Trota al forno",
+     "Pieczony pstrąg",
+     220,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "de_rotkohl",
+     "Braised red cabbage",
+     "Cavolo rosso stufato",
+     "Duszona czerwona kapusta",
+     80,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "de_gurkensalat",
+     "Cucumber salad",
+     "Insalata di cetrioli",
+     "Sałatka z ogórków",
+     50,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "de_kohlrabi",
+     "Kohlrabi sticks",
+     "Bastoncini di cavolo rapa",
+     "Paluszki z kalarepy",
+     27,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "de_erbsensuppe",
+     "Pea soup",
+     "Zuppa di piselli",
+     "Zupa grochowa",
+     250,
+     300,
+     "ml",
+     "B",
+     "legume"
+    ],
+    [
+     "de_gruenkohl",
+     "Kale (no sausage)",
+     "Cavolo riccio (senza salsiccia)",
+     "Jarmuż (bez kiełbasy)",
+     80,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "de_currywurst",
+     "Currywurst with fries",
+     "Currywurst con patatine",
+     "Currywurst z frytkami",
+     750,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "de_bratwurst",
+     "Bratwurst in a bun",
+     "Bratwurst nel panino",
+     "Bratwurst w bułce",
+     450,
+     180,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "de_schnitzel",
+     "Schnitzel with fries",
+     "Cotoletta (Schnitzel) con patatine",
+     "Sznycel z frytkami",
+     800,
+     400,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "de_butterbrezel",
+     "Butter pretzel",
+     "Brezel al burro",
+     "Precel z masłem",
+     350,
+     110,
+     "g",
+     "D",
+     "salty"
+    ],
+    [
+     "de_black_forest",
+     "Black Forest cake",
+     "Torta Foresta Nera",
+     "Tort Szwarcwaldzki",
+     400,
+     130,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "de_berliner",
+     "Berliner (jam doughnut)",
+     "Berliner (bombolone alla marmellata)",
+     "Berliner (pączek z dżemem)",
+     300,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "de_apfelstrudel",
+     "Apple strudel with cream",
+     "Strudel di mele con panna",
+     "Strudel jabłkowy ze śmietaną",
+     400,
+     180,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "de_leberkaese",
+     "Leberkäse roll",
+     "Panino con Leberkäse",
+     "Bułka z Leberkäse",
+     500,
+     180,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "de_lebkuchen",
+     "Lebkuchen gingerbread",
+     "Lebkuchen (pan di zenzero)",
+     "Lebkuchen (piernik)",
+     200,
+     50,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "de_spezi",
+     "Cola-orange soda mix",
+     "Mix di cola e aranciata",
+     "Mieszanka coli z oranżadą",
+     150,
+     330,
+     "ml",
+     "E",
+     "fizzy"
+    ]
+   ]
+  },
+  {
+   "id": "nigeria",
+   "order": 20,
+   "country": "NG",
+   "mint": null,
+   "name": {
+    "en": "Nigeria",
+    "it": "Nigeria",
+    "pl": "Nigeria"
+   },
+   "accessory": {
+    "en": "Green and white scarf",
+    "it": "Sciarpa verde e bianca",
+    "pl": "Zielono-biały szalik"
+   },
+   "accessoryKind": "scarf",
+   "fact": {
+    "en": "Nigeria: the world's biggest producer of yams — a staple boiled, pounded or roasted.",
+    "it": "Nigeria: è il primo produttore mondiale di igname — si mangia bollito, pestato o arrosto.",
+    "pl": "Nigeria: największy producent pochrzynu na świecie — je się go gotowanego, tłuczonego lub pieczonego."
+   },
+   "palette": [
+    "#008751",
+    "#ffffff",
+    "#008751"
+   ],
+   "stripes": "v",
+   "bg": "#dff2e8",
+   "logo": "logos/nigeria.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_NG_nigeria_1024.png",
+   "foods": [
+    [
+     "ng_efo_riro",
+     "Efo riro (spinach stew)",
+     "Efo riro (stufato di spinaci)",
+     "Efo riro (gulasz ze szpinaku)",
+     250,
+     250,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "ng_moi_moi",
+     "Moi moi (steamed bean pudding)",
+     "Moi moi (sformato di fagioli al vapore)",
+     "Moi moi (budyń z fasoli na parze)",
+     200,
+     150,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "ng_okra_soup",
+     "Okra soup",
+     "Zuppa di okra",
+     "Zupa z okry",
+     150,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "ng_pepper_soup",
+     "Fish pepper soup",
+     "Zuppa di pesce piccante",
+     "Ostra zupa rybna",
+     180,
+     350,
+     "ml",
+     "A",
+     "protein"
+    ],
+    [
+     "ng_garden_egg",
+     "Garden eggs (African eggplant)",
+     "Garden eggs (melanzane africane)",
+     "Garden eggs (afrykański bakłażan)",
+     25,
+     100,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ng_ogi",
+     "Ogi (fermented corn porridge)",
+     "Ogi (porridge di mais fermentato)",
+     "Ogi (fermentowany kleik kukurydziany)",
+     120,
+     250,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "ng_yam_sauce",
+     "Boiled yam with tomato sauce",
+     "Igname bollito con salsa di pomodoro",
+     "Gotowany pochrzyn z sosem pomidorowym",
+     300,
+     250,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "ng_tilapia",
+     "Grilled tilapia",
+     "Tilapia alla griglia",
+     "Grillowana tilapia",
+     220,
+     180,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "ng_ewa",
+     "Stewed beans (ewa)",
+     "Fagioli stufati (ewa)",
+     "Duszona fasola (ewa)",
+     300,
+     250,
+     "g",
+     "B",
+     "legume"
+    ],
+    [
+     "ng_kunu",
+     "Tiger-nut milk (kunu aya)",
+     "Latte di zigolo (kunu aya)",
+     "Mleko z cibory (kunu aya)",
+     150,
+     300,
+     "ml",
+     "B",
+     "nuts"
+    ],
+    [
+     "ng_puff_puff",
+     "Puff-puff",
+     "Puff-puff (frittelle dolci)",
+     "Puff-puff (słodkie pączki)",
+     350,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ng_chin_chin",
+     "Chin chin",
+     "Chin chin (biscottini fritti)",
+     "Chin chin (smażone chrupki)",
+     250,
+     50,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ng_meat_pie",
+     "Meat pie",
+     "Pasticcio di carne",
+     "Pasztecik z mięsem",
+     350,
+     120,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ng_party_jollof",
+     "Party jollof with fried chicken",
+     "Jollof da festa con pollo fritto",
+     "Imprezowy jollof ze smażonym kurczakiem",
+     800,
+     450,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ng_dodo",
+     "Fried plantain (dodo)",
+     "Platano fritto (dodo)",
+     "Smażony banan plantan (dodo)",
+     300,
+     150,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "ng_akara",
+     "Akara (bean fritters)",
+     "Akara (frittelle di fagioli)",
+     "Akara (placki z fasoli)",
+     300,
+     120,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "ng_buns_ng",
+     "Fried buns",
+     "Panini dolci fritti",
+     "Smażone bułeczki",
+     350,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ng_malt_drink",
+     "Sweet malt drink",
+     "Bevanda al malto zuccherata",
+     "Słodki napój słodowy",
+     200,
+     330,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "ng_zobo_sweet",
+     "Zobo with lots of sugar",
+     "Zobo molto zuccherato",
+     "Bardzo słodkie zobo",
+     150,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "ng_agege",
+     "Agege bread with butter",
+     "Pane agege con burro",
+     "Chleb agege z masłem",
+     400,
+     150,
+     "g",
+     "E",
+     "ultra"
+    ]
+   ]
+  },
+  {
+   "id": "indonesia",
+   "order": 21,
+   "country": "ID",
+   "mint": null,
+   "name": {
+    "en": "Indonesia",
+    "it": "Indonesia",
+    "pl": "Indonezja"
+   },
+   "accessory": {
+    "en": "Batik headband (iket)",
+    "it": "Fascia batik (iket)",
+    "pl": "Opaska batikowa (iket)"
+   },
+   "accessoryKind": "band",
+   "fact": {
+    "en": "Indonesia: tempeh, a fermented soybean cake born in Java, is packed with protein and fibre.",
+    "it": "Indonesia: il tempeh, un panetto di soia fermentata nato a Giava, è ricco di proteine e fibre.",
+    "pl": "Indonezja: tempeh, sfermentowana kostka sojowa z Jawy, jest pełen białka i błonnika."
+   },
+   "palette": [
+    "#ce1126",
+    "#ffffff"
+   ],
+   "stripes": "h",
+   "bg": "#fde4e4",
+   "logo": "logos/indonesia.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_ID_indonesia_1024.png",
+   "foods": [
+    [
+     "id_gado_gado",
+     "Gado-gado (veg with peanut sauce)",
+     "Gado-gado (verdure con salsa di arachidi)",
+     "Gado-gado (warzywa z sosem orzechowym)",
+     350,
+     300,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "id_tempeh",
+     "Grilled tempeh",
+     "Tempeh alla griglia",
+     "Grillowany tempeh",
+     200,
+     100,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "id_sayur_asem",
+     "Sayur asem (tamarind veg soup)",
+     "Sayur asem (zuppa di verdure al tamarindo)",
+     "Sayur asem (zupa warzywna z tamaryndowcem)",
+     90,
+     300,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "id_ikan_bakar",
+     "Grilled fish (ikan bakar)",
+     "Pesce alla griglia (ikan bakar)",
+     "Grillowana ryba (ikan bakar)",
+     220,
+     180,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "id_soto_ayam",
+     "Soto ayam (chicken turmeric soup)",
+     "Soto ayam (zuppa di pollo e curcuma)",
+     "Soto ayam (zupa z kurczakiem i kurkumą)",
+     250,
+     350,
+     "ml",
+     "B",
+     "protein"
+    ],
+    [
+     "id_pepes_ikan",
+     "Pepes ikan (fish steamed in banana leaf)",
+     "Pepes ikan (pesce al vapore in foglia di banano)",
+     "Pepes ikan (ryba gotowana w liściu bananowca)",
+     180,
+     150,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "id_urap",
+     "Urap (veg with grated coconut)",
+     "Urap (verdure con cocco grattugiato)",
+     "Urap (warzywa z wiórkami kokosa)",
+     150,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "id_karedok",
+     "Karedok (raw veg salad)",
+     "Karedok (insalata di verdure crude)",
+     "Karedok (sałatka z surowych warzyw)",
+     200,
+     200,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "id_manggis",
+     "Mangosteen",
+     "Mangostano",
+     "Mangostan",
+     60,
+     100,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "id_nasi_merah",
+     "Red rice",
+     "Riso rosso",
+     "Czerwony ryż",
+     180,
+     150,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "id_martabak_manis",
+     "Sweet martabak with chocolate",
+     "Martabak dolce al cioccolato",
+     "Słodki martabak z czekoladą",
+     600,
+     200,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "id_gorengan",
+     "Gorengan (fried snacks)",
+     "Gorengan (frittelle miste)",
+     "Gorengan (smażone przekąski)",
+     400,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "id_krupuk",
+     "Krupuk crackers",
+     "Cracker krupuk",
+     "Krakersy krupuk",
+     250,
+     50,
+     "g",
+     "E",
+     "salty"
+    ],
+    [
+     "id_es_teler",
+     "Es teler (sweet iced fruit cocktail)",
+     "Es teler (macedonia ghiacciata dolce)",
+     "Es teler (słodki mrożony koktajl owocowy)",
+     350,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "id_mie_instan",
+     "Instant fried noodles",
+     "Noodle fritti istantanei",
+     "Smażony makaron instant",
+     450,
+     100,
+     "g",
+     "E",
+     "ultra"
+    ],
+    [
+     "id_ayam_kremes",
+     "Crispy fried chicken (ayam kremes)",
+     "Pollo fritto croccante (ayam kremes)",
+     "Chrupiący smażony kurczak (ayam kremes)",
+     550,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "id_nasi_goreng",
+     "Nasi goreng with fried egg",
+     "Nasi goreng con uovo fritto",
+     "Nasi goreng z jajkiem sadzonym",
+     650,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "id_rendang",
+     "Beef rendang",
+     "Rendang di manzo",
+     "Rendang wołowy",
+     500,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "id_teh_manis",
+     "Very sweet iced tea",
+     "Tè freddo molto zuccherato",
+     "Bardzo słodka mrożona herbata",
+     180,
+     350,
+     "ml",
+     "E",
+     "sugar"
+    ],
+    [
+     "id_seblak",
+     "Seblak (spicy cracker soup)",
+     "Seblak (zuppa piccante di cracker)",
+     "Seblak (pikantna zupa z krakersami)",
+     450,
+     300,
+     "g",
+     "D",
+     "salty"
+    ]
+   ]
+  },
+  {
+   "id": "russia",
+   "order": 22,
+   "country": "RU",
+   "mint": null,
+   "name": {
+    "en": "Russia",
+    "it": "Russia",
+    "pl": "Rosja"
+   },
+   "accessory": {
+    "en": "Ushanka fur hat",
+    "it": "Colbacco ushanka",
+    "pl": "Uszanka"
+   },
+   "accessoryKind": "ushanka",
+   "fact": {
+    "en": "Russia: shchi, a cabbage soup, has warmed families through cold winters for centuries.",
+    "it": "Russia: lo shchi, una zuppa di cavolo, scalda le famiglie negli inverni freddi da secoli.",
+    "pl": "Rosja: szczi, zupa z kapusty, od wieków rozgrzewa rodziny w mroźne zimy."
+   },
+   "palette": [
+    "#ffffff",
+    "#1c57a5",
+    "#d52b1e"
+   ],
+   "stripes": "h",
+   "bg": "#e4ecfa",
+   "logo": "logos/russia.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_RU_russia_1024.png",
+   "foods": [
+    [
+     "ru_shchi",
+     "Shchi (cabbage soup)",
+     "Shchi (zuppa di cavolo)",
+     "Szczi (zupa z kapusty)",
+     80,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "ru_grechka",
+     "Buckwheat with mushrooms",
+     "Grano saraceno ai funghi",
+     "Kasza gryczana z grzybami",
+     200,
+     200,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "ru_vinegret",
+     "Vinegret (beet and veg salad)",
+     "Vinegret (insalata di barbabietole e verdure)",
+     "Winegret (sałatka z buraków)",
+     130,
+     200,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ru_ukha",
+     "Ukha (fish soup)",
+     "Ukha (zuppa di pesce)",
+     "Ucha (zupa rybna)",
+     150,
+     350,
+     "ml",
+     "A",
+     "protein"
+    ],
+    [
+     "ru_tvorog",
+     "Tvorog with berries",
+     "Tvorog con frutti di bosco",
+     "Twaróg z jagodami",
+     180,
+     180,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "ru_ryazhenka",
+     "Ryazhenka (baked fermented milk)",
+     "Ryazhenka (latte fermentato cotto)",
+     "Riażenka (pieczone mleko fermentowane)",
+     170,
+     250,
+     "ml",
+     "B",
+     "dairy"
+    ],
+    [
+     "ru_okroshka",
+     "Okroshka (cold veg soup)",
+     "Okroshka (zuppa fredda di verdure)",
+     "Okroszka (chłodnik warzywny)",
+     150,
+     300,
+     "ml",
+     "B",
+     "veg"
+    ],
+    [
+     "ru_baked_apples",
+     "Baked apples",
+     "Mele al forno",
+     "Pieczone jabłka",
+     120,
+     200,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "ru_borodinsky",
+     "Borodinsky rye bread",
+     "Pane di segale Borodinsky",
+     "Chleb borodiński",
+     100,
+     40,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "ru_griby",
+     "Pickled mushrooms",
+     "Funghi marinati",
+     "Marynowane grzyby",
+     40,
+     100,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "ru_blini",
+     "Blini with condensed milk",
+     "Blini con latte condensato",
+     "Bliny z mlekiem skondensowanym",
+     450,
+     180,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ru_pirozhki",
+     "Fried pirozhki",
+     "Pirozhki fritti",
+     "Smażone pirożki",
+     400,
+     150,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "ru_belyashi",
+     "Belyashi (fried meat buns)",
+     "Belyashi (panini fritti di carne)",
+     "Bielasze (smażone bułki z mięsem)",
+     450,
+     150,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ru_chebureki",
+     "Chebureki (fried meat pastries)",
+     "Chebureki (sfogliate fritte di carne)",
+     "Czebureki (smażone pierogi z mięsem)",
+     500,
+     180,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ru_olivier",
+     "Olivier salad with mayonnaise",
+     "Insalata Olivier con maionese",
+     "Sałatka Olivier z majonezem",
+     400,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ru_pelmeni",
+     "Pelmeni with sour cream and butter",
+     "Pelmeni con panna acida e burro",
+     "Pielmieni ze śmietaną i masłem",
+     550,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ru_syrniki",
+     "Fried syrniki with jam",
+     "Syrniki fritti con marmellata",
+     "Smażone syrniki z dżemem",
+     450,
+     180,
+     "g",
+     "D",
+     "sugar"
+    ],
+    [
+     "ru_medovik",
+     "Medovik (honey cake)",
+     "Medovik (torta al miele)",
+     "Miodownik (tort miodowy)",
+     450,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ru_shawarma",
+     "Shawarma wrap",
+     "Shawarma",
+     "Szawarma",
+     650,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ru_kartoshka",
+     "Kartoshka (chocolate cake ball)",
+     "Kartoshka (dolcetto al cioccolato)",
+     "Kartoszka (czekoladowe ciastko)",
+     300,
+     80,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "ukraine",
+   "order": 23,
+   "country": "UA",
+   "mint": null,
+   "name": {
+    "en": "Ukraine",
+    "it": "Ucraina",
+    "pl": "Ukraina"
+   },
+   "accessory": {
+    "en": "Vinok flower crown",
+    "it": "Corona di fiori vinok",
+    "pl": "Wianek (vinok)"
+   },
+   "accessoryKind": "vinok",
+   "fact": {
+    "en": "Ukraine: the culture of Ukrainian borscht cooking is UNESCO heritage in need of urgent safeguarding (2022).",
+    "it": "Ucraina: la cultura della preparazione del borsch ucraino è patrimonio UNESCO da salvaguardare con urgenza (2022).",
+    "pl": "Ukraina: kultura gotowania ukraińskiego barszczu jest dziedzictwem UNESCO wymagającym pilnej ochrony (2022)."
+   },
+   "palette": [
+    "#0057b7",
+    "#ffd700"
+   ],
+   "stripes": "h",
+   "bg": "#fff6cc",
+   "logo": "logos/ukraine.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_UA_ukraine_1024.png",
+   "foods": [
+    [
+     "ua_borshch",
+     "Ukrainian borscht",
+     "Borsch ucraino",
+     "Barszcz ukraiński",
+     120,
+     350,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "ua_holubtsi",
+     "Holubtsi (cabbage rolls)",
+     "Holubtsi (involtini di cavolo)",
+     "Hołubci (gołąbki)",
+     250,
+     250,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "ua_varenyky",
+     "Potato varenyky",
+     "Varenyky di patate",
+     "Pierogi (wareniki) z ziemniakami",
+     300,
+     200,
+     "g",
+     "B",
+     "grain"
+    ],
+    [
+     "ua_uzvar",
+     "Uzvar (dried-fruit drink, no sugar)",
+     "Uzvar (bevanda di frutta secca, senza zucchero)",
+     "Uzwar (napój z suszu, bez cukru)",
+     60,
+     250,
+     "ml",
+     "B",
+     "fruit"
+    ],
+    [
+     "ua_kapusniak",
+     "Kapusniak (sauerkraut soup)",
+     "Kapusniak (zuppa di crauti)",
+     "Kapuśniak",
+     90,
+     300,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "ua_syr_zelen",
+     "Fresh cheese with herbs",
+     "Formaggio fresco alle erbe",
+     "Twarożek z ziołami",
+     160,
+     150,
+     "g",
+     "A",
+     "dairy"
+    ],
+    [
+     "ua_river_fish",
+     "Baked river fish",
+     "Pesce di fiume al forno",
+     "Pieczona ryba rzeczna",
+     200,
+     180,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "ua_pickled_tomatoes",
+     "Pickled tomatoes",
+     "Pomodori in salamoia",
+     "Kiszone pomidory",
+     30,
+     150,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "ua_pumpkin_kasha",
+     "Pumpkin and millet porridge",
+     "Porridge di zucca e miglio",
+     "Kasza jaglana z dynią",
+     200,
+     250,
+     "g",
+     "A",
+     "grain"
+    ],
+    [
+     "ua_bean_salad",
+     "Bean and vegetable salad",
+     "Insalata di fagioli e verdure",
+     "Sałatka z fasoli i warzyw",
+     220,
+     200,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "ua_salo",
+     "Salo on rye bread",
+     "Salo (lardo) su pane di segale",
+     "Słonina na chlebie żytnim",
+     500,
+     100,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ua_pampushky",
+     "Sweet fried pampushky",
+     "Pampushky dolci fritti",
+     "Słodkie smażone pampuszki",
+     400,
+     120,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ua_kyiv_cake",
+     "Kyiv cake",
+     "Torta Kyiv",
+     "Tort kijowski",
+     450,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ua_deruny",
+     "Deruny with sour cream",
+     "Deruny (frittelle di patate) con panna acida",
+     "Deruny ze śmietaną",
+     450,
+     200,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "ua_chicken_kyiv",
+     "Chicken Kyiv",
+     "Pollo alla Kyiv",
+     "Kotlet po kijowsku",
+     600,
+     250,
+     "g",
+     "D",
+     "fried"
+    ],
+    [
+     "ua_varenyky_cherry",
+     "Sour-cherry varenyky with sugar",
+     "Varenyky alle amarene con zucchero",
+     "Wareniki z wiśniami i cukrem",
+     400,
+     200,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ua_banosh",
+     "Banosh with bacon and bryndza",
+     "Banosh con pancetta e bryndza",
+     "Banosz z boczkiem i bryndzą",
+     600,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ua_makivnyk",
+     "Makivnyk (poppy-seed roll)",
+     "Makivnyk (rotolo ai semi di papavero)",
+     "Makownik",
+     400,
+     100,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ua_halushky",
+     "Halushky with pork cracklings",
+     "Halushky con ciccioli",
+     "Haluszki ze skwarkami",
+     550,
+     250,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ua_lviv_syrnyk",
+     "Lviv cheesecake",
+     "Cheesecake di Leopoli",
+     "Sernik lwowski",
+     420,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ]
+   ]
+  },
+  {
+   "id": "philippines",
+   "order": 24,
+   "country": "PH",
+   "mint": null,
+   "name": {
+    "en": "Philippines",
+    "it": "Filippine",
+    "pl": "Filipiny"
+   },
+   "accessory": {
+    "en": "Salakot hat",
+    "it": "Cappello salakot",
+    "pl": "Kapelusz salakot"
+   },
+   "accessoryKind": "salakot",
+   "fact": {
+    "en": "Philippines: sinigang, a sour tamarind soup full of vegetables, is a beloved comfort food.",
+    "it": "Filippine: il sinigang, una zuppa agra al tamarindo piena di verdure, è un piatto del cuore.",
+    "pl": "Filipiny: sinigang, kwaśna zupa z tamaryndowcem pełna warzyw, to ukochane domowe danie."
+   },
+   "palette": [
+    "#0038a8",
+    "#fcd116",
+    "#ce1126"
+   ],
+   "stripes": "h",
+   "bg": "#e3ebff",
+   "logo": "logos/philippines.svg",
+   "tokenLogoPng": "PIKKO_TOKEN_LOGOS/PIKKO_PH_philippines_1024.png",
+   "foods": [
+    [
+     "ph_sinigang",
+     "Sinigang (sour tamarind soup)",
+     "Sinigang (zuppa agra al tamarindo)",
+     "Sinigang (kwaśna zupa z tamaryndowcem)",
+     150,
+     350,
+     "ml",
+     "A",
+     "veg"
+    ],
+    [
+     "ph_pinakbet",
+     "Pinakbet (vegetable stew)",
+     "Pinakbet (stufato di verdure)",
+     "Pinakbet (gulasz warzywny)",
+     160,
+     250,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ph_tinola",
+     "Tinola (chicken ginger soup)",
+     "Tinola (zuppa di pollo e zenzero)",
+     "Tinola (zupa z kurczakiem i imbirem)",
+     200,
+     350,
+     "ml",
+     "A",
+     "protein"
+    ],
+    [
+     "ph_talong_salad",
+     "Grilled eggplant salad",
+     "Insalata di melanzane grigliate",
+     "Sałatka z grillowanego bakłażana",
+     80,
+     150,
+     "g",
+     "A",
+     "veg"
+    ],
+    [
+     "ph_inihaw_isda",
+     "Grilled fish (inihaw na isda)",
+     "Pesce alla griglia (inihaw na isda)",
+     "Grillowana ryba (inihaw na isda)",
+     220,
+     180,
+     "g",
+     "A",
+     "protein"
+    ],
+    [
+     "ph_monggo",
+     "Ginisang monggo (mung bean stew)",
+     "Ginisang monggo (stufato di fagioli mung)",
+     "Ginisang monggo (gulasz z fasoli mung)",
+     250,
+     250,
+     "g",
+     "A",
+     "legume"
+    ],
+    [
+     "ph_kinilaw",
+     "Kinilaw (fish cured in vinegar)",
+     "Kinilaw (pesce marinato nell'aceto)",
+     "Kinilaw (ryba marynowana w occie)",
+     150,
+     150,
+     "g",
+     "B",
+     "protein"
+    ],
+    [
+     "ph_lumpiang_sariwa",
+     "Fresh lumpia",
+     "Lumpia fresco",
+     "Świeża lumpia",
+     200,
+     150,
+     "g",
+     "B",
+     "veg"
+    ],
+    [
+     "ph_mangga",
+     "Philippine mango",
+     "Mango filippino",
+     "Mango filipińskie",
+     100,
+     165,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "ph_saging",
+     "Boiled saba banana",
+     "Banana saba bollita",
+     "Gotowany banan saba",
+     110,
+     100,
+     "g",
+     "A",
+     "fruit"
+    ],
+    [
+     "ph_lechon",
+     "Lechon (roast pork with crackling)",
+     "Lechon (maialino arrosto)",
+     "Lechon (pieczone prosię)",
+     600,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ph_sisig",
+     "Sizzling sisig",
+     "Sisig sfrigolante",
+     "Skwierczący sisig",
+     550,
+     200,
+     "g",
+     "D",
+     "fatty"
+    ],
+    [
+     "ph_chicharon",
+     "Chicharon (pork rinds)",
+     "Chicharon (cotenne fritte)",
+     "Chicharon (smażone skórki wieprzowe)",
+     300,
+     50,
+     "g",
+     "E",
+     "salty"
+    ],
+    [
+     "ph_halo_halo",
+     "Halo-halo",
+     "Halo-halo (dessert ghiacciato)",
+     "Halo-halo (deser z kruszonym lodem)",
+     400,
+     350,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ph_turon",
+     "Turon (sugared banana roll)",
+     "Turon (involtino di banana caramellato)",
+     "Turon (smażony rożek z bananem)",
+     300,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ph_banana_cue",
+     "Banana cue",
+     "Banana cue (banane caramellate)",
+     "Banana cue (karmelizowane banany)",
+     280,
+     120,
+     "g",
+     "E",
+     "sugar"
+    ],
+    [
+     "ph_spaghetti_ph",
+     "Sweet spaghetti with hot dog",
+     "Spaghetti dolci con wurstel",
+     "Słodkie spaghetti z parówką",
+     600,
+     300,
+     "g",
+     "D",
+     "ultra"
+    ],
+    [
+     "ph_kwek_kwek",
+     "Kwek-kwek (battered quail eggs)",
+     "Kwek-kwek (uova di quaglia in pastella fritte)",
+     "Kwek-kwek (jajka przepiórcze w cieście)",
+     300,
+     100,
+     "g",
+     "E",
+     "fried"
+    ],
+    [
+     "ph_pancit_instant",
+     "Instant pancit canton",
+     "Pancit canton istantaneo",
+     "Pancit canton instant",
+     400,
+     80,
+     "g",
+     "E",
+     "ultra"
+    ],
+    [
+     "ph_longsilog",
+     "Longsilog (sausage, fried rice, egg)",
+     "Longsilog (salsiccia, riso fritto, uovo)",
+     "Longsilog (kiełbaska, smażony ryż, jajko)",
+     750,
+     350,
+     "g",
+     "D",
+     "fatty"
+    ]
+   ]
+  }
+ ]
+}

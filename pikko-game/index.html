@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff6b35" />
+  <title>PIKKO — Yum or Bleah!</title>
+  <meta name="description" content="PIKKO: a 3D game that teaches healthy eating. Feed Pikko, watch him dodge junk food. English, Italiano, Polski." />
+  <meta property="og:title" content="PIKKO — Yum or Bleah!" />
+  <meta property="og:description" content="Feed Pikko healthy food. Junk? He dodges it… Bleah!" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='38' rx='22' ry='24' fill='%23ff6b35'/%3E%3Ccircle cx='24' cy='32' r='4'/%3E%3Ccircle cx='40' cy='32' r='4'/%3E%3Cpath d='M32 14 q2 -8 8 -10' stroke='%235bbf3a' stroke-width='3' fill='none'/%3E%3Cellipse cx='42' cy='6' rx='6' ry='3' fill='%235bbf3a'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="app">
+    <div id="stage"></div>
+    <div id="labels"></div>
+    <div id="hud" hidden></div>
+    <div id="toasts" aria-live="polite"></div>
+    <div id="coach" hidden></div>
+    <div id="screen"></div>
+    <div id="boot"><div class="boot-card"><h1 class="logo"><img src="pikko-logo.svg" alt="PIKKO" /></h1><div id="boot-msg">…</div></div></div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

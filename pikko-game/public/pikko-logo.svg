@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 380" role="img" aria-label="PIKKO">
+  <title>PIKKO</title>
+  <defs>
+    <!-- letter skeletons: drawn as fat round strokes -->
+    <g id="letters" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M72 296 V104 H130 a61 61 0 0 1 0 122 H72"/>
+      <g transform="translate(66 0)">
+        <path d="M415 104 V296 M520 104 L428 206 L524 296"/>
+        <path d="M614 104 V296 M719 104 L627 206 L723 296"/>
+        <ellipse cx="870" cy="200" rx="80" ry="96"/>
+      </g>
+    </g>
+    <path id="body" d="M290 84 C350 84 366 196 366 250 C366 302 334 330 290 330 C246 330 214 302 214 250 C214 196 230 84 290 84 Z"/>
+    <radialGradient id="skin" cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ffc39b"/>
+      <stop offset="0.45" stop-color="#ff925a"/>
+      <stop offset="1" stop-color="#e5602b"/>
+    </radialGradient>
+    <radialGradient id="belly" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#c5e07a"/>
+      <stop offset="0.6" stop-color="#8fb83f"/>
+      <stop offset="1" stop-color="#5d8026"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8be06a"/>
+      <stop offset="1" stop-color="#3e9a25"/>
+    </linearGradient>
+    <pattern id="gingham" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#fff6ee"/>
+      <rect width="8" height="16" fill="#ff8f8f" opacity="0.55"/>
+      <rect width="16" height="8" fill="#ff8f8f" opacity="0.55"/>
+    </pattern>
+    <clipPath id="bodyClip"><use href="#body"/></clipPath>
+  </defs>
+
+  <!-- letters: 3D drop, outline, fill, gloss -->
+  <use href="#letters" transform="translate(0 14)" stroke="#4a1d0c" stroke-width="80"/>
+  <use href="#letters" transform="translate(0 12)" stroke="#c94a1e" stroke-width="60"/>
+  <use href="#letters" stroke="#4a1d0c" stroke-width="80"/>
+  <use href="#letters" stroke="#ff6b35" stroke-width="60"/>
+  <use href="#letters" transform="translate(-9 -10)" stroke="#ffb08a" stroke-width="11" opacity="0.75"/>
+
+  <!-- Pikko is the I -->
+  <g id="pikko" transform="translate(46 0)">
+    <!-- sprout -->
+    <path d="M290 90 C288 66 292 50 300 36" fill="none" stroke="#4a1d0c" stroke-width="15" stroke-linecap="round"/>
+    <path d="M290 90 C288 66 292 50 300 36" fill="none" stroke="#5bbf3a" stroke-width="7" stroke-linecap="round"/>
+    <path d="M298 40 C268 14 238 28 240 46 C262 60 286 54 298 40 Z" fill="url(#leaf)" stroke="#4a1d0c" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M300 38 C318 6 352 6 358 22 C346 44 318 48 300 38 Z" fill="url(#leaf)" stroke="#4a1d0c" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M256 42 C268 40 282 41 294 40" fill="none" stroke="#2f7a1a" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M308 36 C322 26 336 20 350 20" fill="none" stroke="#2f7a1a" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <!-- arms -->
+    <ellipse cx="214" cy="236" rx="18" ry="30" transform="rotate(28 214 236)" fill="#ff8a4c" stroke="#4a1d0c" stroke-width="9"/>
+    <ellipse cx="366" cy="226" rx="18" ry="30" transform="rotate(-38 366 226)" fill="#ff8a4c" stroke="#4a1d0c" stroke-width="9"/>
+    <!-- 3D drop like the letters, then body -->
+    <use href="#body" transform="translate(0 14)" fill="#4a1d0c"/>
+    <use href="#body" transform="translate(0 10)" fill="#c94a1e" stroke="#4a1d0c" stroke-width="10"/>
+    <use href="#body" fill="url(#skin)" stroke="#4a1d0c" stroke-width="10"/>
+    <g clip-path="url(#bodyClip)">
+      <!-- gingham bib -->
+      <path d="M200 214 C250 236 330 236 380 214 L380 246 C330 268 250 268 200 246 Z" fill="url(#gingham)"/>
+      <path d="M200 214 C250 236 330 236 380 214" fill="none" stroke="#4a1d0c" stroke-width="5" opacity="0.5"/>
+      <path d="M200 246 C250 268 330 268 380 246" fill="none" stroke="#d94848" stroke-width="5" opacity="0.6"/>
+      <!-- gloss -->
+      <ellipse cx="258" cy="128" rx="16" ry="30" transform="rotate(20 258 128)" fill="#fff" opacity="0.45"/>
+    </g>
+    <!-- belly window -->
+    <circle cx="290" cy="290" r="31" fill="#e5602b" stroke="#4a1d0c" stroke-width="6"/>
+    <circle cx="290" cy="290" r="22" fill="#3a1a0e"/>
+    <path d="M268 292 a22 22 0 0 0 44 0 Z" fill="url(#belly)"/>
+    <path d="M276 278 a16 16 0 0 1 20 -6" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+    <!-- face -->
+    <ellipse cx="268" cy="168" rx="13" ry="16" fill="#1d0f08"/>
+    <ellipse cx="312" cy="168" rx="13" ry="16" fill="#1d0f08"/>
+    <circle cx="264" cy="161" r="5" fill="#fff"/><circle cx="273" cy="175" r="2.4" fill="#fff"/>
+    <circle cx="308" cy="161" r="5" fill="#fff"/><circle cx="317" cy="175" r="2.4" fill="#fff"/>
+    <path d="M254 146 Q266 138 278 144" fill="none" stroke="#4a1d0c" stroke-width="5" stroke-linecap="round"/>
+    <path d="M302 144 Q314 138 326 146" fill="none" stroke="#4a1d0c" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="249" cy="194" rx="12" ry="7" fill="#ff6f8a" opacity="0.6"/>
+    <ellipse cx="331" cy="194" rx="12" ry="7" fill="#ff6f8a" opacity="0.6"/>
+    <path d="M274 192 Q290 214 306 192 Z" fill="#6b1d12" stroke="#4a1d0c" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M282 202 Q290 196 298 202 Q290 210 282 202 Z" fill="#ff6f8a"/>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "name": "pikko-game",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PIKKO — Yum or Bleah! A 3D Three.js game that teaches healthy eating. EN/IT/PL.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5180",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5181",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "0.186.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.1",
+    "vitest": "5.0.2"
+  }
+}
