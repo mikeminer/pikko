@@ -563,6 +563,8 @@ Nel frattempo **un solo lock attivo di 5.000.000 PASTA su [devfridge.cool](https
 | Durata | qualsiasi, basta che il lock sia **attivo adesso** (come per le buste dei Paesi) |
 | Riscatto | per i vault PASTA il 2% viene bruciato direttamente (nessuna route Jupiter necessaria) |
 
+**Wallet (2026-10-16):** `src/access/wallet.ts` unisce i wallet Wallet Standard (estensioni desktop) e **Mobile Wallet Adapter** (Solana Seeker: Seed Vault Wallet, Solflare, Phantom; solo Android + Chrome + HTTPS, caricato in modo lazy) con il Phantom iniettato (browser interno di Phantom). Con più wallet il giocatore sceglie; senza wallet su telefono c'è il link "Apri in Phantom". Il gioco legge solo la chiave pubblica e non firma mai.
+
 Il gioco mostra il minimo e il mint, il 2% PASTA e la regola "nessun ritiro anticipato" prima di qualsiasi lock; il lock si fa solo su DevFridge, mai dentro il gioco. Il controllo nel browser resta una comodità (UX), non una protezione. Implementazione: `PASS_ACCESS` in `src/access/bags.config.ts`, `checkBag`/`checkPass` in `src/access/gate.ts`, test in `tests/access.test.ts`.
 
 

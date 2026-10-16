@@ -10,6 +10,7 @@ Everything he eats fills his belly with kcal; win the day if at least half of it
 - 20 languages (EN IT PL ES FR DE PT EL TR AR HI ZH JA KO TH VI ID RU UK FIL), Arabic right-to-left.
 - In-game tutorial (cards + two guided practice rounds), Daily menu, Zen mode, Recipe Book, shareable receipt, Bleah Cam clip.
 - Access: DevFridge timelocks on Solana. **Interim pass: ONE active lock of 5,000,000 PASTA unlocks every bag.** Country tokens are pre-launch.
+- Wallets: Phantom / Solflare / Backpack extensions, Phantom's in-app browser and, on **Solana Seeker / Android Chrome, Mobile Wallet Adapter** (Seed Vault Wallet, Solflare, Phantom). Read-only: the game never signs.
 
 | Where | What |
 | --- | --- |

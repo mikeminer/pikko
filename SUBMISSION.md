@@ -24,7 +24,8 @@ Modes: Classic (40 rounds), Daily menu (20 identical rounds for everyone), Zen (
 
 ## Access (token gating)
 
-- **Network:** Solana mainnet. The game never creates a lock, signs or approves anything; Phantom is used only to read the connected public key.
+- **Network:** Solana mainnet. The game never creates a lock, signs or approves anything; a wallet is used only to read the connected public key.
+- **Wallets (Wallet Standard):** desktop extensions (Phantom, Solflare, Backpack…), the Phantom in-app browser (injected `window.phantom.solana`), and — on **Android Chrome over HTTPS, e.g. the Solana Seeker** — **Mobile Wallet Adapter** (Seed Vault Wallet, Solflare, Phantom) via `@solana-mobile/wallet-standard-mobile`, loaded lazily only on Android. With several wallets the player picks one; with none (e.g. iOS) a user-clicked "Open in Phantom" link is offered. Not available: iOS browsers, and Android browsers other than Chrome (a limit of MWA).
 - **Interim pass:** one active DevFridge lock of **at least 5,000,000 PASTA** unlocks **every** country bag.
   - Mint: `39kMeX4HVRW9qbbiHSPbRQ9xeXUF18GrNP6gL61Ppump` (source: https://docs.devfridge.cool/tokenomics). Read-only on-chain check on 2026-10-04:
     owner program **Token-2022**, **6 decimals**, no mint authority, no freeze authority, extensions `metadataPointer` + `tokenMetadata` (name "pappardelle", symbol PASTA).
@@ -74,7 +75,7 @@ Tested in desktop Chrome (headless, software WebGL) with emulated viewports; see
 ## Limitations (honest list)
 
 1. **No recorded gameplay video yet.** `demoUrl` points to the live game's free tutorial/practice.
-2. **No real-phone or real-Phantom-mobile test.** Wallet connection and lock states were exercised with a **mock Phantom** and **mock DevFridge responses**; nothing was signed on mainnet and no lock was created. The wallet-rejection message path exists but has no automated test.
+2. **No real-phone, real-Seeker or real-wallet test.** Mobile Wallet Adapter registration was verified in **emulated Android Chrome** with the real package (it registers and launches the `solana-wallet:/v1/associate/local?…` association), but the round trip to Seed Vault Wallet / Solflare / Phantom on a physical Seeker has **not** been tested. Wallet connection and lock states were exercised with **mock wallets** and **mock DevFridge responses**; nothing was signed on mainnet and no lock was created.
 3. Only desktop Chrome was used; Safari, Firefox and real mobile browsers were not tested.
 4. **17 of the 20 languages are machine translations** awaiting native review (EN/IT/PL are the author's base texts; the Polish still wants a native read). Recorded voices exist only in EN/IT/PL; other languages use the English voice.
 5. Food models are procedural (blockout) until HD models exist; many audio cues are candidates and 22 country music themes have not been generated yet.

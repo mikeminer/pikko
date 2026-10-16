@@ -229,3 +229,4 @@ html, body { font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', 'Noto 
   .tut-coach-top .chip { display: none; }
   .tut-coach-top { justify-content: flex-end; }
 }
+.wallet-icon { width: 20px; height: 20px; border-radius: 6px; margin-inline-end: 6px; vertical-align: middle; }

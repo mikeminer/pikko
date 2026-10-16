@@ -1,7 +1,7 @@
 // DOM overlay: HUD, plate labels, toasts and all screens. Text comes from i18n; no innerHTML with user data.
 import { DEVFRIDGE, PASS_ACCESS } from '../access/bags.config';
 import { type AccessState, checkBag, checkPass, isAccessLive, passRule, ruleFor } from '../access/gate';
-import * as phantom from '../access/phantom';
+import * as wallets from '../access/wallet';
 import { audio } from '../audio/audio';
 import { clip } from '../capture/bleahcam';
 import { ALL_BAGS, type Bag, FOOD_BY_ID, type Food, isHealthy, isJunk, type Lang, LANG_META, LANGS } from '../data/foods';
@@ -328,7 +328,7 @@ export class Ui {
   private lastPassSync = 0;
   /** With a connected wallet, one PASTA pass check opens (or closes) every bag in the Mart. UX cache only: playing re-checks. */
   private async syncPass(selected: string): Promise<void> {
-    const wallet = phantom.wallet();
+    const wallet = wallets.wallet();
     if (!wallet || !passRule() || Date.now() - this.lastPassSync < 60_000) return;
     this.lastPassSync = Date.now();
     const st = await checkPass(wallet);
@@ -367,7 +367,7 @@ export class Ui {
 
   /** Re-check access right before playing a live bag (never trust a cached unlock). */
   private async playLive(bag: Bag): Promise<void> {
-    const st = await checkBag(bag.id, phantom.wallet());
+    const st = await checkBag(bag.id, wallets.wallet());
     if (st.kind === 'unlocked') this.host.start({ mode: 'classic', bagId: bag.id, trial: false });
     else this.unlock(bag);
   }
@@ -391,17 +391,20 @@ export class Ui {
     const rule = passRule() ?? ruleFor(bag.id); // the PASTA pass is what players can lock today
     const live = isAccessLive(bag.id);
     const status = el('p', { 'aria-live': 'polite' });
-    const w = phantom.wallet();
     const walletRow = el('div', { class: 'row' });
     const render = (state: AccessState | null) => {
       walletRow.replaceChildren();
-      const cur = phantom.wallet();
+      const cur = wallets.wallet();
       if (cur) {
-        walletRow.append(el('span', { class: 'chip' }, t('connected', { w: `${cur.slice(0, 4)}…${cur.slice(-4)}` })), button(t('disconnect'), 'btn ghost small', () => { void phantom.disconnect().then(() => render(null)); }));
+        walletRow.append(el('span', { class: 'chip' }, t('connected', { w: `${cur.slice(0, 4)}…${cur.slice(-4)}` })), button(t('disconnect'), 'btn ghost small', () => { void wallets.disconnect().then(() => render(null)); }));
         if (live) walletRow.append(button(t('recheck'), 'btn small', () => void doCheck()));
       } else {
-        walletRow.append(button(t('connect'), 'btn small', () => void doConnect()));
-        if (!phantom.provider() && phantom.isMobile()) walletRow.append(el('a', { class: 'btn ghost small', href: phantom.openInPhantomUrl() }, t('open_in_phantom')));
+        const opts = wallets.options();
+        if (opts.length > 1) { // several wallets (e.g. desktop extensions): let the player choose
+          for (const o of opts) walletRow.append(button([...(o.icon ? [el('img', { class: 'wallet-icon', src: o.icon, alt: '' })] : []), el('span', {}, o.name)], 'btn small', () => void doConnect(o.id)));
+        } else walletRow.append(button(t('connect'), 'btn small', () => void doConnect()));
+        // no wallet at all on a phone (e.g. iOS, or an Android browser without Mobile Wallet Adapter): offer the Phantom app
+        if (!opts.length && wallets.isMobile()) walletRow.append(el('a', { class: 'btn ghost small', href: wallets.openInPhantomUrl() }, t('open_in_phantom')));
       }
       if (!state) return;
       if (state.kind === 'checking') status.textContent = t('checking');
@@ -413,11 +416,12 @@ export class Ui {
       else if (state.kind === 'unavailable') status.textContent = t('check_failed');
       else if (state.kind === 'not_configured') status.textContent = t('mart_soon');
     };
-    const doConnect = async () => {
-      try { await phantom.connect(); render(null); if (live) await doCheck(); }
-      catch (e) { status.textContent = e instanceof Error && e.message === 'phantom_missing' ? t('phantom_missing') : t('wallet_rejected'); }
+    const doConnect = async (id?: string) => {
+      status.textContent = t('wallet_connecting');
+      try { await wallets.connect(id); status.textContent = ''; render(null); if (live) await doCheck(); }
+      catch (e) { status.textContent = e instanceof Error && e.message === 'wallet_missing' ? t('phantom_missing') : t('wallet_rejected'); }
     };
-    const doCheck = async () => { render({ kind: 'checking' }); render(await checkBag(bag.id, phantom.wallet())); };
+    const doCheck = async () => { render({ kind: 'checking' }); render(await checkBag(bag.id, wallets.wallet())); };
     const tokenLabel = live && rule ? `${num(Number(rule.minimumTokens))}${rule === PASS_ACCESS ? ' PASTA' : ''} (${rule.mint})` : '—';
     const card = el('div', { class: 'card stack' },
       el('h2', {}, `🔓 ${bagName(bag)}`),
@@ -433,7 +437,8 @@ export class Ui {
     );
     this.open(el('div', {}, card), 'unlock');
     render(null);
-    void w;
+    // a wallet can register late (Mobile Wallet Adapter loads lazily): refresh the buttons, and stop listening once this dialog is gone
+    const off = wallets.onOptionsChange(() => { if (this.current !== 'unlock') off(); else if (!wallets.wallet()) render(null); });
   }
 
   // ---------------- recipes ----------------

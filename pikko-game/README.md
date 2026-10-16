@@ -28,7 +28,7 @@ npm run build      # typecheck + build statica in dist/
 | Musica che cambia per fase; con l'abitudine junk diventa ovattata e lenta, con quella sana più brillante | ✅ (filtro in tempo reale al posto dei loop M15/M16 non ancora generati) |
 | Stacchi S10/S11/S12/S13/S14/S17/S20 | ✅ sintetizzati in WebAudio (Do maggiore pentatonico, timer a tempo con il BPM del loop) finché non arrivano quelli generati |
 | Scontrino di Pikko (PNG condivisibile), riga emoji stile Wordle, Bleah Cam (clip della smorfia con audio, se il browser lo supporta), Ricettario, record locali | ✅ |
-| Pikko Mart, area adulti (domanda per adulti), Phantom (solo connessione, nessuna firma), testo informativo con il 2% PASTA, verifica lock DevFridge con il valutatore testato | ✅ codice pronto · ⏳ **nessun mint configurato**: tutte le buste sono in modalità prova |
+| Pikko Mart, area adulti (domanda per adulti), wallet Solana (Wallet Standard + **Mobile Wallet Adapter per Solana Seeker / Android Chrome**, Phantom: solo connessione, nessuna firma), testo informativo con il 2% PASTA, verifica lock DevFridge con il valutatore testato | ✅ codice pronto · ⏳ **nessun mint configurato**: tutte le buste sono in modalità prova |
 | EN / IT / PL con plurali polacchi | ✅ (polacco da rileggere da un madrelingua) |
 | **Tutorial in gioco** (20 lingue): schede illustrate + 2 round di prova guidati con coach; parte alla prima partita, si rivede da ❓ / Impostazioni / pausa | ✅ |
 | **Pass PASTA**: un lock attivo di 5.000.000 PASTA su DevFridge sblocca tutte le buste (mint verificato on-chain, aggregazione `single`), in attesa dei token dei Paesi | ✅ (dati reali di DevFridge simulati nei test: nessun lock firmato) |
@@ -53,7 +53,7 @@ src/sim/       regole e round (puri, testati)
 src/data/      cibi (430 incl. acqua), buste, mappa visiva
 src/render/    scena, Pikko, cibi procedurali, texture
 src/audio/     WebAudio: manifest, loop allineati al campione, stacchi sintetizzati
-src/access/    valutatore timelock, gate per busta, Phantom
+src/access/    valutatore timelock, gate per busta, wallet (Wallet Standard, MWA, Phantom)
 src/ui/        HUD, schermate, scontrino
 src/capture/   Bleah Cam
 tools/         catalog_v2.py (catalogo Paesi), make_logos.py + render_logos.mjs (loghi), build_audio.py (audio web), shots.mjs e playthrough.mjs (test visivi/end-to-end con Chrome)

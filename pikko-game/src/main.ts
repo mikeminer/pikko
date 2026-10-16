@@ -1,6 +1,7 @@
 import './style.css';
 import { audio } from './audio/audio';
 import { Game, type RunConfig } from './game';
+import { initWallets } from './access/wallet';
 import { initLang, t } from './i18n';
 import { Pikko } from './render/pikko';
 import { Stage } from './render/scene';
@@ -91,6 +92,7 @@ function start(): void {
   if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__pikko = { stage, pikko, game, ui };
   stage.setQuality(settings.quality);
   pikko.setAccessory('base');
+  void initWallets(); // Android Chrome: registers Mobile Wallet Adapter (Seeker); a no-op everywhere else
 
   // keyboard
   window.addEventListener('keydown', (e) => {
