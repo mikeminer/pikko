@@ -7,7 +7,7 @@ Nothing below involved a real wallet, a real lock, a purchase or a mainnet trans
 
 ```sh
 cd pikko-game && npm ci
-npm test            # Test Files 6 passed (6) · Tests 74 passed (74)
+npm test            # Test Files 7 passed (7) · Tests 88 passed (88)
 npx tsc --noEmit    # clean
 npm run build       # production build OK (dist/assets/index-*.js ≈ 790 kB, 221 kB gzip)
 ```
@@ -38,7 +38,7 @@ depositor is another wallet are all "unavailable" (never "unlocked"); no wallet 
 - **Tutorial:** first run opens it instead of the game; cards, two practice rounds (coach text adapts to the food chosen), pause/skip inside practice, real game starts afterwards, second "Play" goes straight to the game;
   grown-ups card only with kid mode off; Arabic RTL, Japanese, Thai and Hindi cards render.
 - **Access UI with MOCK wallets (public key only) and MOCK DevFridge responses:** a 5,000,000 PASTA lock → all bags show 🔓 and "Play this bag"; a smaller lock → all stay 🔒. Only the PASTA mint is requested.
-- **Wallet connection (`tests/wallet.test.ts`, 12 tests with fake Wallet Standard wallets):** discovery (Solana wallets only, de-duplicated, icons restricted to `data:image`), single wallet connects directly, several wallets need a choice, late registration of Mobile Wallet Adapter, rejection leaves no state, account switched/removed inside the wallet, non-base58 account refused, disconnect, legacy `window.phantom.solana`.
+- **Wallet connection (`tests/wallet.test.ts`, 14 tests with fake Wallet Standard wallets):** discovery (Solana wallets only, de-duplicated, icons restricted to `data:image`), single wallet connects directly, several wallets need a choice, late registration of Mobile Wallet Adapter, rejection leaves no state, account switched/removed inside the wallet, non-base58 account refused, disconnect, legacy `window.phantom.solana`, and the player-facing names (Mobile Wallet Adapter shown as "Seeker (Android)"; the connected wallet is named, and the name clears on disconnect). In the unlock dialog a chip says what was found ("Detected: Phantom", "Detected: Seeker (Android)", "No wallet detected") and after connecting "Connected: <wallet> · <key>".
 - **Seeker emulation (Android 15 UA, ~436×800 CSS px at 2.75 DPR, real touch events):** the first-run tutorial opens, a **touch drag** of the healthy food to Pikko's mouth is eaten (`apple:yum`) and the coach answers; layout of plates, labels, coach and dialogs fits without overlaps; no page errors.
 - **Mobile Wallet Adapter in emulated Android Chrome (real `registerMwa()`):** registers "Mobile Wallet Adapter" (chain `solana:mainnet`, connect/disconnect/events + signing features that we never call), is the only wallet so "Connect wallet" goes straight to it with no Phantom link, and tapping it launches `solana-wallet:/v1/associate/local?association=…`. Desktop Chrome cannot handle that URI, so the game shows the "connection cancelled" message. Other scenarios (two wallets → chooser → connected → unlocked; iPhone with no wallet → "Open in Phantom" + explanation; injected Phantom; rejected request) passed.
 - **Bundle:** main JS ≈ 796 kB (221 kB gzip, +5 kB for the wallet code); the MWA package is a separate 143 kB (45 kB gzip) chunk fetched only on Android.

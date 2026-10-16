@@ -17,7 +17,19 @@ interface LegacyPhantom {
 }
 declare global { interface Window { phantom?: { solana?: LegacyPhantom } } }
 
-export interface WalletOption { id: string; name: string; icon: string | null; kind: 'standard' | 'phantom' }
+export interface WalletOption {
+  id: string;
+  /** Name as registered by the wallet. */
+  name: string;
+  /** Name shown to players: Mobile Wallet Adapter is the Solana Seeker / Android route (Seed Vault Wallet, Solflare, Phantom). */
+  label: string;
+  icon: string | null;
+  kind: 'standard' | 'phantom';
+}
+
+export const MWA_NAME = 'Mobile Wallet Adapter';
+export const MWA_LABEL = 'Seeker (Android)';
+const labelOf = (name: string) => (name === MWA_NAME ? MWA_LABEL : name);
 
 export interface Registry {
   get(): readonly Wallet[];
@@ -61,9 +73,9 @@ export function createWalletController(deps: WalletDeps) {
   };
 
   function options(): WalletOption[] {
-    const out: WalletOption[] = standardWallets().map((w) => ({ id: `std:${w.name}`, name: w.name, icon: safeIcon(w.icon), kind: 'standard' }));
+    const out: WalletOption[] = standardWallets().map((w) => ({ id: `std:${w.name}`, name: w.name, label: labelOf(w.name), icon: safeIcon(w.icon), kind: 'standard' }));
     const legacy = deps.legacy();
-    if (legacy?.isPhantom && !out.some((o) => o.name === 'Phantom')) out.push({ id: 'phantom', name: 'Phantom', icon: null, kind: 'phantom' });
+    if (legacy?.isPhantom && !out.some((o) => o.name === 'Phantom')) out.push({ id: 'phantom', name: 'Phantom', label: 'Phantom', icon: null, kind: 'phantom' });
     return out;
   }
 
@@ -126,6 +138,9 @@ export function createWalletController(deps: WalletDeps) {
     }
   }
 
+  /** Player-facing name of the wallet that is connected right now (null when none). */
+  const connectedLabel = (): string | null => (current === null || !active ? null : active.kind === 'phantom' ? 'Phantom' : labelOf(active.wallet.name));
+
   const isMobile = () => /Android|iPhone|iPad|iPod/i.test(deps.userAgent());
   const isAndroid = () => /Android/i.test(deps.userAgent());
 
@@ -136,7 +151,7 @@ export function createWalletController(deps: WalletDeps) {
   }
 
   return {
-    options, onOptionsChange, connect, disconnect, isMobile, isAndroid, openInPhantomUrl,
+    options, onOptionsChange, connect, disconnect, connectedLabel, isMobile, isAndroid, openInPhantomUrl,
     wallet: (): string | null => current,
     onWalletChange(l: Listener): () => void { listeners.add(l); return () => listeners.delete(l); },
   };
@@ -186,6 +201,7 @@ export const onOptionsChange = (cb: () => void) => ctl().onOptionsChange(cb);
 export const connect = (id?: string) => ctl().connect(id);
 export const disconnect = () => ctl().disconnect();
 export const wallet = () => ctl().wallet();
+export const connectedLabel = () => ctl().connectedLabel();
 export const onWalletChange = (l: (w: string | null) => void) => ctl().onWalletChange(l);
 export const isMobile = () => ctl().isMobile();
 export const isAndroid = () => ctl().isAndroid();

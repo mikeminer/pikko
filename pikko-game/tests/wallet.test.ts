@@ -104,6 +104,28 @@ describe('wallet discovery', () => {
   });
 });
 
+describe('wallet labels (what the player sees)', () => {
+  it('Mobile Wallet Adapter is shown as the Seeker / Android route; other wallets keep their own name', () => {
+    const { ctl } = setup({ wallets: [fakeWallet('Mobile Wallet Adapter').wallet], ua: SEEKER_UA });
+    expect(ctl.options().map((o) => [o.name, o.label])).toEqual([['Mobile Wallet Adapter', 'Seeker (Android)']]);
+    const two = setup({ wallets: [fakeWallet('Phantom').wallet, fakeWallet('Solflare').wallet] });
+    expect(two.ctl.options().map((o) => o.label)).toEqual(['Phantom', 'Solflare']);
+  });
+
+  it('after connecting, the connected wallet is named (Phantom or Seeker), and the name is gone after disconnect', async () => {
+    const seeker = setup({ wallets: [fakeWallet('Mobile Wallet Adapter').wallet], ua: SEEKER_UA });
+    expect(seeker.ctl.connectedLabel()).toBeNull();
+    await seeker.ctl.connect();
+    expect(seeker.ctl.connectedLabel()).toBe('Seeker (Android)');
+    await seeker.ctl.disconnect();
+    expect(seeker.ctl.connectedLabel()).toBeNull();
+    const legacy = { isPhantom: true, connect: async () => ({ publicKey: { toString: () => A } }), disconnect: async () => {}, on: () => {} };
+    const ph = setup({ legacy });
+    await ph.ctl.connect();
+    expect(ph.ctl.connectedLabel()).toBe('Phantom');
+  });
+});
+
 describe('wallet connection state', () => {
   it('a rejected request leaves no connected wallet and rethrows for the UI message', async () => {
     const w = fakeWallet('Mobile Wallet Adapter', { reject: true });

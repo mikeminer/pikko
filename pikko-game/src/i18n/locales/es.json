@@ -165,7 +165,9 @@
   "tut8_b": "Al final de cada día recibes el ticket de Pikko para compartir, el resultado en texto para copiar, un enlace de reto para tus amigos y un clip de la Bleah Cam con su mueca más graciosa.",
   "tut9_t": "¡Ya estás listo!",
   "tut9_b": "Come todos los colores, elige comidas ligeras y sanas y diviértete. Juego educativo, no consejo médico.",
-  "wallet_connecting": "Esperando a la billetera…"
+  "wallet_connecting": "Esperando a la billetera…",
+  "wallet_detected": "Detectado: {name}",
+  "wallet_none": "No se detectó ninguna billetera"
  },
  "bags": {
   "base": {

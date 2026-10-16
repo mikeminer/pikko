@@ -38,7 +38,7 @@ real session (2026-10-03 → 2026-10-04); user prompts are paraphrased or shorte
 - **Prompt:** a complete in-game tutorial → illustrated cards + two scripted practice rounds with a coach, in all 20 languages; first-run auto start, replay from title/settings/pause.
 
 ## 7. Verification
-See `VERIFICATION.md` (74 automated tests, type check, build, on-chain read, scripted browser playthroughs in 8 languages, mock-wallet access flows).
+See `VERIFICATION.md` (88 automated tests, type check, build, on-chain read, scripted browser playthroughs in 8 languages, mock-wallet access flows).
 
 ## Human review notes
 - Not reviewed by a native speaker: 17 languages. Not reviewed by a nutritionist: kcal and health copy.

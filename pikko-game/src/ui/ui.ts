@@ -396,12 +396,15 @@ export class Ui {
       walletRow.replaceChildren();
       const cur = wallets.wallet();
       if (cur) {
-        walletRow.append(el('span', { class: 'chip' }, t('connected', { w: `${cur.slice(0, 4)}…${cur.slice(-4)}` })), button(t('disconnect'), 'btn ghost small', () => { void wallets.disconnect().then(() => render(null)); }));
+        const who = wallets.connectedLabel();
+        walletRow.append(el('span', { class: 'chip' }, t('connected', { w: `${who ? `${who} · ` : ''}${cur.slice(0, 4)}…${cur.slice(-4)}` })), button(t('disconnect'), 'btn ghost small', () => { void wallets.disconnect().then(() => render(null)); }));
         if (live) walletRow.append(button(t('recheck'), 'btn small', () => void doCheck()));
       } else {
         const opts = wallets.options();
+        // say what was found: "Detected: Phantom" / "Detected: Seeker (Android)" / "No wallet detected"
+        walletRow.append(el('span', { class: 'chip wallet-found' }, opts.length ? `✅ ${t('wallet_detected', { name: opts.map((o) => o.label).join(' · ') })}` : `⚠️ ${t('wallet_none')}`));
         if (opts.length > 1) { // several wallets (e.g. desktop extensions): let the player choose
-          for (const o of opts) walletRow.append(button([...(o.icon ? [el('img', { class: 'wallet-icon', src: o.icon, alt: '' })] : []), el('span', {}, o.name)], 'btn small', () => void doConnect(o.id)));
+          for (const o of opts) walletRow.append(button([...(o.icon ? [el('img', { class: 'wallet-icon', src: o.icon, alt: '' })] : []), el('span', {}, o.label)], 'btn small', () => void doConnect(o.id)));
         } else walletRow.append(button(t('connect'), 'btn small', () => void doConnect()));
         // no wallet at all on a phone (e.g. iOS, or an Android browser without Mobile Wallet Adapter): offer the Phantom app
         if (!opts.length && wallets.isMobile()) walletRow.append(el('a', { class: 'btn ghost small', href: wallets.openInPhantomUrl() }, t('open_in_phantom')));

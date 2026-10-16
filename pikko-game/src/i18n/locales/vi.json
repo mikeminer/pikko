@@ -165,7 +165,9 @@
   "tut8_b": "Sau mỗi ngày bạn nhận được hóa đơn của Pikko để chia sẻ, kết quả dạng chữ để sao chép, liên kết thách đấu bạn bè và clip camera Eo ơi ghi lại gương mặt buồn cười nhất của bé.",
   "tut9_t": "Sẵn sàng rồi!",
   "tut9_b": "Hãy ăn đủ mọi màu, chọn món nhẹ và lành mạnh, và chơi vui nhé! Trò chơi giáo dục, không phải lời khuyên y tế.",
-  "wallet_connecting": "Đang chờ ví…"
+  "wallet_connecting": "Đang chờ ví…",
+  "wallet_detected": "Đã phát hiện: {name}",
+  "wallet_none": "Không phát hiện ví"
  },
  "bags": {
   "base": {

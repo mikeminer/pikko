@@ -165,7 +165,9 @@
   "tut8_b": "Nach jedem Tag bekommst du Pikkos Kassenbon zum Teilen, ein Textergebnis zum Kopieren, einen Herausforderungs-Link für Freunde und einen Bleah-Cam-Clip mit seiner lustigsten Grimasse.",
   "tut9_t": "Du bist bereit!",
   "tut9_b": "Iss alle Farben, wähle leichte, gesunde Speisen und hab Spaß! Lernspiel, keine medizinische Beratung.",
-  "wallet_connecting": "Warte auf das Wallet…"
+  "wallet_connecting": "Warte auf das Wallet…",
+  "wallet_detected": "Erkannt: {name}",
+  "wallet_none": "Kein Wallet erkannt"
  },
  "bags": {
   "base": {

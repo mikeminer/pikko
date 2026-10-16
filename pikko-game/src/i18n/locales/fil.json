@@ -165,7 +165,9 @@
   "tut8_b": "Pagkatapos ng bawat araw, makakakuha ka ng resibo ni Pikko na maibabahagi, resulta sa teksto na makokopya, link ng hamon para sa mga kaibigan at clip ng Yuck cam ng pinakanakakatawa niyang mukha.",
   "tut9_t": "Handa ka na!",
   "tut9_b": "Kainin ang lahat ng kulay, piliin ang magaan at masustansyang pagkain, at mag-enjoy! Larong pang-edukasyon, hindi payong medikal.",
-  "wallet_connecting": "Hinihintay ang wallet…"
+  "wallet_connecting": "Hinihintay ang wallet…",
+  "wallet_detected": "Natukoy: {name}",
+  "wallet_none": "Walang natukoy na wallet"
  },
  "bags": {
   "base": {

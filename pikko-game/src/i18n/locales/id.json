@@ -165,7 +165,9 @@
   "tut8_b": "Setelah tiap hari kamu mendapat struk Pikko untuk dibagikan, hasil teks untuk disalin, tautan tantangan untuk teman, dan klip kamera Hiii dengan wajah paling lucunya.",
   "tut9_t": "Kamu siap!",
   "tut9_b": "Makan semua warna, pilih makanan ringan dan sehat, dan bersenang-senanglah! Game edukasi, bukan saran medis.",
-  "wallet_connecting": "Menunggu dompet…"
+  "wallet_connecting": "Menunggu dompet…",
+  "wallet_detected": "Terdeteksi: {name}",
+  "wallet_none": "Dompet tidak terdeteksi"
  },
  "bags": {
   "base": {

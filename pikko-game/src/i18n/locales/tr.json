@@ -165,7 +165,9 @@
   "tut8_b": "Her günün sonunda paylaşmak için Pikko'nun fişini, kopyalamak için metin sonucunu, arkadaşlara meydan okuma bağlantısını ve en komik suratının Bleah Cam klibini alırsın.",
   "tut9_t": "Hazırsın!",
   "tut9_b": "Her rengi ye, hafif ve sağlıklı yiyecekleri seç ve iyi eğlen! Eğitici bir oyun; tıbbi tavsiye değildir.",
-  "wallet_connecting": "Cüzdan bekleniyor…"
+  "wallet_connecting": "Cüzdan bekleniyor…",
+  "wallet_detected": "Algılandı: {name}",
+  "wallet_none": "Cüzdan algılanmadı"
  },
  "bags": {
   "base": {

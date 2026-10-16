@@ -165,7 +165,9 @@
   "tut8_b": "À la fin de chaque journée tu reçois le ticket de Pikko à partager, le résultat en texte à copier, un lien de défi pour tes amis et un clip de la Bleah Cam avec sa grimace la plus drôle.",
   "tut9_t": "Tu es prêt !",
   "tut9_b": "Mange toutes les couleurs, choisis des aliments légers et sains, et amuse-toi ! Jeu éducatif, pas un conseil médical.",
-  "wallet_connecting": "En attente du portefeuille…"
+  "wallet_connecting": "En attente du portefeuille…",
+  "wallet_detected": "Détecté : {name}",
+  "wallet_none": "Aucun portefeuille détecté"
  },
  "bags": {
   "base": {
