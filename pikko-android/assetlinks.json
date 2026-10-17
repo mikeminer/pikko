@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "art.pikko.app",
+      "sha256_cert_fingerprints": [
+        "02:AD:AA:F8:BF:8E:D4:A4:93:80:9C:38:CA:21:05:1A:66:E8:66:5B:DC:74:D1:B3:0C:BB:C5:FD:2E:D1:FB:66"
+      ]
+    }
+  }
+]

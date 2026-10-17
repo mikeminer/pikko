@@ -15,6 +15,7 @@ Everything he eats fills his belly with kcal; win the day if at least half of it
 | Where | What |
 | --- | --- |
 | [`pikko-game/`](pikko-game/) | The game (Vite + TypeScript + Three.js) — see its [README](pikko-game/README.md) |
+| [`pikko-android/`](pikko-android/) | Android app: a Trusted Web Activity of https://pikko.art/play/ (Chrome engine, so Mobile Wallet Adapter works on the Seeker) |
 | [`SUBMISSION.md`](SUBMISSION.md) · [`BUILD_LOG.md`](BUILD_LOG.md) · [`VERIFICATION.md`](VERIFICATION.md) | Gallery evidence: access rules, AI build log, test results and limitations |
 | [`PIKKO-GAME-DESIGN.md`](PIKKO-GAME-DESIGN.md) | Game design document (Italian) |
 | [`PIKKO-BAGS.json`](PIKKO-BAGS.json) | Catalogue of the 24 country bags |

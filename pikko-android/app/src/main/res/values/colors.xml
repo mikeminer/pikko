@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the game's theme colour (#ff6b35) behind the status and navigation bars, a pale peach behind the icon on the splash -->
+    <color name="pikko_orange">#FF6B35</color>
+    <color name="pikko_splash">#FFEADB</color>
+</resources>
