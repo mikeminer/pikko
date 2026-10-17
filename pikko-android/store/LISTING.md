@@ -8,9 +8,9 @@ Seeker-like size (360×640 CSS px at 3× = 1080×1920), taken from https://pikko
 | Field | Value |
 | --- | --- |
 | App name | PIKKO |
-| Package | `art.pikko.app` |
-| Version | 1.0.1 (versionCode 2) |
-| APK | `pikko-android/release/Pikko-1.0.1.apk` (not in git), certificate SHA-256 `02:AD:AA:F8:BF:8E:D4:A4:93:80:9C:38:CA:21:05:1A:66:E8:66:5B:DC:74:D1:B3:0C:BB:C5:FD:2E:D1:FB:66` |
+| Package | `art.pikko.game` |
+| Version | 1.0.2 (versionCode 2) |
+| APK | `pikko-android/release/Pikko-1.0.2.apk` (not in git), certificate SHA-256 `C6:C7:FF:F1:32:69:D0:16:D5:9D:17:87:10:66:5F:69:BC:FD:47:C9:39:D6:C2:86:CA:D8:65:35:BC:1F:88:9C` |
 | Website | https://pikko.art |
 | Privacy policy | https://pikko.art/privacy.html |
 | Terms of Use | https://pikko.art/terms.html |
@@ -50,5 +50,5 @@ Solana, optional. The country bags can be unlocked with a DevFridge timelock: co
 ## Before submitting (publisher's own steps)
 
 1. **Back up the signing key** if not done yet: `powershell -File pikko-android/backup-key.ps1 -Destination <offline drive>\pikko-release.p12`.
-2. **Check what already exists in the portal** (see `CODEX-PUBLISH.md` §0): an older PIKKO app made with another tool may already be there.
+2. **The portal already has the PIKKO app `art.pikko.game`** (listing saved, not live, app NFT not minted yet). This APK uses that package and that key, so it fits that listing: see `CODEX-PUBLISH.md` §0.
 3. Publisher verification (KYC/KYB), the publisher wallet, and every on-chain approval are done by the publisher personally.

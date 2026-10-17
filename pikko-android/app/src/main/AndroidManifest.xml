@@ -50,7 +50,7 @@
                 android:value="300" />
             <meta-data
                 android:name="android.support.customtabs.trusted.FILE_PROVIDER_AUTHORITY"
-                android:value="art.pikko.app.fileprovider" />
+                android:value="art.pikko.game.fileprovider" />
             <!-- a 3D game: the whole screen, landscape or portrait as the player holds the phone -->
             <meta-data
                 android:name="android.support.customtabs.trusted.DISPLAY_MODE"
@@ -94,7 +94,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="art.pikko.app.fileprovider"
+            android:authorities="art.pikko.game.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

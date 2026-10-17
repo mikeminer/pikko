@@ -2,18 +2,18 @@
 // https://pikko.art/play/) for sideloading and the Solana dApp Store, signed with PIKKO's release key.
 //
 //  1. Android SDK: ANDROID_HOME, or %LOCALAPPDATA%\Android\Sdk (platform 36, build-tools 36.0.0)
-//  2. release key: %USERPROFILE%\PikkoArt\android-signing\release.p12 (RSA-3072), created on the
-//     first run. Its random password is kept only DPAPI-protected (this Windows user) next to it; it is
-//     passed to keytool/apksigner through an environment variable, never on a command line or in a file
-//     in the project. Back the key up (backup-key.ps1): every future update of the app
-//     in the dApp Store must be signed with this same key.
+//  2. release key: the EXISTING PIKKO key of the store listing art.pikko.game (never create or replace it):
+//     %USERPROFILE%\Documents\ChatGPT\pikko game\solana-mobile\.signing\pikko-release.jks (JKS, alias pikko-release)
+//     and its Windows-DPAPI-protected password (password.dpapi, readable only by this Windows user). Override the
+//     folder with PIKKO_KEY_DIR. The password goes to keytool/apksigner through an environment variable, never on a
+//     command line or in a file. The store ties updates to the package name and this key.
 //  3. the certificate's SHA-256 goes into assetlinks.json (next to this script), which must be served at
 //     https://pikko.art/.well-known/assetlinks.json so Android opens the site full screen, without a browser bar
 //  4. gradle :app:assembleRelease :app:lintRelease, then zipalign + apksigner sign + verify
 // Usage: node build.mjs
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync, copyFileSync, statSync } from 'node:fs';
-import { randomBytes, createHash } from 'node:crypto';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -23,11 +23,13 @@ const SDK = process.env.ANDROID_HOME || process.env.ANDROID_SDK_ROOT || join(pro
 const BUILD_TOOLS = join(SDK, 'build-tools', '36.0.0');
 // in the user profile, not AppData: when a packaged (MSIX) app runs this script, its writes to AppData
 // go to the app's private copy, which is deleted together with the app
-const KEY_DIR = join(process.env.USERPROFILE ?? '', 'PikkoArt', 'android-signing');
-const KEYSTORE = join(KEY_DIR, 'release.p12');
-const PASSFILE = join(KEY_DIR, 'release.pass.dpapi');
-const ALIAS = 'pikko';
+const KEY_DIR = process.env.PIKKO_KEY_DIR || join(process.env.USERPROFILE ?? '', 'Documents', 'ChatGPT', 'pikko game', 'solana-mobile', '.signing');
+const KEYSTORE = join(KEY_DIR, 'pikko-release.jks');
+const PASSFILE = join(KEY_DIR, 'password.dpapi');
+const ALIAS = 'pikko-release';
+const STORETYPE = 'JKS';
 const step = (s) => console.log(`\n▸ ${s}`);
+const PACKAGE = /applicationId = "([^"]+)"/.exec(readFileSync(join(ANDROID, 'app', 'build.gradle.kts'), 'utf8'))[1];
 const VERSION = /versionName = "([^"]+)"/.exec(readFileSync(join(ANDROID, 'app', 'build.gradle.kts'), 'utf8'))[1];
 
 if (!existsSync(join(SDK, 'platforms', 'android-36')) || !existsSync(BUILD_TOOLS)) throw new Error(`Android SDK incompleto in ${SDK}: servono platforms;android-36 e build-tools;36.0.0`);
@@ -35,27 +37,18 @@ if (!existsSync(join(SDK, 'platforms', 'android-36')) || !existsSync(BUILD_TOOLS
 writeFileSync(join(ANDROID, 'local.properties'), `sdk.dir=${SDK.replace(/\\/g, '\\\\').replace(/:/g, '\\:')}\n`);
 
 // ---------------------------------------------------------------- the key and its password (DPAPI)
-const ps = (script, env) => execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', script], { encoding: 'utf8', env: { ...process.env, ...env } }).trim();
-const protect = (secret) => ps("Add-Type -AssemblyName System.Security; [Convert]::ToBase64String([Security.Cryptography.ProtectedData]::Protect([Text.Encoding]::UTF8.GetBytes($env:PIKKO_SECRET), $null, 'CurrentUser'))", { PIKKO_SECRET: secret });
-const unprotect = (b64) => ps("Add-Type -AssemblyName System.Security; [Text.Encoding]::UTF8.GetString([Security.Cryptography.ProtectedData]::Unprotect([Convert]::FromBase64String($env:PIKKO_BLOB), $null, 'CurrentUser'))", { PIKKO_BLOB: b64 });
-
-mkdirSync(KEY_DIR, { recursive: true });
-let pass;
-if (!existsSync(KEYSTORE)) {
-  step('Creo la chiave di firma (una volta sola)');
-  pass = randomBytes(24).toString('base64url');
-  writeFileSync(PASSFILE, protect(pass));
-  execFileSync('keytool', ['-genkeypair', '-keystore', KEYSTORE, '-storetype', 'PKCS12', '-alias', ALIAS, '-keyalg', 'RSA', '-keysize', '3072', '-validity', '10000', '-dname', 'CN=PIKKO, O=PIKKO, C=IT', '-storepass:env', 'PIKKO_KS_PASS', '-keypass:env', 'PIKKO_KS_PASS'], { stdio: 'inherit', env: { ...process.env, PIKKO_KS_PASS: pass } });
-  console.log(`  chiave: ${KEYSTORE}\n  fai subito una copia di sicurezza: powershell -File backup-key.ps1`);
-} else pass = unprotect(readFileSync(PASSFILE, 'utf8').trim());
+if (!existsSync(KEYSTORE) || !existsSync(PASSFILE)) throw new Error(`Chiave di firma non trovata in ${KEY_DIR}. Non creo una chiave nuova: ripristina quella esistente (o imposta PIKKO_KEY_DIR).`);
+// the password file is a PowerShell secure string (DPAPI, current Windows user); the value is read into the child's environment only
+const pass = execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', "$s = Get-Content -LiteralPath $env:PIKKO_PASSFILE -Raw | ConvertTo-SecureString; [Management.Automation.PSCredential]::new('k', $s).GetNetworkCredential().Password"], { encoding: 'utf8', env: { ...process.env, PIKKO_PASSFILE: PASSFILE } }).trim();
+if (!pass) throw new Error('password della chiave non leggibile (account Windows diverso?)');
 const KS_ENV = { ...process.env, PIKKO_KS_PASS: pass };
 
 // ---------------------------------------------------------------- the site vouches for the app
 step('Impronta del certificato → /.well-known/assetlinks.json');
-const list = execFileSync('keytool', ['-list', '-v', '-keystore', KEYSTORE, '-storetype', 'PKCS12', '-alias', ALIAS, '-storepass:env', 'PIKKO_KS_PASS'], { encoding: 'utf8', env: KS_ENV });
+const list = execFileSync('keytool', ['-list', '-v', '-keystore', KEYSTORE, '-storetype', STORETYPE, '-alias', ALIAS, '-storepass:env', 'PIKKO_KS_PASS'], { encoding: 'utf8', env: KS_ENV });
 const sha = /SHA256:\s*([0-9A-F:]{95})/i.exec(list)?.[1].toUpperCase();
 if (!sha) throw new Error('impronta SHA-256 del certificato non trovata');
-const links = [{ relation: ['delegate_permission/common.handle_all_urls'], target: { namespace: 'android_app', package_name: 'art.pikko.app', sha256_cert_fingerprints: [sha] } }];
+const links = [{ relation: ['delegate_permission/common.handle_all_urls'], target: { namespace: 'android_app', package_name: PACKAGE, sha256_cert_fingerprints: [sha] } }];
 writeFileSync(join(ROOT, 'assetlinks.json'), `${JSON.stringify(links, null, 2)}
 `);
 console.log(`  ${sha}`);
@@ -71,7 +64,7 @@ execFileSync(join(BUILD_TOOLS, 'zipalign.exe'), ['-p', '-f', '4', unsigned, alig
 mkdirSync(join(ROOT, 'release'), { recursive: true });
 const out = join(ROOT, 'release', `Pikko-${VERSION}.apk`);
 step('Firma');
-execFileSync('java', [...APKSIGNER, 'sign', '--ks', KEYSTORE, '--ks-type', 'PKCS12', '--ks-key-alias', ALIAS, '--ks-pass', 'env:PIKKO_KS_PASS', '--key-pass', 'env:PIKKO_KS_PASS', '--out', out, aligned], { stdio: 'inherit', env: KS_ENV });
+execFileSync('java', [...APKSIGNER, 'sign', '--ks', KEYSTORE, '--ks-type', STORETYPE, '--ks-key-alias', ALIAS, '--ks-pass', 'env:PIKKO_KS_PASS', '--key-pass', 'env:PIKKO_KS_PASS', '--out', out, aligned], { stdio: 'inherit', env: KS_ENV });
 const verify = execFileSync('java', [...APKSIGNER, 'verify', '--verbose', '--print-certs', out], { encoding: 'utf8' });
 if (!verify.includes(sha.replace(/:/g, '').toLowerCase())) throw new Error('la firma dell’APK non corrisponde alla chiave di Pikko');
 const digest = createHash('sha256').update(readFileSync(out)).digest('hex');

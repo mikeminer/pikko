@@ -8,16 +8,16 @@ plugins {
 }
 
 android {
-    namespace = "art.pikko.app"
+    namespace = "art.pikko.game"
     compileSdk = 36
     buildToolsVersion = "36.0.0"
 
     defaultConfig {
-        applicationId = "art.pikko.app"
+        applicationId = "art.pikko.game"
         minSdk = 24
         targetSdk = 36
         versionCode = 2
-        versionName = "1.0.1"
+        versionName = "1.0.2"
     }
 
     buildTypes {
