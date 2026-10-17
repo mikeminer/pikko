@@ -167,7 +167,13 @@
   "tut9_b": "Mange toutes les couleurs, choisis des aliments légers et sains, et amuse-toi ! Jeu éducatif, pas un conseil médical.",
   "wallet_connecting": "En attente du portefeuille…",
   "wallet_detected": "Détecté : {name}",
-  "wallet_none": "Aucun portefeuille détecté"
+  "wallet_none": "Aucun portefeuille détecté",
+  "wallet_inapp": "Cela ressemble à un navigateur intégré à une appli, qui ne peut pas connecter de portefeuille. Ouvre cette page dans Chrome.",
+  "wallet_open_chrome": "Ouvrir dans Chrome",
+  "wallet_copy_link": "Copier le lien",
+  "wallet_link_copied": "Lien copié. Colle-le dans Chrome.",
+  "wallet_notfound_help": "Aucun portefeuille n'a répondu. Ouvre cette page dans Chrome (pas dans un navigateur intégré) et vérifie qu'une appli de portefeuille Solana est installée.",
+  "wallet_blocked_help": "Le navigateur a bloqué la connexion au portefeuille. Dans Chrome, autorise l'accès au réseau local pour ce site et réessaie."
  },
  "bags": {
   "base": {

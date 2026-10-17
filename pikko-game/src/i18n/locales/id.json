@@ -167,7 +167,13 @@
   "tut9_b": "Makan semua warna, pilih makanan ringan dan sehat, dan bersenang-senanglah! Game edukasi, bukan saran medis.",
   "wallet_connecting": "Menunggu dompet…",
   "wallet_detected": "Terdeteksi: {name}",
-  "wallet_none": "Dompet tidak terdeteksi"
+  "wallet_none": "Dompet tidak terdeteksi",
+  "wallet_inapp": "Ini tampak seperti browser dalam aplikasi, yang tidak bisa menghubungkan dompet. Buka halaman ini di Chrome.",
+  "wallet_open_chrome": "Buka di Chrome",
+  "wallet_copy_link": "Salin tautan",
+  "wallet_link_copied": "Tautan disalin. Tempel di Chrome.",
+  "wallet_notfound_help": "Tidak ada dompet yang merespons. Buka halaman ini di Chrome (bukan browser dalam aplikasi) dan pastikan aplikasi dompet Solana terpasang.",
+  "wallet_blocked_help": "Browser memblokir koneksi dompet. Di Chrome, izinkan akses jaringan lokal untuk situs ini lalu coba lagi."
  },
  "bags": {
   "base": {

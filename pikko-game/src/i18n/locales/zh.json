@@ -167,7 +167,13 @@
   "tut9_b": "吃遍每种颜色，选择清淡健康的食物，玩得开心！教育游戏，不是医疗建议。",
   "wallet_connecting": "正在等待钱包…",
   "wallet_detected": "已检测到：{name}",
-  "wallet_none": "未检测到钱包"
+  "wallet_none": "未检测到钱包",
+  "wallet_inapp": "这看起来是应用内置浏览器，无法连接钱包。请在 Chrome 中打开此页面。",
+  "wallet_open_chrome": "在 Chrome 中打开",
+  "wallet_copy_link": "复制链接",
+  "wallet_link_copied": "链接已复制，请粘贴到 Chrome。",
+  "wallet_notfound_help": "没有钱包响应。请在 Chrome（而非内置浏览器）中打开此页面，并确认已安装 Solana 钱包应用。",
+  "wallet_blocked_help": "浏览器阻止了钱包连接。请在 Chrome 中允许此网站访问本地网络，然后重试。"
  },
  "bags": {
   "base": {

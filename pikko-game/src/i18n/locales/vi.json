@@ -167,7 +167,13 @@
   "tut9_b": "Hãy ăn đủ mọi màu, chọn món nhẹ và lành mạnh, và chơi vui nhé! Trò chơi giáo dục, không phải lời khuyên y tế.",
   "wallet_connecting": "Đang chờ ví…",
   "wallet_detected": "Đã phát hiện: {name}",
-  "wallet_none": "Không phát hiện ví"
+  "wallet_none": "Không phát hiện ví",
+  "wallet_inapp": "Có vẻ đây là trình duyệt tích hợp trong ứng dụng, không kết nối được ví. Hãy mở trang này trong Chrome.",
+  "wallet_open_chrome": "Mở trong Chrome",
+  "wallet_copy_link": "Sao chép liên kết",
+  "wallet_link_copied": "Đã sao chép liên kết. Hãy dán vào Chrome.",
+  "wallet_notfound_help": "Không có ví nào phản hồi. Hãy mở trang này trong Chrome (không phải trình duyệt tích hợp) và kiểm tra đã cài ứng dụng ví Solana.",
+  "wallet_blocked_help": "Trình duyệt đã chặn kết nối ví. Trong Chrome, hãy cho phép truy cập mạng cục bộ cho trang này rồi thử lại."
  },
  "bags": {
   "base": {

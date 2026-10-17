@@ -167,7 +167,13 @@
   "tut9_b": "Come todos los colores, elige comidas ligeras y sanas y diviértete. Juego educativo, no consejo médico.",
   "wallet_connecting": "Esperando a la billetera…",
   "wallet_detected": "Detectado: {name}",
-  "wallet_none": "No se detectó ninguna billetera"
+  "wallet_none": "No se detectó ninguna billetera",
+  "wallet_inapp": "Parece un navegador integrado en una app, que no puede conectar billeteras. Abre esta página en Chrome.",
+  "wallet_open_chrome": "Abrir en Chrome",
+  "wallet_copy_link": "Copiar enlace",
+  "wallet_link_copied": "Enlace copiado. Pégalo en Chrome.",
+  "wallet_notfound_help": "Ninguna billetera respondió. Abre esta página en Chrome (no en un navegador integrado) y comprueba que tengas una app de billetera Solana.",
+  "wallet_blocked_help": "El navegador bloqueó la conexión con la billetera. En Chrome permite el acceso a la red local para este sitio e inténtalo de nuevo."
  },
  "bags": {
   "base": {

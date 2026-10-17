@@ -167,7 +167,13 @@
   "tut9_b": "모든 색깔을 먹고, 가볍고 건강한 음식을 고르고, 즐겁게 놀자! 교육용 게임이며 의료 조언이 아니에요.",
   "wallet_connecting": "지갑을 기다리는 중…",
   "wallet_detected": "감지됨: {name}",
-  "wallet_none": "감지된 지갑 없음"
+  "wallet_none": "감지된 지갑 없음",
+  "wallet_inapp": "앱 내장 브라우저로 보이며 지갑을 연결할 수 없습니다. 이 페이지를 Chrome에서 여세요.",
+  "wallet_open_chrome": "Chrome에서 열기",
+  "wallet_copy_link": "링크 복사",
+  "wallet_link_copied": "링크가 복사되었습니다. Chrome에 붙여넣으세요.",
+  "wallet_notfound_help": "응답한 지갑이 없습니다. 이 페이지를 Chrome(내장 브라우저 아님)에서 열고 Solana 지갑 앱이 설치되어 있는지 확인하세요.",
+  "wallet_blocked_help": "브라우저가 지갑 연결을 차단했습니다. Chrome에서 이 사이트의 로컬 네트워크 접근을 허용한 뒤 다시 시도하세요."
  },
  "bags": {
   "base": {

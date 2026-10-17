@@ -167,7 +167,13 @@
   "tut9_b": "Coma todas as cores, escolha comidas leves e saudáveis e divirta-se! Jogo educativo, não é conselho médico.",
   "wallet_connecting": "Aguardando a carteira…",
   "wallet_detected": "Detectado: {name}",
-  "wallet_none": "Nenhuma carteira detectada"
+  "wallet_none": "Nenhuma carteira detectada",
+  "wallet_inapp": "Parece um navegador embutido num app, que não consegue conectar carteiras. Abra esta página no Chrome.",
+  "wallet_open_chrome": "Abrir no Chrome",
+  "wallet_copy_link": "Copiar link",
+  "wallet_link_copied": "Link copiado. Cole-o no Chrome.",
+  "wallet_notfound_help": "Nenhuma carteira respondeu. Abra esta página no Chrome (não num navegador embutido) e verifique se há um app de carteira Solana instalado.",
+  "wallet_blocked_help": "O navegador bloqueou a conexão com a carteira. No Chrome, permita o acesso à rede local para este site e tente de novo."
  },
  "bags": {
   "base": {

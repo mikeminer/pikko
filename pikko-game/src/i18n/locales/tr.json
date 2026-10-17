@@ -167,7 +167,13 @@
   "tut9_b": "Her rengi ye, hafif ve sağlıklı yiyecekleri seç ve iyi eğlen! Eğitici bir oyun; tıbbi tavsiye değildir.",
   "wallet_connecting": "Cüzdan bekleniyor…",
   "wallet_detected": "Algılandı: {name}",
-  "wallet_none": "Cüzdan algılanmadı"
+  "wallet_none": "Cüzdan algılanmadı",
+  "wallet_inapp": "Bu, cüzdan bağlayamayan uygulama içi bir tarayıcıya benziyor. Bu sayfayı Chrome'da aç.",
+  "wallet_open_chrome": "Chrome'da aç",
+  "wallet_copy_link": "Bağlantıyı kopyala",
+  "wallet_link_copied": "Bağlantı kopyalandı. Chrome'a yapıştır.",
+  "wallet_notfound_help": "Hiçbir cüzdan yanıt vermedi. Bu sayfayı Chrome'da aç (uygulama içi tarayıcıda değil) ve bir Solana cüzdan uygulamasının kurulu olduğunu kontrol et.",
+  "wallet_blocked_help": "Tarayıcı cüzdan bağlantısını engelledi. Chrome'da bu site için yerel ağ erişimine izin ver ve tekrar dene."
  },
  "bags": {
   "base": {

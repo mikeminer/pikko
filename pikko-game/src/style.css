@@ -93,6 +93,7 @@ button { font: inherit; cursor: pointer; }
 .score-box .l { font-size: 12px; font-weight: 700; color: var(--muted); }
 .hud-sub { position: absolute; top: calc(80px + var(--safe-t)); left: 50%; transform: translateX(-50%); display: flex; gap: 8px; align-items: center; }
 .chip { background: var(--card); border-radius: 999px; padding: 5px 12px; font-weight: 800; font-size: 13px; box-shadow: var(--shadow); white-space: nowrap; }
+.chip.wallet-found { white-space: normal; border-radius: 14px; line-height: 1.35; }
 .chip.trial { background: #fff1c2; color: #7a5a00; }
 .chip.habit-junk { background: #e8d4c2; color: #6e4322; }
 .chip.habit-healthy { background: #dff3d3; color: var(--green-d); }

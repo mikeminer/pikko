@@ -2,7 +2,7 @@
 // All wallets here are fakes: nothing is signed and no network is used.
 import { describe, expect, it } from 'vitest';
 import type { Wallet } from '@wallet-standard/base';
-import { createWalletController, type Registry } from '../src/access/wallet';
+import { createWalletController, isChromeLike, isInAppBrowser, mapWalletError, type Registry } from '../src/access/wallet';
 
 const A = '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU';
 const B = '9RY54dNPYTzDyh3TfFqDdt2b2KMM56KW1tw9erRTGQo6';
@@ -175,6 +175,50 @@ describe('wallet connection state', () => {
     handlers.accountChanged({ toString: () => B });
     expect(ctl.wallet()).toBe(B);
     handlers.accountChanged(null);
+    expect(ctl.wallet()).toBeNull();
+  });
+});
+
+describe('Seeker in-app browsers (where Mobile Wallet Adapter cannot start)', () => {
+  const WEBVIEW_UA = 'Mozilla/5.0 (Linux; Android 15; Seeker Build/AP3A; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/141.0.0.0 Mobile Safari/537.36';
+  const SHELL_UA = `${SEEKER_UA} Solana Mobile Web Shell`;
+
+  it('tells WebViews from real Chrome', () => {
+    expect(isInAppBrowser(WEBVIEW_UA)).toBe(true);
+    expect(isInAppBrowser(SEEKER_UA)).toBe(false);
+    expect(isInAppBrowser(SHELL_UA)).toBe(false); // the Solana Mobile web shell is supported
+    expect(isChromeLike(SEEKER_UA)).toBe(true);
+    expect(isChromeLike('Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 Chrome/141.0.0.0 Mobile Safari/537.36 EdgA/141.0')).toBe(false);
+    expect(isChromeLike('Mozilla/5.0 (Android 15; Mobile; rv:141.0) Gecko/141.0 Firefox/141.0')).toBe(false);
+  });
+
+  it('the controller reports the in-app browser and builds an Open in Chrome intent for this very page', () => {
+    const { ctl } = setup({ wallets: [fakeWallet('Mobile Wallet Adapter').wallet], ua: WEBVIEW_UA });
+    expect(ctl.inAppBrowser()).toBe(true);
+    expect(ctl.usesChrome()).toBe(false);
+    const url = ctl.openInChromeUrl();
+    expect(url.startsWith('intent://mikeminer.github.io/pikko/#Intent;scheme=https;package=com.android.chrome;')).toBe(true);
+    expect(url).toContain(`S.browser_fallback_url=${encodeURIComponent('https://mikeminer.github.io/pikko/')}`);
+    expect(ctl.pageUrl()).toBe('https://mikeminer.github.io/pikko/');
+    expect(setup({ ua: SEEKER_UA }).ctl.usesChrome()).toBe(true);
+  });
+
+  it('maps the library errors to short codes the UI can translate; other errors pass through', () => {
+    const mwa = (code: string) => Object.assign(new Error('x'), { name: 'SolanaMobileWalletAdapterError', code });
+    expect((mapWalletError(mwa('ERROR_WALLET_NOT_FOUND')) as Error).message).toBe('wallet_not_found');
+    expect((mapWalletError(mwa('ERROR_BROWSER_NOT_SUPPORTED')) as Error).message).toBe('wallet_not_found');
+    expect((mapWalletError(mwa('ERROR_LOOPBACK_ACCESS_BLOCKED')) as Error).message).toBe('wallet_blocked');
+    const other = mwa('ERROR_SESSION_TIMEOUT');
+    expect(mapWalletError(other)).toBe(other);
+    const plain = new Error('User rejected the request');
+    expect(mapWalletError(plain)).toBe(plain);
+  });
+
+  it('connect() surfaces wallet_not_found when the wallet app never answers', async () => {
+    const w = fakeWallet('Mobile Wallet Adapter');
+    (w.wallet.features as Record<string, unknown>)['standard:connect'] = { version: '1.0.0', connect: async () => { throw Object.assign(new Error('Found no installed wallet'), { name: 'SolanaMobileWalletAdapterError', code: 'ERROR_WALLET_NOT_FOUND' }); } };
+    const { ctl } = setup({ wallets: [w.wallet], ua: SEEKER_UA });
+    await expect(ctl.connect()).rejects.toThrow('wallet_not_found');
     expect(ctl.wallet()).toBeNull();
   });
 });

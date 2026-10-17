@@ -167,7 +167,13 @@
   "tut9_b": "Kainin ang lahat ng kulay, piliin ang magaan at masustansyang pagkain, at mag-enjoy! Larong pang-edukasyon, hindi payong medikal.",
   "wallet_connecting": "Hinihintay ang wallet…",
   "wallet_detected": "Natukoy: {name}",
-  "wallet_none": "Walang natukoy na wallet"
+  "wallet_none": "Walang natukoy na wallet",
+  "wallet_inapp": "Mukhang in-app browser ito, na hindi makakakonekta ng wallet. Buksan ang page na ito sa Chrome.",
+  "wallet_open_chrome": "Buksan sa Chrome",
+  "wallet_copy_link": "Kopyahin ang link",
+  "wallet_link_copied": "Nakopya ang link. I-paste sa Chrome.",
+  "wallet_notfound_help": "Walang wallet na sumagot. Buksan ang page na ito sa Chrome (hindi sa in-app browser) at tiyaking naka-install ang Solana wallet app.",
+  "wallet_blocked_help": "Hinarang ng browser ang koneksyon sa wallet. Sa Chrome, payagan ang local network access para sa site na ito at subukan ulit."
  },
  "bags": {
   "base": {

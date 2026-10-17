@@ -401,13 +401,18 @@ export class Ui {
         if (live) walletRow.append(button(t('recheck'), 'btn small', () => void doCheck()));
       } else {
         const opts = wallets.options();
+        // an in-app browser (WebView) cannot launch the Seeker wallet: say so instead of letting Connect fail
+        const stuck = wallets.inAppBrowser() && !opts.some((o) => o.kind === 'phantom' || o.name !== wallets.MWA_NAME);
         // say what was found: "Detected: Phantom" / "Detected: Seeker (Android)" / "No wallet detected"
-        walletRow.append(el('span', { class: 'chip wallet-found' }, opts.length ? `✅ ${t('wallet_detected', { name: opts.map((o) => o.label).join(' · ') })}` : `⚠️ ${t('wallet_none')}`));
+        walletRow.append(el('span', { class: 'chip wallet-found' }, stuck ? `⚠️ ${t('wallet_inapp')}` : opts.length ? `✅ ${t('wallet_detected', { name: opts.map((o) => o.label).join(' · ') })}` : `⚠️ ${t('wallet_none')}`));
+        if (stuck) {
+          walletRow.append(el('a', { class: 'btn small', href: wallets.openInChromeUrl() }, t('wallet_open_chrome')), button(t('wallet_copy_link'), 'btn ghost small', () => { void navigator.clipboard.writeText(wallets.pageUrl()).then(() => { status.textContent = t('wallet_link_copied'); }, () => { window.prompt('', wallets.pageUrl()); }); }));
+        }
         if (opts.length > 1) { // several wallets (e.g. desktop extensions): let the player choose
           for (const o of opts) walletRow.append(button([...(o.icon ? [el('img', { class: 'wallet-icon', src: o.icon, alt: '' })] : []), el('span', {}, o.label)], 'btn small', () => void doConnect(o.id)));
         } else walletRow.append(button(t('connect'), 'btn small', () => void doConnect()));
         // no wallet at all on a phone (e.g. iOS, or an Android browser without Mobile Wallet Adapter): offer the Phantom app
-        if (!opts.length && wallets.isMobile()) walletRow.append(el('a', { class: 'btn ghost small', href: wallets.openInPhantomUrl() }, t('open_in_phantom')));
+        if ((!opts.length || stuck) && wallets.isMobile()) walletRow.append(el('a', { class: 'btn ghost small', href: wallets.openInPhantomUrl() }, t('open_in_phantom')));
       }
       if (!state) return;
       if (state.kind === 'checking') status.textContent = t('checking');
@@ -422,7 +427,10 @@ export class Ui {
     const doConnect = async (id?: string) => {
       status.textContent = t('wallet_connecting');
       try { await wallets.connect(id); status.textContent = ''; render(null); if (live) await doCheck(); }
-      catch (e) { status.textContent = e instanceof Error && e.message === 'wallet_missing' ? t('phantom_missing') : t('wallet_rejected'); }
+      catch (e) {
+        const m = e instanceof Error ? e.message : '';
+        status.textContent = m === 'wallet_missing' ? t('phantom_missing') : m === 'wallet_not_found' ? t('wallet_notfound_help') : m === 'wallet_blocked' ? t('wallet_blocked_help') : t('wallet_rejected');
+      }
     };
     const doCheck = async () => { render({ kind: 'checking' }); render(await checkBag(bag.id, wallets.wallet())); };
     const tokenLabel = live && rule ? `${num(Number(rule.minimumTokens))}${rule === PASS_ACCESS ? ' PASTA' : ''} (${rule.mint})` : '—';

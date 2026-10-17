@@ -167,7 +167,13 @@
   "tut9_b": "Iss alle Farben, wähle leichte, gesunde Speisen und hab Spaß! Lernspiel, keine medizinische Beratung.",
   "wallet_connecting": "Warte auf das Wallet…",
   "wallet_detected": "Erkannt: {name}",
-  "wallet_none": "Kein Wallet erkannt"
+  "wallet_none": "Kein Wallet erkannt",
+  "wallet_inapp": "Das sieht nach einem In-App-Browser aus, der keine Wallets verbinden kann. Öffne diese Seite in Chrome.",
+  "wallet_open_chrome": "In Chrome öffnen",
+  "wallet_copy_link": "Link kopieren",
+  "wallet_link_copied": "Link kopiert. Füge ihn in Chrome ein.",
+  "wallet_notfound_help": "Keine Wallet hat geantwortet. Öffne diese Seite in Chrome (nicht in einem In-App-Browser) und prüfe, ob eine Solana-Wallet-App installiert ist.",
+  "wallet_blocked_help": "Der Browser hat die Wallet-Verbindung blockiert. Erlaube in Chrome den Zugriff auf das lokale Netzwerk für diese Seite und versuche es erneut."
  },
  "bags": {
   "base": {

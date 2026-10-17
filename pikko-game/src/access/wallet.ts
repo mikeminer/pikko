@@ -27,6 +27,30 @@ export interface WalletOption {
   kind: 'standard' | 'phantom';
 }
 
+/** Why a wallet connection failed, in terms the UI can explain (message of the thrown Error). */
+export type WalletFailure = 'wallet_missing' | 'wallet_choice' | 'wallet_no_account' | 'wallet_not_found' | 'wallet_blocked';
+
+/**
+ * Mobile Wallet Adapter launches the wallet with a `solana-wallet:` link and decides "wallet not found" when the page does not lose focus
+ * within 3 s. In-app browsers (WebViews: Telegram, wallet or social apps) cannot open that link, so the result is the same there.
+ * Same broad test the package uses for its own "incompatible browser" message (`wv` anywhere in the user agent), plus the usual WebView markers.
+ */
+export function isInAppBrowser(ua: string): boolean {
+  if (ua.includes('Solana Mobile Web Shell')) return false; // the Seeker's own web shell is a supported WebView
+  return ua.toLowerCase().includes('wv') || /WebView|Version\/[\d.]+.*Chrome\/\d/i.test(ua);
+}
+
+/** Browsers that are not Chrome (Mobile Wallet Adapter works only in Android Chrome). */
+export const isChromeLike = (ua: string): boolean => /Chrome\//.test(ua) && !/EdgA|OPR\/|SamsungBrowser|Firefox|DuckDuckGo|Vivaldi|YaBrowser|UCBrowser|MiuiBrowser/i.test(ua);
+
+/** Maps a Mobile Wallet Adapter error to a failure the UI can explain; anything else is rethrown as is. */
+export function mapWalletError(e: unknown): unknown {
+  const code = (e as { name?: string; code?: string } | null)?.name === 'SolanaMobileWalletAdapterError' ? (e as { code?: string }).code : undefined;
+  if (code === 'ERROR_WALLET_NOT_FOUND' || code === 'ERROR_BROWSER_NOT_SUPPORTED') return Object.assign(new Error('wallet_not_found'), { cause: e });
+  if (code === 'ERROR_LOOPBACK_ACCESS_BLOCKED') return Object.assign(new Error('wallet_blocked'), { cause: e });
+  return e;
+}
+
 export const MWA_NAME = 'Mobile Wallet Adapter';
 export const MWA_LABEL = 'Seeker (Android)';
 const labelOf = (name: string) => (name === MWA_NAME ? MWA_LABEL : name);
@@ -86,7 +110,8 @@ export function createWalletController(deps: WalletDeps) {
 
   async function connectStandard(w: Wallet): Promise<string> {
     const feature = w.features['standard:connect'] as StandardConnectFeature['standard:connect'];
-    const res = await feature.connect(); // the user may reject: the caller shows a message, no retry loop
+    let res;
+    try { res = await feature.connect(); } catch (e) { throw mapWalletError(e); } // the user may reject: the caller shows a message, no retry loop
     const addr = pickAccount(res.accounts.length ? res.accounts : w.accounts);
     if (!addr) throw new Error('wallet_no_account');
     unsubscribeWallet?.();
@@ -143,6 +168,15 @@ export function createWalletController(deps: WalletDeps) {
 
   const isMobile = () => /Android|iPhone|iPad|iPod/i.test(deps.userAgent());
   const isAndroid = () => /Android/i.test(deps.userAgent());
+  const inAppBrowser = () => isInAppBrowser(deps.userAgent());
+  const usesChrome = () => isChromeLike(deps.userAgent()) && !inAppBrowser();
+
+  /** Android intent that opens this page in Chrome (user-clicked link; falls back to the page itself). */
+  function openInChromeUrl(): string {
+    const u = new URL(deps.href());
+    return `intent://${u.host}${u.pathname}${u.search}#Intent;scheme=${u.protocol.replace(':', '')};package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(u.href)};end`;
+  }
+  const pageUrl = (): string => deps.href();
 
   /** User-clicked "Open in Phantom" link for mobile browsers without an injected wallet (e.g. iOS). */
   function openInPhantomUrl(): string {
@@ -151,7 +185,7 @@ export function createWalletController(deps: WalletDeps) {
   }
 
   return {
-    options, onOptionsChange, connect, disconnect, connectedLabel, isMobile, isAndroid, openInPhantomUrl,
+    options, onOptionsChange, connect, disconnect, connectedLabel, isMobile, isAndroid, inAppBrowser, usesChrome, openInChromeUrl, pageUrl, openInPhantomUrl,
     wallet: (): string | null => current,
     onWalletChange(l: Listener): () => void { listeners.add(l); return () => listeners.delete(l); },
   };
@@ -176,7 +210,8 @@ export function initWallets(): Promise<void> {
         authorizationCache: mwa.createDefaultAuthorizationCache(),
         chains: ['solana:mainnet'], // read-only: we only need the public key, never a transaction
         chainSelector: mwa.createDefaultChainSelector(),
-        onWalletNotFound: mwa.createDefaultWalletNotFoundHandler(),
+        // no library modal (English only): connect() fails with wallet_not_found and the UI explains it in the player's language
+        onWalletNotFound: async () => {},
       });
     } catch (e) {
       console.warn('Mobile Wallet Adapter unavailable', e);
@@ -205,4 +240,8 @@ export const connectedLabel = () => ctl().connectedLabel();
 export const onWalletChange = (l: (w: string | null) => void) => ctl().onWalletChange(l);
 export const isMobile = () => ctl().isMobile();
 export const isAndroid = () => ctl().isAndroid();
+export const inAppBrowser = () => ctl().inAppBrowser();
+export const usesChrome = () => ctl().usesChrome();
+export const openInChromeUrl = () => ctl().openInChromeUrl();
+export const pageUrl = () => ctl().pageUrl();
 export const openInPhantomUrl = () => ctl().openInPhantomUrl();

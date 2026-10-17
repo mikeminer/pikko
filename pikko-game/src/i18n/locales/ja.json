@@ -167,7 +167,13 @@
   "tut9_b": "いろんな色を食べて、軽くてヘルシーな食べものをえらんで、たのしもう！教育用ゲームで、医療上のアドバイスではありません。",
   "wallet_connecting": "ウォレットを待っています…",
   "wallet_detected": "検出：{name}",
-  "wallet_none": "ウォレットが見つかりません"
+  "wallet_none": "ウォレットが見つかりません",
+  "wallet_inapp": "アプリ内ブラウザのようで、ウォレットを接続できません。このページを Chrome で開いてください。",
+  "wallet_open_chrome": "Chrome で開く",
+  "wallet_copy_link": "リンクをコピー",
+  "wallet_link_copied": "リンクをコピーしました。Chrome に貼り付けてください。",
+  "wallet_notfound_help": "ウォレットから応答がありません。このページを Chrome（アプリ内ブラウザではなく）で開き、Solana ウォレットアプリがインストールされているか確認してください。",
+  "wallet_blocked_help": "ブラウザがウォレット接続をブロックしました。Chrome でこのサイトのローカルネットワークへのアクセスを許可して、もう一度お試しください。"
  },
  "bags": {
   "base": {
