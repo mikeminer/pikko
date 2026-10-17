@@ -429,7 +429,9 @@ export class Ui {
       try { await wallets.connect(id); status.textContent = ''; render(null); if (live) await doCheck(); }
       catch (e) {
         const m = e instanceof Error ? e.message : '';
-        status.textContent = m === 'wallet_missing' ? t('phantom_missing') : m === 'wallet_not_found' ? t('wallet_notfound_help') : m === 'wallet_blocked' ? t('wallet_blocked_help') : t('wallet_rejected');
+        // MWA errors carry a short code (ERROR_SESSION_TIMEOUT, ERROR_ASSOCIATION_CANCELLED…): show it so a failure can be reported precisely
+        const code = (e as { code?: unknown; cause?: { code?: unknown } } | null)?.code ?? (e as { cause?: { code?: unknown } } | null)?.cause?.code;
+        status.textContent = m === 'wallet_missing' ? t('phantom_missing') : m === 'wallet_not_found' ? t('wallet_notfound_help') : m === 'wallet_blocked' ? t('wallet_blocked_help') : `${t('wallet_rejected')}${typeof code === 'string' && /^ERROR_[A-Z_]+$/.test(code) ? ` (${code})` : ''}`;
       }
     };
     const doCheck = async () => { render({ kind: 'checking' }); render(await checkBag(bag.id, wallets.wallet())); };
