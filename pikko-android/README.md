@@ -34,5 +34,5 @@ Never put the key or its password in the repository, chat or email. APKs in `rel
 
 ## Install / test
 
-Copy the APK to the phone, or `adb install -r release/Pikko-1.0.0.apk`. Check that Android verified the site:
+Copy the APK to the phone, or `adb install -r release/Pikko-1.0.1.apk`. Check that Android verified the site:
 `adb shell pm get-app-links art.pikko.app` should say `verified`. Not yet tested on a physical Seeker (built and signature-verified only).
