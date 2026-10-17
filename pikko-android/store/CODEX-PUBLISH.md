@@ -82,11 +82,11 @@ java -jar "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\lib\apksigner.jar" v
 
 # 3. package and versions
 & "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\aapt2.exe" dump badging release\Pikko-1.0.2.apk | Select-String "package:|targetSdk"
-# expect: name='art.pikko.game' versionCode='2' versionName='1.0.1', targetSdkVersion:'36'
+# expect: name='art.pikko.game' versionCode='2' versionName='1.0.2', targetSdkVersion:'36'
 
 # 4. the live site vouches for the app (should print "linked": true; Google caches the answer for up to an hour, so if it does not say true yet,
 #    read the file itself (last check below) and compare package and fingerprint)
-curl.exe -s "https://digitalassetlinks.googleapis.com/v1/assetlinks:check?source.web.site=https://pikko.art&relation=delegate_permission/common.handle_all_urls&target.android_app.package_name=art.pikko.app&target.android_app.certificate.sha256_fingerprint=C6:C7:FF:F1:32:69:D0:16:D5:9D:17:87:10:66:5F:69:BC:FD:47:C9:39:D6:C2:86:CA:D8:65:35:BC:1F:88:9C"
+curl.exe -s "https://digitalassetlinks.googleapis.com/v1/assetlinks:check?source.web.site=https://pikko.art&relation=delegate_permission/common.handle_all_urls&target.android_app.package_name=art.pikko.game&target.android_app.certificate.sha256_fingerprint=C6:C7:FF:F1:32:69:D0:16:D5:9D:17:87:10:66:5F:69:BC:FD:47:C9:39:D6:C2:86:CA:D8:65:35:BC:1F:88:9C"
 
 # 5. the pages the listing points to answer
 curl.exe -s -o NUL -w "%{http_code} %{content_type}`n" https://pikko.art/play/
@@ -97,7 +97,7 @@ curl.exe -s -o NUL -w "%{http_code} %{content_type}`n" https://pikko.art/.well-k
 
 All must pass (200 and the expected values). If the assetlinks file is missing or shows another package or fingerprint, **stop and tell the publisher**: the site was probably redeployed without the file `/.well-known/assetlinks.json`. Its source of truth is `pikko-android/assetlinks.json`. Do not "fix" the Vercel project yourself.
 
-Optional, if the Seeker is connected by USB: `adb shell pm get-app-links art.pikko.app` should say `pikko.art: verified`.
+Optional, if the Seeker is connected by USB: `adb shell pm get-app-links art.pikko.game` should say `pikko.art: verified`.
 
 ---
 
@@ -150,7 +150,7 @@ The CLI (`npm install -g @solana-mobile/dapp-store-cli`) needs the publisher wal
 | Icons / banner generators | `pikko-android/make-icons.mjs`, `pikko-android/store-banner.mjs` |
 | Listing texts and images | `pikko-android/store/` |
 | Signing key | `%USERPROFILE%\Documents\ChatGPT\pikko game\solana-mobile\.signing\pikko-release.jks` + `password.dpapi` (readable only by the publisher's Windows user; **no offline backup is recorded: ask the publisher to make one**) |
-| Key backup script | `pikko-android/backup-key.ps1 -Destination <offline>\pikko-release.jks` (the publisher types the backup password) |
+| Key backup script | `pikko-android/backup-key.ps1 -Destination <offline>\pikko-release.p12` (the publisher types the backup password) |
 | Earlier project (superseded) | `%USERPROFILE%\Documents\ChatGPT\pikko game\solana-mobile\` (listing assets, `publication-status.json`) |
 | Asset links (must be served by the site) | `pikko-android/assetlinks.json` → https://pikko.art/.well-known/assetlinks.json |
 | Game and wallet code | `pikko-game/` (`src/access/wallet.ts`) |
