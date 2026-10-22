@@ -24,7 +24,7 @@ Modes: Classic (40 rounds), Daily menu (20 identical rounds for everyone), Zen (
 
 ## Access (token gating)
 
-- **Network:** Solana mainnet. The game never creates a lock, signs or approves anything; a wallet is used only to read the connected public key.
+- **Network:** Solana mainnet. The game never creates a lock or approves spending. A wallet is used to read the connected public key; the **only** transaction the game can ask a wallet to sign is the optional **0.001 SOL pay-per-round** transfer described under "Modes" below (a plain System Program transfer the player approves in the wallet; nothing is signed or sent during review or tests).
 - **Wallets (Wallet Standard):** desktop extensions (Phantom, Solflare, Backpack…), the Phantom in-app browser (injected `window.phantom.solana`), and — on **Android Chrome over HTTPS, e.g. the Solana Seeker** — **Mobile Wallet Adapter** (Seed Vault Wallet, Solflare, Phantom) via `@solana-mobile/wallet-standard-mobile`, loaded lazily only on Android. With several wallets the player picks one; with none (e.g. iOS) a user-clicked "Open in Phantom" link is offered. Not available: iOS browsers, and Android browsers other than Chrome (a limit of MWA).
 - **Interim pass:** one active DevFridge lock of **at least 5,000,000 PASTA** unlocks **every** country bag.
   - Mint: `39kMeX4HVRW9qbbiHSPbRQ9xeXUF18GrNP6gL61Ppump` (source: https://docs.devfridge.cool/tokenomics). Read-only on-chain check on 2026-10-04:
@@ -38,7 +38,13 @@ Modes: Classic (40 rounds), Daily menu (20 identical rounds for everyone), Zen (
 - **Fees and limits shown before any lock:** no early withdrawal; on redemption DevFridge takes **2%** of the vault to buy and burn PASTA
   (PASTA vaults are burned directly); network fees are separate; non-PASTA tokens also need an executable Jupiter route, so an illiquid or ungraduated token may not be redeemable at expiry. Not financial advice; nothing here promises a price or income.
 - **Browser check is UX only.** Downloaded code and assets are not protected; protecting content would need server-side wallet challenge + fresh lock verification.
-- **No reviewer needs tokens:** every bag has a free 5-round trial and the starter bag is free; kid mode (default) hides all crypto UI behind an adult gate.
+- **No reviewer needs tokens:** every bag has a free 5-round trial and the starter bag is free; Kids mode (default) hides crypto UI behind an adult gate, and **Grown-ups mode opens every bag for free, with promotions**.
+
+## Modes, promotions and pay-per-round
+
+- **Kids mode** (default, chosen on first launch). No promotions. Starter bag and 5-round trials are free. To play a full country bag an adult (after the adult question) either uses a **DevFridge lock** (the PASTA pass above) **or pays 0.001 SOL for ONE round**: a System Program transfer from the connected wallet to `AXomB2bpJ7F3EFVPQwrwBV4yVE7bazshZaVa64KhGCfE` (no refunds; network fee extra; no PASTA buy-and-burn, it is a direct transfer). Before the round starts the game reads the transaction back from a public RPC and requires: succeeded, system transfer, sender = connected wallet, recipient = the address above, at least 1,000,000 lamports, block time within 5 minutes, signature never used before. A signature is remembered locally so it buys one round only. Like the lock check this runs in the browser: it is a convenience, not security.
+- **Grown-ups mode** (switch needs the adult question). Every bag is open for free. Two promotions the owner chose (skill v1.5.3, references/free-play-sponsors.md): (1) an **OnlyFridge Club** dialog before every new round (first run and retries; never on pause/resume or in the tutorial; bundled text, works offline, a prominent *Continue playing* button, an optional *Discover* link to `https://club.devfridge.cool/download/onlyfridge-club` that opens in a new tab); (2) a **sponsored-token / YOUR AD HERE** card above the game on the title and around rounds. The card comes from `GET /api/sponsors`, a same-origin adapter (a Vercel function) over `https://scan.devfridge.cool/api/feed/boosted` with a fixed upstream, 4 s timeout, no redirects, byte caps, 60 s cache, expired records dropped, mints/logos/URLs validated and destinations built locally; no wallet, score or identifier is sent. When nothing valid is available the card says YOUR AD HERE and links to `https://scan.devfridge.cool/#feature`. On hosts without the adapter (GitHub Pages) it is always YOUR AD HERE. An ad click pauses a round and never grants access.
+- Neither promotion appears in Kids mode, in the tutorial, or in a round an adult opened with a lock or a payment. Prices of placements are not shown or sold in the game.
 
 ## Score authority
 
@@ -82,3 +88,5 @@ Tested in desktop Chrome (headless, software WebGL) with emulated viewports; see
 6. kcal values and health copy are unreviewed by a nutritionist.
 7. Country tokens, their mints and the final access thresholds are not launched; the 5,000,000 PASTA pass is an interim rule chosen by the owner.
 8. No server-side verification, no score authority, no licence file.
+9. **Pay-per-round has never been tested with a real payment** (no mainnet transaction was sent for the tests). The transfer bytes were checked by the real Solana runtime through a read-only `simulateTransaction`, and the flow with fake wallets and fake RPC answers; the wallet prompt on a physical Seeker, and the on-chain read-back after a real payment, are untested. The payment address was not independently verified as belonging to the owner.
+10. The sponsor feed had no active sponsors when checked (YOUR AD HERE was the only state seen live); the sponsor card with a real boost was exercised with a mock adapter answer only. The public privacy text must still be updated for the sponsor feed, the RPC provider and the optional payment.

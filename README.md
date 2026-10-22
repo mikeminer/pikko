@@ -10,7 +10,10 @@ Everything he eats fills his belly with kcal; win the day if at least half of it
 - 20 languages (EN IT PL ES FR DE PT EL TR AR HI ZH JA KO TH VI ID RU UK FIL), Arabic right-to-left.
 - In-game tutorial (cards + two guided practice rounds), Daily menu, Zen mode, Recipe Book, shareable receipt, Bleah Cam clip.
 - Access: DevFridge timelocks on Solana. **Interim pass: ONE active lock of 5,000,000 PASTA unlocks every bag.** Country tokens are pre-launch.
-- Wallets: Phantom / Solflare / Backpack extensions, Phantom's in-app browser and, on **Solana Seeker / Android Chrome, Mobile Wallet Adapter** (Seed Vault Wallet, Solflare, Phantom). Read-only: the game never signs.
+- Two modes, chosen on first launch and switchable on the title screen or in Settings (Grown-ups mode needs the adult question):
+  - **Kids mode** (default): no promotions; the 5-round trials and the starter bag are free. An adult unlocks a bag with a DevFridge lock (the PASTA pass above) **or pays 0.001 SOL for one round**.
+  - **Grown-ups mode**: every bag is open, with an **OnlyFridge Club promotion before each round** and a **sponsored-token / YOUR AD HERE card** above the game (neither ever appears in Kids mode or in the tutorial).
+- Wallets: Phantom / Solflare / Backpack extensions, Phantom's in-app browser and, on **Solana Seeker / Android Chrome, Mobile Wallet Adapter** (Seed Vault Wallet, Solflare, Phantom). Locks are only read (public key). The only thing the game ever asks a wallet to sign is the optional 0.001 SOL pay-per-round payment (Kids mode, after the adult question), which the player approves in the wallet and the game confirms on-chain.
 
 | Where | What |
 | --- | --- |
@@ -28,7 +31,7 @@ Everything he eats fills his belly with kcal; win the day if at least half of it
 cd pikko-game
 npm ci
 npm run dev      # http://127.0.0.1:5180
-npm test         # 92 tests
+npm test         # 124 tests
 npm run build    # type check + production build in dist/
 ```
 

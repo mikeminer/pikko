@@ -1,6 +1,7 @@
 // DOM overlay: HUD, plate labels, toasts and all screens. Text comes from i18n; no innerHTML with user data.
 import { DEVFRIDGE, PASS_ACCESS } from '../access/bags.config';
 import { type AccessState, checkBag, checkPass, isAccessLive, passRule, ruleFor } from '../access/gate';
+import { jsonRpc, PAY_TO, PRICE_SOL, payForRound } from '../access/payment';
 import * as wallets from '../access/wallet';
 import { audio } from '../audio/audio';
 import { clip } from '../capture/bleahcam';
@@ -11,10 +12,13 @@ import type { Quality } from '../render/scene';
 import { CAPACITY, type RunState } from '../sim/rules';
 import { store } from '../storage';
 import { $, button, el } from './dom';
+import { type Placement, placement, stillValid } from '../sponsors/client';
+import { FEATURE_URL, OFC_DOWNLOAD_URL, promoDue, sponsorVisible } from '../sponsors/promo';
 import { drawReceipt, emojiLine } from './receipt';
 import { Tutorial, TUTORIAL_KEY } from './tutorial';
 
-export interface Settings { sound: boolean; quality: Quality; kidMode: boolean }
+/** kidMode = Kids mode (default): no wallet, no crypto, no promotions. kidMode false = Grown-ups mode (entered through the adult question). */
+export interface Settings { sound: boolean; quality: Quality; kidMode: boolean; modeChosen?: boolean }
 
 export interface UiHost {
   game: Game;
@@ -37,6 +41,9 @@ export class Ui {
   private factTimer = 0;
   private songStop: (() => void) | null = null;
   private lastFocus: HTMLElement | null = null;
+  private sponsorEl = $('#sponsor');
+  private sponsorState: Placement | null = null;
+  private lastRunPromoted = false;
   current = 'none';
 
   private readonly tutorial: Tutorial;
@@ -47,7 +54,7 @@ export class Ui {
       kidMode: () => host.settings.kidMode,
       open: (panel) => this.open(panel, 'tutorial'),
       closeScreen: () => this.close(),
-      startPractice: (script) => this.host.start({ mode: 'zen', bagId: 'base', trial: false, script }),
+      startPractice: (script) => this.launch({ mode: 'zen', bagId: 'base', trial: false, script }),
       stopPractice: () => { this.hud.hidden = true; this.labels.replaceChildren(); this.host.stopGame(); },
     });
   }
@@ -62,8 +69,100 @@ export class Ui {
 
   /** Start a run; the very first time the player is walked through the tutorial before it begins. */
   private begin(cfg: RunConfig): void {
-    if (store.get<boolean>(TUTORIAL_KEY, false)) this.host.start(cfg);
-    else this.showTutorial(() => this.host.start(cfg));
+    if (store.get<boolean>(TUTORIAL_KEY, false)) this.run(cfg);
+    else this.showTutorial(() => this.run(cfg));
+  }
+
+  /** Start a run now (no promotion). Remembers whether it is a promoted run, which decides where the sponsor card may show. */
+  private launch(cfg: RunConfig): void {
+    this.lastRunPromoted = promoDue(cfg, this.host.settings.kidMode);
+    this.host.start(cfg);
+  }
+
+  /** Every new run goes through here: in grown-ups mode a round is preceded by the OnlyFridge Club promotion. */
+  run(cfg: RunConfig): void {
+    if (promoDue(cfg, this.host.settings.kidMode)) this.promo(cfg);
+    else this.launch(cfg);
+  }
+
+  /** OnlyFridge Club promotion before a new free round: bundled text (works offline), Continue always works, Discover is optional. */
+  private promo(cfg: RunConfig): void {
+    let done = false; // one transition per new-round intent: double taps cannot start two rounds
+    const go = () => { if (done) return; done = true; this.launch(cfg); };
+    const card = el('div', { class: 'card stack promo' },
+      el('span', { class: 'chip' }, `📣 ${t('promo_label')}`),
+      el('h2', {}, '🍸 OnlyFridge Club'),
+      el('p', {}, t('promo_body')),
+      button(`▶ ${t('promo_continue')}`, 'btn', go),
+      el('a', { class: 'btn ghost small', href: OFC_DOWNLOAD_URL, target: '_blank', rel: 'noopener noreferrer' }, t('promo_discover')),
+      button(t('quit'), 'btn ghost small', () => { done = true; this.close(); this.host.toTitle(); }),
+    );
+    this.open(el('div', {}, card), 'promo');
+  }
+
+  // ---------------- sponsor card (grown-ups mode, Free Play only) ----------------
+  private syncSponsor(): void {
+    const show = sponsorVisible({ kidMode: this.host.settings.kidMode, screen: this.current, lastRunPromoted: this.lastRunPromoted });
+    $('#app').classList.toggle('has-sponsor', show);
+    this.sponsorEl.hidden = !show;
+    if (!show) return;
+    if (!this.sponsorState) {
+      this.sponsorEl.replaceChildren(); // reserve the row; nothing is shown until the one request for this visit answers
+      void placement().then((p) => { this.sponsorState = p; this.syncSponsor(); });
+      return;
+    }
+    this.renderSponsor();
+  }
+
+  private renderSponsor(): void {
+    const p = stillValid(this.sponsorState ?? { kind: 'empty' });
+    const sp = p.kind === 'sponsor' ? p.sponsor : null;
+    const mark = sp?.logo
+      ? (() => { const i = el('img', { class: 'mark', src: sp.logo!, alt: '', referrerpolicy: 'no-referrer', loading: 'lazy' }); i.addEventListener('error', () => { i.replaceWith(el('span', { class: 'mark' }, '🪙')); }, { once: true }); return i; })()
+      : el('span', { class: 'mark' }, sp ? '🪙' : '📣');
+    const text = sp
+      ? [el('b', {}, `$${sp.symbol}`), ` ${sp.name}`, el('small', {}, `${t('sponsor_label')} · ${t('sponsor_disclaimer')}`)]
+      : [el('b', {}, 'YOUR AD HERE'), el('small', {}, t('sponsor_empty_cta'))];
+    const a = el('a', { class: 'sponsor-card', href: sp ? sp.url : FEATURE_URL, target: '_blank', rel: 'sponsored noopener noreferrer', referrerpolicy: 'no-referrer' }, mark, el('span', { class: 'txt' }, ...text));
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const now = stillValid(this.sponsorState ?? { kind: 'empty' }); // expiry re-checked at click time
+      if (this.current === 'none' && this.host.game.active) this.pause(); // an ad click pauses the round; it never auto-resumes
+      window.open(now.kind === 'sponsor' ? now.sponsor.url : FEATURE_URL, '_blank', 'noopener,noreferrer');
+      if (sp && now.kind === 'empty') this.renderSponsor();
+    });
+    this.sponsorEl.replaceChildren(a);
+  }
+
+  // ---------------- Kids / Grown-ups mode ----------------
+  private setMode(kid: boolean): void {
+    this.host.settings.kidMode = kid;
+    this.host.settings.modeChosen = true;
+    this.host.applySettings();
+  }
+
+  /** First launch: who is playing? Kids mode is one tap; Grown-ups mode goes through the adult question. */
+  private modePicker(done: () => void): void {
+    this.hud.hidden = true;
+    this.host.setView('title');
+    const card = el('div', { class: 'card stack' },
+      el('h2', {}, `👋 ${t('mode_title')}`),
+      el('div', { class: 'menu stack' },
+        button([el('span', {}, `🧒 ${t('mode_kids')}`), el('small', {}, t('mode_kids_d'))], 'btn green', () => { this.setMode(true); done(); }),
+        button([el('span', {}, `🧑 ${t('mode_adult')}`), el('small', {}, t('mode_adult_d'))], 'btn', () => this.adultGate(() => { this.setMode(false); done(); }, () => this.modePicker(done)))),
+    );
+    this.open(el('div', {}, card), 'mode');
+  }
+
+  /** The mode switch: to Kids at once, to Grown-ups only through the adult question. `back` re-renders the screen it was used on. */
+  private switchMode(back: () => void): void {
+    if (this.host.settings.kidMode) this.adultGate(() => { this.setMode(false); back(); }, back);
+    else { this.setMode(true); back(); }
+  }
+
+  private modeButton(back: () => void): HTMLButtonElement {
+    const kid = this.host.settings.kidMode;
+    return button(`${kid ? '🧒' : '🧑'} ${t(kid ? 'mode_kids' : 'mode_adult')} ⇄`, 'btn ghost small mode-switch', () => this.switchMode(back), { 'aria-label': `${t('mode_label')}: ${t(kid ? 'mode_kids' : 'mode_adult')}` });
   }
 
   private open(panel: HTMLElement, name: string, dim = true): void {
@@ -72,6 +171,7 @@ export class Ui {
     panel.classList.add('panel');
     if (dim) panel.classList.add('dim');
     this.current = name;
+    this.syncSponsor();
     const first = panel.querySelector<HTMLElement>('button, select, input');
     first?.focus({ preventScroll: true });
   }
@@ -79,11 +179,13 @@ export class Ui {
   close(): void {
     this.screen.replaceChildren();
     this.current = 'none';
+    this.syncSponsor();
     this.lastFocus?.focus?.({ preventScroll: true });
   }
 
   // ---------------- title ----------------
   title(): void {
+    if (!this.host.settings.modeChosen) { this.modePicker(() => this.title()); return; }
     this.hud.hidden = true;
     this.labels.replaceChildren();
     const p = el('div', { class: 'title-panel' });
@@ -101,6 +203,7 @@ export class Ui {
         button(`🌿 ${t('zen')}`, 'btn ghost small', () => this.begin({ mode: 'zen', bagId: 'base', trial: false }), { title: t('zen_desc') }),
         button(`🛒 ${t('mart')}`, 'btn ghost small', () => this.mart()),
         button(`📖 ${t('recipes')}`, 'btn ghost small', () => this.recipes())),
+      this.modeButton(() => this.title()),
       el('div', { class: 'fine' }, best ? `${t('local_best')}: ${num(best)} · ` : '', t('disclaimer')),
     );
     p.append(tl, langs, el('h1', { class: 'logo' }, el('img', { src: 'pikko-logo.svg', alt: 'PIKKO' })), el('div', { class: 'sub' }, t('subtitle')), menu);
@@ -239,7 +342,7 @@ export class Ui {
     const img = el('img', { class: 'receipt-img', alt: t('share_receipt') });
     receipt.toBlob((b) => { if (b) img.src = URL.createObjectURL(b); });
     const actions = el('div', { class: 'stack' },
-      button(`▶ ${t('play_again')}`, 'btn', () => this.host.start({ ...cfg, seed: undefined })),
+      button(`▶ ${t('play_again')}`, 'btn', () => this.run({ ...cfg, seed: undefined })),
       el('div', { class: 'row' },
         button(`🧾 ${t('share_receipt')}`, 'btn green small', () => void this.shareReceipt(receipt)),
         button(`📋 ${t('share_text')}`, 'btn ghost small', () => void this.copyText(emojiLine(run, tag || modeLabel))),
@@ -305,7 +408,8 @@ export class Ui {
       const live = isAccessLive(b.id);
       const cached = store.get<{ until: number | null }>(`unlocked.${b.id}`);
       const open = !!cached && (cached.until === null || cached.until * 1000 > Date.now());
-      const tag = `${b.id === homeId ? '📍 ' : ''}${b.id === 'base' ? t('mart_free') : open ? '🔓' : live ? '🔒' : '⏳'}`;
+      const adult = !this.host.settings.kidMode; // grown-ups mode: every bag is open (with promotions)
+      const tag = `${b.id === homeId ? '📍 ' : ''}${b.id === 'base' ? t('mart_free') : adult || open ? '🔓' : live ? '🔒' : '⏳'}`;
       grid.append(button([el('span', { class: 'tag' }, tag), el('img', { class: 'bag-logo', src: b.logo, alt: '', loading: 'lazy' }), el('b', {}, bagName(b)), el('small', {}, t('mart_foods', { h: b.foods.filter((f) => isHealthy(f.grade)).length, j: b.foods.filter((f) => isJunk(f.grade)).length }))],
         `bag${b.id === 'base' ? ' free' : ''}${b.id === homeId ? ' home' : ''}`, () => { void audio.play('mart_bag', 0.7); this.mart(b.id); }, { 'aria-pressed': String(b.id === selected), 'aria-label': bagName(b) }));
     }
@@ -316,7 +420,7 @@ export class Ui {
     const card = el('div', { class: 'card' },
       el('div', { class: 'row', style: 'justify-content:space-between' }, el('h2', {}, `🛒 ${t('mart_title')}`), button(t('close'), 'btn ghost small', () => this.host.toTitle())),
       el('p', {}, t('mart_sub')),
-      passRule() ? el('div', { class: 'note' }, `🍝 ${t('pass_note', { amount: num(Number(PASS_ACCESS.minimumTokens)) })}`) : null,
+      !this.host.settings.kidMode ? el('div', { class: 'note' }, `📣 ${t('mart_adult_note')}`) : null,
       grid,
       this.bagDetail(bag),
     );
@@ -353,14 +457,19 @@ export class Ui {
       el('div', {}, el('h2', {}, bagName(bag)), el('div', { class: 'fine', style: 'text-align:start' }, t('mart_accessory', { acc: bagAccessory(bag) }))));
     const box = el('div', { class: 'bag-detail stack' }, head, el('div', { class: 'note' }, `🌍 ${bagFact(bag)}`), preview);
     if (bag.id === 'base') {
-      box.append(button(`▶ ${t('mart_play')}`, 'btn', () => this.host.start({ mode: 'classic', bagId: 'base', trial: false })));
+      box.append(button(`▶ ${t('mart_play')}`, 'btn', () => this.run({ mode: 'classic', bagId: 'base', trial: false })));
       return box;
     }
+    if (!this.host.settings.kidMode) { // grown-ups mode: open, with the two promotions
+      box.append(button(`▶ ${t('mart_play')}`, 'btn', () => this.run({ mode: 'classic', bagId: bag.id, trial: false })));
+      return box;
+    }
+    // kids mode: a 5-round trial; the full bag needs an adult: a DevFridge lock (cached, re-checked before playing) or a paid round
     const live = isAccessLive(bag.id);
     const unlocked = store.get<{ until: number | null }>(`unlocked.${bag.id}`);
-    box.append(button(`🧪 ${t('mart_trial')}`, 'btn green', () => this.host.start({ mode: 'classic', bagId: bag.id, trial: true })));
+    box.append(button(`🧪 ${t('mart_trial')}`, 'btn green', () => this.run({ mode: 'classic', bagId: bag.id, trial: true })));
     if (live && unlocked) box.append(button(`▶ ${t('mart_play')}`, 'btn', () => void this.playLive(bag)));
-    if (!this.host.settings.kidMode || live) box.append(button(`🔓 ${t('mart_unlock')}`, 'btn ghost', () => this.adultGate(() => this.unlock(bag))));
+    box.append(button(`🔓 ${t('mart_unlock')}`, 'btn ghost', () => this.adultGate(() => this.unlock(bag))));
     if (!live) box.append(el('div', { class: 'note' }, `⏳ ${t('mart_soon')}`));
     return box;
   }
@@ -368,12 +477,12 @@ export class Ui {
   /** Re-check access right before playing a live bag (never trust a cached unlock). */
   private async playLive(bag: Bag): Promise<void> {
     const st = await checkBag(bag.id, wallets.wallet());
-    if (st.kind === 'unlocked') this.host.start({ mode: 'classic', bagId: bag.id, trial: false });
+    if (st.kind === 'unlocked') this.run({ mode: 'classic', bagId: bag.id, trial: false });
     else this.unlock(bag);
   }
 
   // ---------------- grown-ups ----------------
-  adultGate(then: () => void): void {
+  adultGate(then: () => void, cancel: () => void = () => this.mart()): void {
     const a = 6 + Math.floor(Math.random() * 4), b = 6 + Math.floor(Math.random() * 4);
     const input = el('input', { type: 'number', inputmode: 'numeric', 'aria-label': t('adult_q', { a, b }) });
     const msg = el('p', {});
@@ -382,7 +491,7 @@ export class Ui {
       el('p', {}, t('adult_q', { a, b })), input, msg,
       el('div', { class: 'row' },
         button(t('adult_ok'), 'btn', () => { if (Number(input.value) === a * b) then(); else msg.textContent = t('adult_wrong'); }),
-        button(t('back'), 'btn ghost', () => this.mart())),
+        button(t('back'), 'btn ghost', cancel)),
     );
     this.open(el('div', {}, card), 'adult');
   }
@@ -393,6 +502,7 @@ export class Ui {
     const status = el('p', { 'aria-live': 'polite' });
     const walletRow = el('div', { class: 'row' });
     const render = (state: AccessState | null) => {
+      syncPay();
       walletRow.replaceChildren();
       const cur = wallets.wallet();
       if (cur) {
@@ -435,6 +545,21 @@ export class Ui {
       }
     };
     const doCheck = async () => { render({ kind: 'checking' }); render(await checkBag(bag.id, wallets.wallet())); };
+    // pay per round: 0.001 SOL for ONE round (an adult's choice, after the adult question); confirmed on-chain before the round starts
+    const payStatus = el('p', { 'aria-live': 'polite' });
+    const payBtn = button(`💳 ${t('pay_button', { amount: PRICE_SOL })}`, 'btn small', () => void doPay());
+    const syncPay = () => { payBtn.disabled = !wallets.wallet(); };
+    const paidSignatures = { has: (s: string) => (store.get<string[]>('paid.sigs', []) ?? []).includes(s), add: (s: string) => store.set('paid.sigs', [...(store.get<string[]>('paid.sigs', []) ?? []), s].slice(-50)) };
+    const doPay = async () => {
+      const w = wallets.wallet();
+      if (!w) return;
+      payBtn.disabled = true;
+      payStatus.textContent = t('pay_waiting');
+      const r = await payForRound(w, { rpc: (m, p) => jsonRpc(m, p), send: (tx) => wallets.signAndSend(tx), now: Date.now, sleep: (ms) => new Promise((res) => setTimeout(res, ms)), used: paidSignatures });
+      if (r.ok) { payStatus.textContent = t('pay_ok'); this.run({ mode: 'classic', bagId: bag.id, trial: false }); return; }
+      payStatus.textContent = r.reason === 'rejected' ? t('pay_rejected') : r.reason === 'no_send' ? t('pay_nosend') : t('pay_failed');
+      syncPay();
+    };
     const tokenLabel = live && rule ? `${num(Number(rule.minimumTokens))}${rule === PASS_ACCESS ? ' PASTA' : ''} (${rule.mint})` : '—';
     const card = el('div', { class: 'card stack' },
       el('h2', {}, `🔓 ${bagName(bag)}`),
@@ -442,6 +567,7 @@ export class Ui {
       !live ? el('div', { class: 'note' }, t('not_configured_note')) : null,
       rule === PASS_ACCESS ? el('div', { class: 'note' }, `🍝 ${t('pass_note', { amount: num(Number(PASS_ACCESS.minimumTokens)) })}`) : null,
       walletRow, status,
+      el('div', { class: 'note stack' }, el('b', {}, `💳 ${t('pay_title')}`), el('p', { title: PAY_TO }, t('pay_desc', { amount: PRICE_SOL, to: `${PAY_TO.slice(0, 4)}…${PAY_TO.slice(-4)}` })), payBtn, payStatus),
       el('div', { class: 'row' },
         el('a', { class: 'btn ghost small', href: DEVFRIDGE.app, target: '_blank', rel: 'noopener' }, t('lock_on_devfridge')),
         el('a', { class: 'btn ghost small', href: live && rule?.mint ? `${DEVFRIDGE.scan}/?mint=${rule.mint}` : DEVFRIDGE.scan, target: '_blank', rel: 'noopener' }, t('scan_link'))),
@@ -488,13 +614,12 @@ export class Ui {
     for (const q of ['high', 'medium', 'low'] as Quality[]) qSel.append(el('option', { value: q, ...(q === s.quality ? { selected: '' } : {}) }, t('q_' + q)));
     qSel.addEventListener('change', () => { s.quality = qSel.value as Quality; this.host.applySettings(); });
     const sound = button(s.sound ? `🔊 ${t('on')}` : `🔇 ${t('off')}`, 'btn ghost small', () => { s.sound = !s.sound; this.host.applySettings(); this.settings(back); });
-    const kid = button(s.kidMode ? `✅` : `⬜`, 'btn ghost small', () => { s.kidMode = !s.kidMode; this.host.applySettings(); this.settings(back); }, { 'aria-pressed': String(s.kidMode) });
     const card = el('div', { class: 'card stack' },
       el('h2', {}, `⚙️ ${t('settings')}`),
       el('label', { class: 'field' }, t('language'), langSel),
       el('div', { class: 'switch' }, el('span', {}, t('sound')), sound),
       el('label', { class: 'field' }, t('quality'), qSel),
-      el('div', { class: 'switch' }, el('span', {}, t('kid_mode')), kid),
+      el('div', { class: 'switch' }, el('span', {}, t('mode_label')), this.modeButton(() => this.settings(back))),
       button(`❓ ${t('tut_again')}`, 'btn ghost small', () => this.showTutorial(() => this.settings(back))),
       el('p', { class: 'fine' }, t('blockout_note')),
       el('p', { class: 'fine' }, t('disclaimer')),

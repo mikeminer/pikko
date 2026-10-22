@@ -231,3 +231,16 @@ html, body { font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', 'Noto 
   .tut-coach-top { justify-content: flex-end; }
 }
 .wallet-icon { width: 20px; height: 20px; border-radius: 6px; margin-inline-end: 6px; vertical-align: middle; }
+
+/* grown-ups mode, Free Play: sponsored-token / YOUR AD HERE card in its own row above the game (the layers below shift down) */
+:root { --sponsor-h: calc(46px + var(--safe-t)); }
+#sponsor { position: absolute; left: 0; right: 0; top: 0; height: var(--sponsor-h); padding: var(--safe-t) calc(8px + var(--safe-r)) 0 calc(8px + var(--safe-l)); z-index: 30; display: flex; align-items: center; justify-content: center; background: rgba(38, 30, 24, 0.94); }
+#sponsor[hidden] { display: none; }
+#app.has-sponsor #stage, #app.has-sponsor #labels, #app.has-sponsor #hud, #app.has-sponsor #screen { top: var(--sponsor-h); }
+.sponsor-card { display: flex; align-items: center; gap: 8px; max-width: 100%; min-height: 44px; color: #f7eee4; text-decoration: none; font-weight: 800; font-size: 13px; }
+.sponsor-card:focus-visible { outline: 3px solid #3a86ff; outline-offset: 2px; border-radius: 10px; }
+.sponsor-card .mark { flex: none; width: 28px; height: 28px; border-radius: 50%; background: #4a3a2e; display: grid; place-items: center; font-size: 15px; object-fit: cover; }
+.sponsor-card .txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sponsor-card small { display: block; font-weight: 700; font-size: 11px; opacity: 0.8; overflow: hidden; text-overflow: ellipsis; }
+.mode-switch { align-self: center; }
+.promo h2 { margin: 0; }

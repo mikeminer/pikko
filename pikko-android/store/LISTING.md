@@ -35,15 +35,15 @@ PIKKO is a 3D game that teaches healthy eating in a minute a round. Two foods ap
 - **24 country bags**, each with 20 foods (10 healthy, 10 "sometimes") and a fun fact: a tour of the world's food.
 - **20 languages**, including right-to-left Arabic, and a built-in tutorial with two guided practice rounds.
 - **Daily menu** (the same 20 rounds for everyone), **Zen mode** for little ones, a **Recipe Book** and a shareable receipt.
-- **Kid mode** is on by default and hides all crypto screens.
+- **Kids mode** is chosen on first launch and hides crypto screens. **Grown-ups mode** (adult question to enter) opens every bag for free, with an OnlyFridge Club promotion before each round and a sponsor card above the game. Neither appears in Kids mode.
 
-Solana, optional. The country bags can be unlocked with a DevFridge timelock: connect a wallet (Seed Vault Wallet on the Seeker through Mobile Wallet Adapter, or any Solana wallet) and keep one active lock of at least 5,000,000 PASTA to unlock every bag. The game only reads your locks: it never asks for a signature or a transaction. Locking and redeeming happen on DevFridge, where redeeming has a 2% fee that buys and burns PASTA. Educational game, not medical or financial advice; calorie values are approximate.
+Solana, optional. The country bags can be unlocked with a DevFridge timelock: connect a wallet (Seed Vault Wallet on the Seeker through Mobile Wallet Adapter, or any Solana wallet) and keep one active lock of at least 5,000,000 PASTA to unlock every bag. The game only reads your locks. Locking and redeeming happen on DevFridge, where redeeming has a 2% fee that buys and burns PASTA. In Kids mode an adult can instead pay 0.001 SOL for one round: the wallet shows that payment and you approve it there. It is the only transaction the game ever asks for. Educational game, not medical or financial advice; calorie values are approximate.
 
 ## Notes for reviewers
 
 - The app is a Trusted Web Activity of https://pikko.art/play/ (Chrome engine, full screen). The site confirms the app's signing certificate at `/.well-known/assetlinks.json`.
 - No wallet or payment is needed to review: tap **Play**, then drag a food to Pikko. The first launch opens a short tutorial.
-- Wallet (optional): Pikko Mart → a locked bag → adults-only question (answer the multiplication) → **Connect wallet**. Chrome may first ask for access to other apps and services on the device (Local Network Access): that is the link to the wallet app on the same phone. The wallet connection is read-only (public key only).
+- Wallet (optional): Pikko Mart → a locked bag → adults-only question (answer the multiplication) → **Connect wallet**. Chrome may first ask for access to other apps and services on the device (Local Network Access): that is the link to the wallet app on the same phone. The wallet connection reads the public key only; the one optional transaction is a 0.001 SOL pay-per-round transfer (Kids mode, adult question first).
 - Verified on a real Seeker (Android 15): the app installs, Android verifies pikko.art, the game opens full screen without an address bar, and wallet connection works.
 - Known limits: 17 of 20 languages are unreviewed machine translations; country tokens are pre-launch (the 5,000,000 PASTA pass unlocks everything meanwhile); audio cues are owner-generated and their commercial terms are still to be confirmed by the owner.
 

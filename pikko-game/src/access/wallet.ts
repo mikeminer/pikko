@@ -1,4 +1,5 @@
-// Wallet connection (READ-ONLY): we only learn the connected public key. We never sign, lock, approve or send anything.
+// Wallet connection: we learn the connected public key (locks are only read). The one transaction the game can ask a wallet to sign
+// is the optional kids-mode pay-per-round transfer (signAndSend below), approved by the player in the wallet; it never signs a lock or anything else.
 // Wallet sources, merged into one list:
 //  1. Wallet Standard wallets registered in the page: desktop extensions (Phantom, Solflare, ...) and, on Android Chrome over HTTPS,
 //     Mobile Wallet Adapter (Solana Seeker: Seed Vault Wallet, Solflare, Phantom) which registerMwa() adds as "Mobile Wallet Adapter".
@@ -7,6 +8,7 @@
 import { getWallets } from '@wallet-standard/app';
 import type { Wallet, WalletAccount } from '@wallet-standard/base';
 import type { StandardConnectFeature, StandardDisconnectFeature, StandardEventsFeature } from '@wallet-standard/features';
+import { b58encode } from './solana';
 
 interface LegacyPhantom {
   isPhantom?: boolean;
@@ -58,6 +60,11 @@ const labelOf = (name: string) => (name === MWA_NAME ? MWA_LABEL : name);
 export interface Registry {
   get(): readonly Wallet[];
   on(event: 'register' | 'unregister', listener: () => void): () => void;
+}
+
+/** Solana Wallet Standard `solana:signAndSendTransaction` (typed here: the feature package is not a dependency). */
+interface SignAndSendFeature {
+  signAndSendTransaction(...inputs: { account: WalletAccount; transaction: Uint8Array; chain: string }[]): Promise<{ signature: Uint8Array }[]>;
 }
 
 export interface WalletDeps {
@@ -184,8 +191,23 @@ export function createWalletController(deps: WalletDeps) {
     return `https://phantom.app/ul/browse/${encodeURIComponent(target.href)}?ref=${encodeURIComponent(target.origin)}`;
   }
 
+  /**
+   * Ask the connected Wallet Standard wallet to sign and send one unsigned transaction (a payment the player approves in the
+   * wallet). Resolves to the base58 signature. Throws `wallet_no_send` when this wallet cannot do it (legacy Phantom provider).
+   */
+  async function signAndSend(tx: Uint8Array): Promise<string> {
+    if (current === null || active?.kind !== 'standard') throw new Error('wallet_no_send');
+    const feature = active.wallet.features['solana:signAndSendTransaction'] as SignAndSendFeature | undefined;
+    const account = active.wallet.accounts.find((a) => a.address === current);
+    if (!feature || !account) throw new Error('wallet_no_send');
+    const chain = account.chains.find((c) => c === 'solana:mainnet') ?? 'solana:mainnet';
+    const [out] = await feature.signAndSendTransaction({ account, transaction: tx, chain });
+    if (!out?.signature || out.signature.length !== 64) throw new Error('wallet_no_send');
+    return b58encode(out.signature);
+  }
+
   return {
-    options, onOptionsChange, connect, disconnect, connectedLabel, isMobile, isAndroid, inAppBrowser, usesChrome, openInChromeUrl, pageUrl, openInPhantomUrl,
+    options, onOptionsChange, connect, disconnect, connectedLabel, signAndSend, isMobile, isAndroid, inAppBrowser, usesChrome, openInChromeUrl, pageUrl, openInPhantomUrl,
     wallet: (): string | null => current,
     onWalletChange(l: Listener): () => void { listeners.add(l); return () => listeners.delete(l); },
   };
@@ -208,7 +230,7 @@ export function initWallets(): Promise<void> {
       mwa.registerMwa({
         appIdentity: { name: 'PIKKO', uri: base.href, icon: 'icon-512.png' }, // icon resolves against uri
         authorizationCache: mwa.createDefaultAuthorizationCache(),
-        chains: ['solana:mainnet'], // read-only: we only need the public key, never a transaction
+        chains: ['solana:mainnet'], // the public key, and the optional pay-per-round transfer (never a lock or any other transaction)
         chainSelector: mwa.createDefaultChainSelector(),
         // no library modal (English only): connect() fails with wallet_not_found and the UI explains it in the player's language
         onWalletNotFound: async () => {},
@@ -237,6 +259,7 @@ export const connect = (id?: string) => ctl().connect(id);
 export const disconnect = () => ctl().disconnect();
 export const wallet = () => ctl().wallet();
 export const connectedLabel = () => ctl().connectedLabel();
+export const signAndSend = (tx: Uint8Array) => ctl().signAndSend(tx);
 export const onWalletChange = (l: (w: string | null) => void) => ctl().onWalletChange(l);
 export const isMobile = () => ctl().isMobile();
 export const isAndroid = () => ctl().isAndroid();

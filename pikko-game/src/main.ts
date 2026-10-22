@@ -152,7 +152,7 @@ function start(): void {
     await audio.unlock();
     audio.setMuted(!settings.sound);
     boot.hidden = true;
-    if (Number.isFinite(seed) && seed > 0) host.start({ mode: 'classic', bagId: 'base', trial: false, seed: seed >>> 0 });
+    if (Number.isFinite(seed) && seed > 0) ui.run({ mode: 'classic', bagId: 'base', trial: false, seed: seed >>> 0 });
     else ui.title();
   }, { once: true });
 }
