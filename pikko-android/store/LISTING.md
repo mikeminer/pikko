@@ -8,6 +8,7 @@ Seeker-like size (360×640 CSS px at 3× = 1080×1920), taken from https://pikko
 | Field | Value |
 | --- | --- |
 | App name | PIKKO |
+| Subtitle | Feed Pikko. Explore the world's flavours. (this is what the portal already shows: keep it) |
 | Package | `art.pikko.game` |
 | Version | 1.0.2 (versionCode 2) |
 | APK | `pikko-android/release/Pikko-1.0.2.apk` (not in git), certificate SHA-256 `C6:C7:FF:F1:32:69:D0:16:D5:9D:17:87:10:66:5F:69:BC:FD:47:C9:39:D6:C2:86:CA:D8:65:35:BC:1F:88:9C` |
@@ -17,11 +18,11 @@ Seeker-like size (360×640 CSS px at 3× = 1080×1920), taken from https://pikko
 | Source code | https://github.com/mikeminer/pikko |
 | Contacts | welcome@devfridge.cool · Telegram https://t.me/pikkogame |
 | Category | Games (Educational / Family if the portal offers it) |
-| Languages | 20 in the app: English, Italian, Polish, Spanish, French, German, Portuguese, Greek, Turkish, Arabic, Hindi, Chinese, Japanese, Korean, Thai, Vietnamese, Indonesian, Russian, Ukrainian, Filipino |
+| Languages | The 20 languages of the app, **one portal locale each**: English (United States), Italian, Polish, Spanish, French, German, Portuguese, Greek, Turkish, Arabic, Hindi, **Chinese (China)**, Japanese, Korean, Thai, Vietnamese, Indonesian, Russian, Ukrainian, Filipino. The portal currently has 21 selected: **deselect "English (Poland)" and "Zhuang (China)"** (Zhuang is a different language; Chinese is `zh`, Zhuang is `za`) and select Chinese (China) instead. |
 | Age | Suitable for children: kid mode is the default and hides every crypto screen. The wallet and token screens sit behind an adults-only question. Answer the portal's content questionnaire honestly (no violence, no real-money gambling, no user-generated content, optional crypto features). |
 | Icon | `icon-512.png` (Pikko, the "I" of the wordmark) |
 | Banner / feature graphic | `banner-1200x600.png` |
-| Screenshots | `screenshot-1-title.png`, `screenshot-2-play.png`, `screenshot-3-yum.png`, `screenshot-4-mart.png`, `screenshot-5-bag.png` (1080×1920) |
+| Screenshots | The portal currently has 4 **landscape** screenshots from the earlier release. Two matching sets of the current game exist: **landscape** (1920×1080) in `store/landscape/` and **portrait** (1080×1920) in `store/`, files `screenshot-1-title.png`, `screenshot-2-play.png`, `screenshot-3-yum.png`, `screenshot-4-mart.png`, `screenshot-5-bag.png`. Use the landscape set to stay consistent with the portal; use portrait only if the portal accepts it. |
 
 ## Short description (≤ 80 characters)
 
