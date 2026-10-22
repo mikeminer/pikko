@@ -195,7 +195,8 @@
   "pay_ok": "결제가 확인되었습니다. 즐겁게 놀아요!",
   "pay_failed": "결제가 확인되지 않아 아무것도 시작되지 않았습니다. 지갑이 전송했다면 내역을 확인하세요.",
   "pay_rejected": "결제가 취소되었습니다.",
-  "pay_nosend": "이 지갑은 게임에서 전송할 수 없습니다. Phantom, Solflare 또는 Seeker 지갑을 사용해 보세요."
+  "pay_nosend": "이 지갑은 게임에서 전송할 수 없습니다. Phantom, Solflare 또는 Seeker 지갑을 사용해 보세요.",
+  "pay_burn": "결제금은 PASTA를 매입해 소각하는 데 쓰이는 DevFridge 볼트로 들어갑니다. PASTA 컨트랙트(CA): {ca}"
  },
  "bags": {
   "base": {

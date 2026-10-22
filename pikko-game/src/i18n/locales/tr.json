@@ -195,7 +195,8 @@
   "pay_ok": "Ödeme onaylandı. İyi eğlenceler!",
   "pay_failed": "Ödeme onaylanmadı, bu yüzden hiçbir şey başlamadı. Cüzdanın gönderdiyse geçmişine bak.",
   "pay_rejected": "Ödeme iptal edildi.",
-  "pay_nosend": "Bu cüzdan oyundan gönderim yapamıyor. Phantom, Solflare veya Seeker cüzdanını dene."
+  "pay_nosend": "Bu cüzdan oyundan gönderim yapamıyor. Phantom, Solflare veya Seeker cüzdanını dene.",
+  "pay_burn": "Ödeme, PASTA satın alıp yakmak için kullanılan bir DevFridge kasasına gider. PASTA sözleşmesi (CA): {ca}"
  },
  "bags": {
   "base": {

@@ -195,7 +195,8 @@
   "pay_ok": "Pagamento confirmado. Divirta-se!",
   "pay_failed": "Pagamento não confirmado, então nada começou. Se a carteira enviou, confira o histórico.",
   "pay_rejected": "Pagamento cancelado.",
-  "pay_nosend": "Esta carteira não pode enviar a partir do jogo. Tente Phantom, Solflare ou a carteira do Seeker."
+  "pay_nosend": "Esta carteira não pode enviar a partir do jogo. Tente Phantom, Solflare ou a carteira do Seeker.",
+  "pay_burn": "O pagamento vai para um cofre da DevFridge usado para comprar e queimar PASTA. Contrato do PASTA (CA): {ca}"
  },
  "bags": {
   "base": {

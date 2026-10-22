@@ -244,4 +244,5 @@ html, body { font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', 'Noto 
 .sponsor-card small { display: block; font-weight: 700; font-size: 11px; opacity: 0.8; overflow: hidden; text-overflow: ellipsis; }
 .mode-switch { align-self: center; }
 .promo h2 { margin: 0; }
+.ca-note { overflow-wrap: anywhere; user-select: all; text-align: start; }
 .promo a.btn { display: flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }

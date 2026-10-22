@@ -195,7 +195,8 @@
   "pay_ok": "Pembayaran dikonfirmasi. Selamat bermain!",
   "pay_failed": "Pembayaran belum terkonfirmasi, jadi belum ada yang dimulai. Jika dompet sudah mengirim, cek riwayatnya.",
   "pay_rejected": "Pembayaran dibatalkan.",
-  "pay_nosend": "Dompet ini tidak bisa mengirim dari game. Coba Phantom, Solflare, atau dompet Seeker."
+  "pay_nosend": "Dompet ini tidak bisa mengirim dari game. Coba Phantom, Solflare, atau dompet Seeker.",
+  "pay_burn": "Pembayaran masuk ke vault DevFridge yang dipakai untuk membeli dan membakar PASTA. Kontrak PASTA (CA): {ca}"
  },
  "bags": {
   "base": {

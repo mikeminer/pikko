@@ -4,7 +4,10 @@
 // Fail closed: any doubt means "not paid". Like the lock check this runs in the browser: it is a convenience, not security.
 import { b58decode, buildTransfer } from './solana';
 
+/** A DevFridge vault used to buy and burn PASTA (confirmed by the owner; on-chain it receives 0.001 SOL payments and the Fridge program spends from it through Jupiter swaps and burns). */
 export const PAY_TO = 'AXomB2bpJ7F3EFVPQwrwBV4yVE7bazshZaVa64KhGCfE';
+/** PASTA contract address (CA), shown next to the payment so the player sees what the money is used for. */
+export const PASTA_CA = '39kMeX4HVRW9qbbiHSPbRQ9xeXUF18GrNP6gL61Ppump';
 export const PRICE_LAMPORTS = 1_000_000n; // 0.001 SOL
 export const PRICE_SOL = '0.001';
 export const RPC_URL = 'https://solana-rpc.publicnode.com'; // CORS-enabled public endpoint (the wallet address and signature are sent to it)

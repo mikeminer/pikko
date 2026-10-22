@@ -195,7 +195,8 @@
   "pay_ok": "支払いを確認しました。楽しんで！",
   "pay_failed": "支払いが確認できなかったため、何も始まっていません。ウォレットが送信した場合は履歴を確認してください。",
   "pay_rejected": "支払いをキャンセルしました。",
-  "pay_nosend": "このウォレットはゲームから送信できません。Phantom、Solflare、または Seeker のウォレットをお試しください。"
+  "pay_nosend": "このウォレットはゲームから送信できません。Phantom、Solflare、または Seeker のウォレットをお試しください。",
+  "pay_burn": "支払いは、PASTA の購入とバーンに使われる DevFridge のボールトに送られます。PASTA コントラクト (CA)：{ca}"
  },
  "bags": {
   "base": {

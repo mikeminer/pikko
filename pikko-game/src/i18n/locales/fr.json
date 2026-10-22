@@ -195,7 +195,8 @@
   "pay_ok": "Paiement confirmé. Amuse-toi bien !",
   "pay_failed": "Paiement non confirmé, rien n'a démarré. Si ton portefeuille l'a envoyé, vérifie son historique.",
   "pay_rejected": "Paiement annulé.",
-  "pay_nosend": "Ce portefeuille ne peut pas envoyer depuis le jeu. Essaie Phantom, Solflare ou le portefeuille du Seeker."
+  "pay_nosend": "Ce portefeuille ne peut pas envoyer depuis le jeu. Essaie Phantom, Solflare ou le portefeuille du Seeker.",
+  "pay_burn": "Le paiement va dans un coffre DevFridge utilisé pour acheter et brûler du PASTA. Contrat PASTA (CA) : {ca}"
  },
  "bags": {
   "base": {

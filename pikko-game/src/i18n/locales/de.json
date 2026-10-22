@@ -195,7 +195,8 @@
   "pay_ok": "Zahlung bestätigt. Viel Spaß!",
   "pay_failed": "Zahlung nicht bestätigt, daher wurde nichts gestartet. Falls deine Wallet sie gesendet hat, prüfe den Verlauf.",
   "pay_rejected": "Zahlung abgebrochen.",
-  "pay_nosend": "Diese Wallet kann nicht aus dem Spiel senden. Probiere Phantom, Solflare oder die Seeker-Wallet."
+  "pay_nosend": "Diese Wallet kann nicht aus dem Spiel senden. Probiere Phantom, Solflare oder die Seeker-Wallet.",
+  "pay_burn": "Die Zahlung geht an einen DevFridge-Tresor, der zum Kaufen und Verbrennen von PASTA dient. PASTA-Vertrag (CA): {ca}"
  },
  "bags": {
   "base": {

@@ -31,7 +31,7 @@ Everything he eats fills his belly with kcal; win the day if at least half of it
 cd pikko-game
 npm ci
 npm run dev      # http://127.0.0.1:5180
-npm test         # 124 tests
+npm test         # 125 tests
 npm run build    # type check + production build in dist/
 ```
 

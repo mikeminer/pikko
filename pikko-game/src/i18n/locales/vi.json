@@ -195,7 +195,8 @@
   "pay_ok": "Đã xác nhận thanh toán. Chơi vui nhé!",
   "pay_failed": "Chưa xác nhận được thanh toán nên chưa bắt đầu gì. Nếu ví đã gửi, hãy xem lịch sử ví.",
   "pay_rejected": "Đã hủy thanh toán.",
-  "pay_nosend": "Ví này không thể gửi từ trò chơi. Hãy thử Phantom, Solflare hoặc ví Seeker."
+  "pay_nosend": "Ví này không thể gửi từ trò chơi. Hãy thử Phantom, Solflare hoặc ví Seeker.",
+  "pay_burn": "Khoản thanh toán đi vào một kho (vault) của DevFridge dùng để mua và đốt PASTA. Hợp đồng PASTA (CA): {ca}"
  },
  "bags": {
   "base": {

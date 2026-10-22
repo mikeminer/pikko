@@ -38,12 +38,12 @@ real session (2026-10-03 → 2026-10-04); user prompts are paraphrased or shorte
 - **Prompt:** a complete in-game tutorial → illustrated cards + two scripted practice rounds with a coach, in all 20 languages; first-run auto start, replay from title/settings/pause.
 
 ## 7. Verification
-See `VERIFICATION.md` (124 automated tests, type check, build, on-chain read, scripted browser playthroughs in 8 languages, mock-wallet access flows).
+See `VERIFICATION.md` (125 automated tests, type check, build, on-chain read, scripted browser playthroughs in 8 languages, mock-wallet access flows).
 
 ## 8. Kids / Grown-ups modes, promotions and pay-per-round
 - **Prompt (2026-10-22, after reading the new skill v1.5.3):** introduce a Kids mode and a Grown-ups mode with a mode choice and a switch; in Grown-ups mode show the two Free Play promotions and keep the Mart open; in Kids mode an adult unlocks bags with the timelock or pays 0.001 SOL per round to a given address.
-- **Result:** first-launch mode picker and a title/Settings switch (to Grown-ups through the adult question); OnlyFridge Club dialog before each round and a sponsor card (same-origin `/api/sponsors` adapter, validation, 60 s cache) in Grown-ups mode only; Kids mode: Mart locked as before plus a *Pay per round* flow (System Program transfer through Wallet Standard `solana:signAndSendTransaction`, confirmed on-chain before the round starts). 124 tests. The transfer bytes were checked with a read-only simulation; no real payment was made.
-- **Open points for the owner:** update the public privacy text (sponsor feed, RPC provider, payment); decide whether the payment address is the owner's; test a real payment on a Seeker.
+- **Result:** first-launch mode picker and a title/Settings switch (to Grown-ups through the adult question); OnlyFridge Club dialog before each round and a sponsor card (same-origin `/api/sponsors` adapter, validation, 60 s cache) in Grown-ups mode only; Kids mode: Mart locked as before plus a *Pay per round* flow (System Program transfer through Wallet Standard `solana:signAndSendTransaction`, confirmed on-chain before the round starts). 125 tests. The transfer bytes were checked with a read-only simulation; no real payment was made.
+- **Open points for the owner:** update the public privacy text (sponsor feed, RPC provider, payment); test a real payment on a Seeker. The owner then explained that the payment address `AXomB2…KhGCfE` is a DevFridge vault used to buy and burn PASTA (CA `39kMeX4HVRW9qbbiHSPbRQ9xeXUF18GrNP6gL61Ppump`); the pay dialog now says so, and the terms/privacy drafts were adjusted.
 
 ## Human review notes
 - Not reviewed by a native speaker: 17 languages. Not reviewed by a nutritionist: kcal and health copy.

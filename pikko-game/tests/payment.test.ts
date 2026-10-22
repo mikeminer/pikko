@@ -2,7 +2,8 @@
 // Everything here is a fake: no wallet, no RPC, no transaction is ever sent.
 import { describe, expect, it } from 'vitest';
 import type { Wallet } from '@wallet-standard/base';
-import { isPayment, MAX_AGE_SECONDS, PAY_TO, type PayDeps, payForRound, PRICE_LAMPORTS } from '../src/access/payment';
+import { PASS_ACCESS } from '../src/access/bags.config';
+import { isPayment, MAX_AGE_SECONDS, PASTA_CA, PAY_TO, type PayDeps, payForRound, PRICE_LAMPORTS } from '../src/access/payment';
 import { b58decode, b58encode, buildTransfer, key32 } from '../src/access/solana';
 import { createWalletController, type Registry } from '../src/access/wallet';
 
@@ -11,6 +12,13 @@ const OTHER = '9RY54dNPYTzDyh3TfFqDdt2b2KMM56KW1tw9erRTGQo6';
 const HASH = '83RvwuPGyKPsVnbRoBGpDcnKxckPWtwZHga6SsdTCd3W';
 const NOW = 1_800_000_000_000;
 const SIG = b58encode(new Uint8Array(64).fill(7));
+
+describe('what the payment is for', () => {
+  it('the CA shown next to the payment is the PASTA mint the pass uses', () => {
+    expect(PASTA_CA).toBe(PASS_ACCESS.mint);
+    expect(b58decode(PASTA_CA).length).toBe(32);
+  });
+});
 
 describe('base58 and the transfer message', () => {
   it('round-trips keys and keeps leading zeros', () => {

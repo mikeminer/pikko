@@ -195,7 +195,8 @@
   "pay_ok": "Kumpirmado ang bayad. Enjoy!",
   "pay_failed": "Hindi nakumpirma ang bayad kaya walang nagsimula. Kung ipinadala ito ng wallet mo, tingnan ang history nito.",
   "pay_rejected": "Kinansela ang bayad.",
-  "pay_nosend": "Hindi makapagpadala ang wallet na ito mula sa laro. Subukan ang Phantom, Solflare o ang wallet ng Seeker."
+  "pay_nosend": "Hindi makapagpadala ang wallet na ito mula sa laro. Subukan ang Phantom, Solflare o ang wallet ng Seeker.",
+  "pay_burn": "Ang bayad ay napupunta sa isang DevFridge vault na ginagamit sa pagbili at pagsunog ng PASTA. Kontrata ng PASTA (CA): {ca}"
  },
  "bags": {
   "base": {

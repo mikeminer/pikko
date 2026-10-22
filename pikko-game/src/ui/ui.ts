@@ -1,7 +1,7 @@
 // DOM overlay: HUD, plate labels, toasts and all screens. Text comes from i18n; no innerHTML with user data.
 import { DEVFRIDGE, PASS_ACCESS } from '../access/bags.config';
 import { type AccessState, checkBag, checkPass, isAccessLive, passRule, ruleFor } from '../access/gate';
-import { jsonRpc, PAY_TO, PRICE_SOL, payForRound } from '../access/payment';
+import { jsonRpc, PASTA_CA, PAY_TO, PRICE_SOL, payForRound } from '../access/payment';
 import * as wallets from '../access/wallet';
 import { audio } from '../audio/audio';
 import { clip } from '../capture/bleahcam';
@@ -567,7 +567,7 @@ export class Ui {
       !live ? el('div', { class: 'note' }, t('not_configured_note')) : null,
       rule === PASS_ACCESS ? el('div', { class: 'note' }, `🍝 ${t('pass_note', { amount: num(Number(PASS_ACCESS.minimumTokens)) })}`) : null,
       walletRow, status,
-      el('div', { class: 'note stack' }, el('b', {}, `💳 ${t('pay_title')}`), el('p', { title: PAY_TO }, t('pay_desc', { amount: PRICE_SOL, to: `${PAY_TO.slice(0, 4)}…${PAY_TO.slice(-4)}` })), payBtn, payStatus),
+      el('div', { class: 'note stack' }, el('b', {}, `💳 ${t('pay_title')}`), el('p', { title: PAY_TO }, t('pay_desc', { amount: PRICE_SOL, to: `${PAY_TO.slice(0, 4)}…${PAY_TO.slice(-4)}` })), el('p', { class: 'fine ca-note' }, t('pay_burn', { ca: PASTA_CA })), payBtn, payStatus),
       el('div', { class: 'row' },
         el('a', { class: 'btn ghost small', href: DEVFRIDGE.app, target: '_blank', rel: 'noopener' }, t('lock_on_devfridge')),
         el('a', { class: 'btn ghost small', href: live && rule?.mint ? `${DEVFRIDGE.scan}/?mint=${rule.mint}` : DEVFRIDGE.scan, target: '_blank', rel: 'noopener' }, t('scan_link'))),

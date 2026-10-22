@@ -195,7 +195,8 @@
   "pay_ok": "付款已确认。玩得开心！",
   "pay_failed": "付款未确认，所以没有开始。如果钱包已发送，请查看其记录。",
   "pay_rejected": "付款已取消。",
-  "pay_nosend": "此钱包无法从游戏内发送。请试试 Phantom、Solflare 或 Seeker 钱包。"
+  "pay_nosend": "此钱包无法从游戏内发送。请试试 Phantom、Solflare 或 Seeker 钱包。",
+  "pay_burn": "付款会进入一个 DevFridge 金库，用于回购并销毁 PASTA。PASTA 合约地址 (CA)：{ca}"
  },
  "bags": {
   "base": {

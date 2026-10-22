@@ -195,7 +195,8 @@
   "pay_ok": "Pago confirmado. ¡A divertirse!",
   "pay_failed": "Pago no confirmado, así que no empezó nada. Si tu billetera lo envió, revisa su historial.",
   "pay_rejected": "Pago cancelado.",
-  "pay_nosend": "Esta billetera no puede enviar desde el juego. Prueba Phantom, Solflare o la billetera del Seeker."
+  "pay_nosend": "Esta billetera no puede enviar desde el juego. Prueba Phantom, Solflare o la billetera del Seeker.",
+  "pay_burn": "El pago va a una bóveda de DevFridge que se usa para comprar y quemar PASTA. Contrato de PASTA (CA): {ca}"
  },
  "bags": {
   "base": {
