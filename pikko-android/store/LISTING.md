@@ -42,9 +42,11 @@ Solana, optional. The country bags can be unlocked with a DevFridge timelock: co
 ## Notes for reviewers
 
 - The app is a Trusted Web Activity of https://pikko.art/play/ (Chrome engine, full screen). The site confirms the app's signing certificate at `/.well-known/assetlinks.json`.
-- No wallet or payment is needed to review: tap **Play**, then drag a food to Pikko. The first launch opens a short tutorial.
+- No wallet or payment is needed to review: choose **Kids mode** or **Grown-ups mode** on first launch, tap **Play**, then drag a food to Pikko. The first Play opens a short tutorial.
+- **Grown-ups mode** (title screen chip or Settings; answer the multiplication to enter): every bag is open, an OnlyFridge Club promotion appears before each round (Continue playing starts it) and a sponsor card sits above the game (it shows YOUR AD HERE when no sponsor is active). **Kids mode** has neither. Switching back to Kids mode is immediate.
+- Pay-per-round (optional, never required): Kids mode → Pikko Mart → a country bag → Unlock… → adult question → connect a wallet → Pay 0.001 SOL. The dialog states that the payment goes to a DevFridge vault that buys and burns PASTA and shows the PASTA contract address.
 - Wallet (optional): Pikko Mart → a locked bag → adults-only question (answer the multiplication) → **Connect wallet**. Chrome may first ask for access to other apps and services on the device (Local Network Access): that is the link to the wallet app on the same phone. The wallet connection reads the public key only; the one optional transaction is a 0.001 SOL pay-per-round transfer (Kids mode, adult question first).
-- Verified on a real Seeker (Android 15): the app installs, Android verifies pikko.art, the game opens full screen without an address bar, and wallet connection works.
+- Verified on a real Seeker (Android 15): the app installs, Android verifies pikko.art, the game opens full screen without an address bar, the modes, the promotion and a round work, and wallet connection worked with an earlier test build of the same code. Not tested: a real 0.001 SOL payment.
 - Known limits: 17 of 20 languages are unreviewed machine translations; country tokens are pre-launch (the 5,000,000 PASTA pass unlocks everything meanwhile); audio cues are owner-generated and their commercial terms are still to be confirmed by the owner.
 
 ## Before submitting (publisher's own steps)
